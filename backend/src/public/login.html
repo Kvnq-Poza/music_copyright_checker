@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration and Login Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            background-color: #302f2f;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .form-container {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            margin-top: 5rem; /* Add margin to push the form down */
+        }
+        .nav-tabs .nav-link {
+            color: #302f2f;
+        }
+        .nav-tabs .nav-link.active {
+            background-color: #302f2f;
+            color: #ffffff;
+        }
+        .btn-primary {
+            background-color: #302f2f;
+            border-color: #302f2f;
+        }
+        .btn-primary:hover {
+            background-color: #4d4b4b;
+            border-color: #4d4b4b;
+        }
+        .form-section {
+            display: none;
+            margin-top: 20px;
+        }
+        .form-section.active {
+            display: block;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            z-index: 1000;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header__box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+        .header__nav .menu__link {
+            color: #302f2f;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+        .header__nav .menu__link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="header__box wrap">
+            <a class="header__logo" href="/">
+                <!-- <img src="/images/icons/logotype.webp" alt="check music for copyright"> -->
+            </a>
+            <nav class="header__nav">
+                <div class="nav__user">
+                    <!-- <a href="/no-copyright-music/" class="menu__link">
+                        <span class="material-icons show--icons">music_note</span> MUSIC
+                    </a> -->
+                    <a href="/" class="menu__link">
+                        <span class="material-icons show--icons">home</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div id="flashMessages"></div>
+    <div class="form-container">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" id="login-tab" href="#" onclick="showSection('login')">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="register-tab" href="#" onclick="showSection('register')">Register</a>
+            </li>
+        </ul>
+        <div class="form-section active" id="login-section">
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email address</label>
+                    <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="loginCheck">
+                    <label class="form-check-label" for="loginCheck">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="form-section" id="register-section">
+            <form>
+                <div class="form-group">
+                    <label for="registerEmail">Email address</label>
+                    <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" class="form-control" id="registerPassword" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Confirm Password</label>
+                    <input type="password" class="form-control" id="registerConfirmPassword" placeholder="Confirm Password">
+                </div>
+                <button onclick="registerUser()" type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+    </div>
+    <script src="login.js"></script>
+    <script>
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.form-section').forEach(function(element) {
+                element.classList.remove('active');
+            });
+            // Deactivate all tabs
+            document.querySelectorAll('.nav-link').forEach(function(element) {
+                element.classList.remove('active');
+            });
+            // Show the selected section
+            document.getElementById(section + '-section').classList.add('active');
+            // Activate the selected tab
+            document.getElementById(section + '-tab').classList.add('active');
+        }
+    </script>
+</body>
+</html>

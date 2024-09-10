@@ -1,0 +1,19 @@
+footer {
+  background: linear-gradient(135deg, #356892, #314e6b);
+    color: white;
+    text-align: center;
+    padding: 1rem 2rem;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+  }
+
+  footer p {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+  }

@@ -1,0 +1,46 @@
+<!-- 
+<div class="register-container">
+    <div class="left-side">
+      <img src="path-to-your-image.jpg" alt="Background Image" class="background-image"> 
+      <div class="back-to-website">
+        <button (click)="goBack()"><img width="50" height="50" src="https://img.icons8.com/ios-filled/50/FFFFFF/home.png" alt="home"/></button>
+      </div>
+      <div class="caption">
+        <img src="https://img.icons8.com/nolan/96/music.png" alt="Music Logo">
+        <h1>Check Your Music</h1>
+        <p>Ensure your music is copyright-free and ready to share on YouTube.</p>
+      </div>
+    </div>
+
+    <div class="right-side">
+      <h2>Welcome Back!</h2>
+      <p>Don't have an account? <a routerLink="/sign-up">Create an account</a></p>
+
+      <form (ngSubmit)="onSubmit()">
+        <input type="email" placeholder="Email" required [(ngModel)]="data.email" [ngModelOptions]="{standalone: true}">
+        <input type="password" placeholder="Enter your password" required [(ngModel)]="data.password" [ngModelOptions]="{standalone: true}">
+
+        <button type="submit">Log In</button>
+      </form> -->
+      <app-header></app-header>
+      <section>
+        <div class="container">
+          <div class="user signinBx">
+            <div class="imgBx"><img src="https://payhip.com/cdn-cgi/image/format=auto,width=750/https://pe56d.s3.amazonaws.com/o_1h3mr6bn2ec61uin43ucdj1tf4t.png" /></div>
+            <div class="formBx">
+              <form (ngSubmit)="onSubmit()">
+                <h2>Sign In</h2>
+                <input type="email" placeholder="Email" required [(ngModel)]="data.email" [ngModelOptions]="{standalone: true}">
+                <input type="password" placeholder="Enter your password" required [(ngModel)]="data.password" [ngModelOptions]="{standalone: true}">
+                <input type="submit" name="" value="Login"  />
+                 <div *ngIf="clicked" class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                <p class="signup">
+                  Don't have an account ?
+                  <a routerLink="/sign-up">Sign Up.</a>
+                </p>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </section>

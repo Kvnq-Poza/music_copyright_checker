@@ -1,0 +1,7 @@
+<h1 mat-dialog-title class="dialog-title">Now Playing</h1>
+<div mat-dialog-content class="dialog-content">
+  <iframe [src]="data.url" class="dialog-iframe" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div mat-dialog-actions class="dialog-footer">
+  <button mat-button (click)="onClose()">Close</button>
+</div>

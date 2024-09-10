@@ -1,0 +1,55 @@
+<app-header></app-header>
+<!-- <h1>Check music for copyright</h1> -->
+
+<section class="music-checker" >
+ 
+  <form #searchForm="ngForm" (ngSubmit)="submitForm(searchForm)">
+
+    <div class="input-group">
+      <input (click)="moveUp()"  class="search-input" type="text" placeholder="Enter Song Name or Link" [(ngModel)]="search_query" [ngModelOptions]="{standalone: true}">
+    </div>
+
+    <div class="radio-group">
+      <input type="radio" id="byName" name="searchType" value="name" [(ngModel)]="searchType">
+      <label for="byName" class="radio-label">By Name</label>
+
+      <input type="radio" id="byLink" name="searchType" value="link" [(ngModel)]="searchType">
+      <label for="byLink" class="radio-label">By Link</label>
+    </div>
+
+    <button type="submit" class="check-btn">
+     {{ checkButtonText }}
+      <div *ngIf="clicked" class="spinner"></div>
+    </button>
+    
+    <!-- make the spinner next to the above button -->
+
+    
+  </form>
+</section>
+
+<div id="resultCard" class="results" *ngIf="results.length > 0">
+
+  <ul>
+    <li *ngFor="let result of results" (click)="playSong(result.url)">
+      <mat-card class="result-item">
+        <img mat-card-image class="thumbnail" [src]="result.thumbnail" alt="Thumbnail" />
+        <mat-card-content class="result-info">
+          <h3 class="title">{{ result.title }}</h3>
+          <p class="status" *ngIf="!result.license" style="color: #4caf50">
+            No Copyright: <img *ngIf="!result.license" src="https://img.icons8.com/fluency/48/verified-account--v1.png" alt="verified-account--v1"/>
+          </p>
+          <p class="status" *ngIf="result.license" style="color: #f44336">
+            Potential Copyright: <img *ngIf="result.license" src="https://img.icons8.com/ios-filled/50/FA5252/verified-account.png" alt="cancel--v1"/>
+          </p>
+        </mat-card-content>
+        <mat-card-actions *ngIf="isLogged" align="end">
+          <button mat-raised-button color="primary" class="like-button" (click)="saveMusic(result)">
+            Like
+            <mat-icon>thumb_up</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </li>
+  </ul>
+</div>

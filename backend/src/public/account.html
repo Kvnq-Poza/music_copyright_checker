@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration and Login Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/style.css?v=28">
+    
+    <link rel="stylesheet" type="text/css" href="styles/main.css?v=28"> 
+    <link rel="stylesheet" href="styles/user.css">     
+
+    <style>
+        @font-face {
+  font-weight: 400;
+  font-style:  normal;
+  font-family: circular;
+
+  src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Book.woff2') format('woff2');
+}
+
+@font-face {
+  font-weight: 700;
+  font-style:  normal;
+  font-family: circular;
+
+  src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Bold.woff2') format('woff2');
+}
+        body {
+            background-color: #302f2f;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .form-container {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            margin-top: 5rem; /* Add margin to push the form down */
+        }
+        .nav-tabs .nav-link {
+            color: #302f2f;
+        }
+        .nav-tabs .nav-link.active {
+            background-color: #302f2f;
+            color: #ffffff;
+        }
+        .btn-primary {
+            background-color: #302f2f;
+            border-color: #302f2f;
+        }
+        .btn-primary:hover {
+            background-color: #4d4b4b;
+            border-color: #4d4b4b;
+        }
+        .form-section {
+            display: none;
+            margin-top: 20px;
+        }
+        .form-section.active {
+            display: block;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            z-index: 1000;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header__box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+        .header__nav .menu__link {
+            color: #302f2f;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+        .header__nav .menu__link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header id="header" style="position: relative; top: 0px; left: 0px; right: 0px; background-color: rgb(84, 135, 211);">
+        <div class="header__box wrap">
+            
+        <nav class="header__nav">
+            <div class="nav__user">
+                <!-- <a href="/no-copyright-music/" class="menu__link">
+                    <span class="material-icons show--icons">music_note</span> MUSIC
+                </a> -->
+                <a id="library" href="account.html" class="menu__link">
+                    <span class="material-icons show--icons">thumb_up</span> Library
+                </a>
+                <a href="login.html" class="menu__link">
+                    <span class="material-icons show--icons">account_circle</span> LOGIN
+                </a>
+            </div>
+        </nav>        
+    </div>
+    </header>
+    <div class="main__box wrap">
+        <div class="studio">
+            <div class="studio__menu">
+    <div class="menu__user">
+        <div class="progress__circle menu__user_character user__noob" data-current="1" data-limit="4">
+            <div class="circle circle__left"></div>
+            <div class="circle circle__right" style="transform: rotate(270deg);"></div>
+        </div>
+    </div>
+    <ul class="menu__nav">
+        <li class="menu__nav_item nav__account nav__current">
+            <a href="/studio/settings/" class="menu__link">
+                <div class="progress__circle menu__nav_character user__noob" data-current="1" data-limit="4">
+                    <div class="circle circle__left"></div>
+                    <div class="circle circle__right" style="transform: rotate(270deg);"></div>
+                </div>
+                <span class="material-icons">account_circle</span>
+                <span class="menu__link_caption">STUDIO</span>
+            </a>
+        </li>
+        <li class="menu__nav_item">
+            <a href="likes.html" class="menu__link">
+                <span class="material-icons">thumb_up</span>
+                <span class="menu__link_caption">LIKES</span>
+            </a>
+        </li>
+        <li class="menu__nav_item">
+            <a href="/muisc.html" class="menu__link">
+                <span class="material-icons">music_note</span>
+                <span class="menu__link_caption">MUSIC</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+            <div class="studio__page">
+                <ul class="page__nav">                    
+                    <li class="page__nav_item nav__current">
+                        <a href="user_settings.html" class="page__link">
+                            <span class="material-icons">settings</span>
+                            <span class="page__link_caption">SETTINGS</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="page__body">                    
+                    <div class="settings">
+                        <div class="settings__item">
+                            <div class="settings__caption">Subscription management</div>
+                            <div class="settings__tariff">
+                                <div class="settings__tariff_content">
+                                    <div class="settings__tariff_item">
+                                        <span class="material-icons">credit_card</span> Change the <a href="/pricing/" class="settings__tariff_plan">«Pricing plan»</a>
+                                    </div>
+                                    <div class="settings__tariff_item">
+                                        <span class="material-icons">event_available</span> Noob to <b>Friday, December 31, 9999</b>
+                                    </div>
+                                        <div class="settings__tariff_item">
+                                            <span class="material-icons">money_off</span> You have canceled your paid subscription
+                                        </div>
+                                    <div class="settings__tariff_item">
+                                        <span class="material-icons">check_box</span> I agree to the <a href="/info/termsofuse/" target="_blank">Terms of use</a> 
+                                        and the <a href="/info/privacypolicy/" target="_blank">Privacy Policy</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="settings__item">
+                            <div class="settings__caption">Email</div>
+                            <div class="settings__email">
+                                <input type="email" value="abrhamgg@gmail.com" disabled="">
+                            </div>
+                        </div>
+                        <div class="settings__item">
+                            <div class="settings__caption">
+                                <a href="/logout/" class="settings__exit">
+                                    <span class="material-icons">directions_run</span>Exit
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

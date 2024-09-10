@@ -1,0 +1,56 @@
+<div class="upload-container">
+    <div class="upload-card">
+      <div class="upload-header">
+        <h2>Upload YouTube Links</h2>
+        <p>Enter a YouTube link or upload a text file</p>
+      </div>
+  
+      <div class="upload-content">
+        <form>
+          <!-- Input field for a single YouTube link -->
+          <div class="form-group">
+            <label for="youtubeLink">YouTube Link</label>
+            <input 
+              type="text" 
+              id="youtubeLink" 
+              placeholder="Enter YouTube link" 
+              [(ngModel)]="youtubeLink" 
+              name="youtubeLink" 
+              class="input-field"
+            />
+          </div>
+  
+          <!-- File upload option for a text file containing YouTube links -->
+          <div class="form-group file-upload">
+            <label for="fileInput">Upload Text File</label>
+            <input 
+              type="file" 
+              id="fileInput" 
+              (change)="onFileSelected($event)" 
+              accept=".txt" 
+              class="input-file"
+            />
+          </div>
+        </form>
+      </div>
+  
+      <!-- Display the number of links -->
+      <div *ngIf="linkCount > 0" class="link-count">
+        <p>Total YouTube Links: {{ linkCount }}</p>
+      </div>
+  
+      <div class="upload-actions">
+
+        <button 
+          type="button" 
+          class="btn-submit" 
+          (click)="processLinks()"
+        >
+          Submit
+        </button>
+        <div *ngIf="clicked"  class="lds-ring"><div></div><div></div><div></div><div></div></div>
+
+      </div>
+    </div>
+  </div>
+  

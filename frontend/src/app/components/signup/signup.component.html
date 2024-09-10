@@ -1,0 +1,25 @@
+
+
+<app-header></app-header>
+<section>
+  <div class="container active">
+    <div class="user signupBx">
+      <div class="formBx">
+        <form (ngSubmit)="onSubmit()">
+          <h2>Create an account</h2>
+          <input type="text" placeholder="User name" required [(ngModel)]="data.username" [ngModelOptions]="{standalone: true}">
+          <input type="email" placeholder="Email" required [(ngModel)]="data.email" [ngModelOptions]="{standalone: true}">
+          <input type="password" placeholder="Enter your password" required [(ngModel)]="data.password" [ngModelOptions]="{standalone: true}">
+          <input type="password" placeholder="Confirm Your Password" required [(ngModel)]="data.confirmPassword" [ngModelOptions]="{standalone:true}" > 
+          <input type="submit" name="" value="Sign Up" />
+          <div *ngIf="clicked" class="lds-ring"><div></div><div></div><div></div><div></div></div>
+          <p class="signup">
+            Already have an account ?
+            <a routerLink="/sign-in">Sign in.</a>
+          </p>
+        </form>
+      </div>
+      <div class="imgBx"><img src="https://payhip.com/cdn-cgi/image/format=auto,width=750/https://pe56d.s3.amazonaws.com/o_1h3mr6bn2ec61uin43ucdj1tf4t.png" alt="" /></div>
+    </div>
+  </div> 
+</section>

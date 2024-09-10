@@ -1,0 +1,62 @@
+<app-header></app-header>
+<div class="tabs">
+  <button class="tab-button" [class.active]="activeTab === 'noCopyrightMusic'" (click)="selectTab('noCopyrightMusic')">No CopyRight Music</button>
+  <button *ngIf="isLogged" class="tab-button" [class.active]="activeTab === 'likedMusics'" (click)="selectTab('likedMusics')">Liked Musics</button>
+</div>
+
+<div class="content">
+  <div *ngIf="activeTab === 'noCopyrightMusic'">
+    <div class="categories">
+      <button class="category-button" [class.selected]="selectedCategory === null" (click)="selectCategory(null)">
+        All Categories
+      </button>
+  
+      <button class="category-button" *ngFor="let catagory of categories" [class.selected]="selectedCategory === catagory" (click)="selectCategory(catagory)">
+        {{ catagory[0] }} 
+        <span class="super" *ngIf="catagory[1]">{{ catagory[1] }}</span>
+      </button>
+    </div>
+    
+    <div class="music-list">
+      <div class="music-item" *ngFor="let music of filteredMusicItems" (click)="playSong(music.url)">
+        <div *ngIf="music.user_id === 'admin'">
+          <div class="music-image">
+            <img [src]="music.thumbnail" alt="Thumbnail" />
+          </div>
+          <div class="music-title">
+            {{music.title}}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="pagination">
+      <button (click)="prevPage()">&#171;</button>
+      <button *ngFor="let page of pages; let i = index" (click)="selectPage(i + 1)" [class.active]="currentPage === i + 1">
+        {{ i + 1 }}
+      </button>
+      <button (click)="nextPage()">&#187;</button>
+    </div>
+  </div>
+
+  <div *ngIf="isLogged">
+    <div *ngIf="activeTab === 'likedMusics'">
+      <div class="music-list">
+        <div class="music-item" *ngFor="let music of likedMusicItems" (click)="playSong(music.url)">
+          <div class="music-image"> 
+            <img [src]="music.thumbnail" alt="Thumbnail" />
+          </div>
+          <div class="music-title">{{music.title}}</div>
+        </div>
+      </div>
+      <div class="pagination">
+        <button (click)="prevPage()">&#171;</button>
+        <button *ngFor="let page of pages; let i = index" (click)="selectPage(i + 1)" [class.active]="currentPage === i + 1">
+          {{ i + 1 }}
+        </button>
+        <button (click)="nextPage()">&#187;</button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -21,7 +21,7 @@ export class AuthService {
         const { _id, username, email } = user;
         const payload = { _id, username, email };
         const secretKey = process.env.SECRET_KEY || 'SECRET_KEY';
-        const options = { expiresIn: '1h' };
+        const options = { expiresIn: '23h' };
         return jwt.sign(payload, secretKey, options);
     }
 

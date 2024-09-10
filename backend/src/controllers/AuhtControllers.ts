@@ -19,7 +19,9 @@ export class AuthController {
     try {
       const user = await this.userService.getUserByIdentifier(email);
       if (!user) {
-        res.json({ message: "User doesn't exist" })
+        // add status code
+        res.statusCode = 404;
+        res.json({ message: "User doesn't exist" }).status(404);
         return;
       }
       if (!user.is_email_verified) {
@@ -32,11 +34,13 @@ export class AuthController {
         res.json({ token });
         return;
       } else {
+        res.statusCode = 404;
         res.json({ message: "Invalid credentials" });
         return;
       }
     } catch (error) {
       console.error(error);
+      res.statusCode = 500;
       res.json({ message: "Internal server error" });
       return
     }

@@ -1,0 +1,45 @@
+.mat-dialog-container {
+    padding: 0; /* Remove default padding */
+  }
+  
+  .dialog-title {
+    background-color: #f5f5f5; /* Light grey background */
+    padding: 16px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .dialog-content {
+    padding: 16px;
+    text-align: center;
+  }
+  
+  .dialog-iframe {
+    width: 100%; /* Make iframe responsive */
+    height: 100%;
+  }
+  
+  .dialog-footer {
+    padding: 8px;
+    text-align: center;
+    background-color: #f5f5f5; /* Match the header background */
+  }
+
+
+  @media screen and (max-width: 768px) {
+    .music-dialog {
+      
+      padding: 20px;
+    }
+  
+    .dialog-title {
+      font-size: 20px;
+    }
+  
+    .dialog-content {
+      font-size: 16px;
+    }
+  }
+  

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration and Login Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/style.css?v=28">
+    
+    <link rel="stylesheet" type="text/css" href="styles/main.css?v=28"> 
+    <link rel="stylesheet" href="styles/user.css">     
+
+    <style>
+        @font-face {
+  font-weight: 400;
+  font-style:  normal;
+  font-family: circular;
+
+  src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Book.woff2') format('woff2');
+}
+
+@font-face {
+  font-weight: 700;
+  font-style:  normal;
+  font-family: circular;
+
+  src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Bold.woff2') format('woff2');
+}
+        body {
+            background-color: #302f2f;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .form-container {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            margin-top: 5rem; /* Add margin to push the form down */
+        }
+        .nav-tabs .nav-link {
+            color: #302f2f;
+        }
+        .nav-tabs .nav-link.active {
+            background-color: #302f2f;
+            color: #ffffff;
+        }
+        .btn-primary {
+            background-color: #302f2f;
+            border-color: #302f2f;
+        }
+        .btn-primary:hover {
+            background-color: #4d4b4b;
+            border-color: #4d4b4b;
+        }
+        .form-section {
+            display: none;
+            margin-top: 20px;
+        }
+        .form-section.active {
+            display: block;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            z-index: 1000;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header__box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+        .header__nav .menu__link {
+            color: #302f2f;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+        .header__nav .menu__link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="preloader" style="display: none;">
+        <div class="preloader__wrap">
+            <img src="/images/icons/preloader_image.png" class="preloader__image" alt="launching">
+            <div class="preloader__progressbar"></div>
+            <div class="preloader__background"></div>
+        </div>
+    </div>
+    <header id="header" style="position: relative; top: 0px; left: 0px; right: 0px; background-color: rgb(84, 135, 211);">
+        <div class="header__box wrap">
+            
+        <nav class="header__nav">
+            <div class="nav__user">
+                <!-- <a href="/no-copyright-music/" class="menu__link">
+                    <span class="material-icons show--icons">music_note</span> MUSIC
+                </a> -->
+                <a id="library" href="account.html" class="menu__link">
+                    <span class="material-icons show--icons">thumb_up</span> Library
+                </a>
+                <a href="login.html" class="menu__link">
+                    <span class="material-icons show--icons">account_circle</span> LOGIN
+                </a>
+            </div>
+        </nav>        
+    </div>
+    </header>
+    <main style="height: auto !important;">
+    <div class="music-content dark-theme">
+        <div class="music-content__box wrap" itemscope="" itemtype="https://schema.org/MusicPlaylist">
+<div class="content-wrap">
+    <h2><span class="caption">Listen online</span></h2>
+    <span class="update__list">
+        <span class="material-icons">update</span>
+        <time class="update__list_time" itemprop="dateModified" content="2024-04-07" datetime="2024-04-07">updates every week</time>
+    </span>
+    <span class="update__list">
+        <span class="material-icons">playlist_play</span>
+        <span class="update__list_time">playlist of page</span>
+    </span>
+</div>
+<div class="music__list response__content">
+            
+            <div class="music__list_item" data-youtube-id="-qa2I8UCIvk" itemprop="track" itemscope="" itemtype="https://schema.org/MusicRecording" style="order: 39;">
+                <div class="background-image-fit">
+                        <img src="https://img.youtube.com/vi/-qa2I8UCIvk/mq3.jpg" alt="">
+                </div>
+                <span class="music__name" itemprop="name">🏄‍♀️ House &amp;amp; Dance (Royalty Free Music) - &amp;quot;VIBIN&amp;#39; 53&amp;quot; by Peyruis  🇫🇷</span>
+            </div>
+            <div class="music__list_item" data-youtube-id="q_3bwwbMdh8" itemprop="track" itemscope="" itemtype="https://schema.org/MusicRecording" style="order: 40;">
+                <div class="background-image-fit">
+                        <img src="https://img.youtube.com/vi/q_3bwwbMdh8/mqdefault.jpg" alt="1">
+                </div>
+                <span class="music__name" itemprop="name">TranceCrafter - Hope Will Come Again</span>
+            </div>
+        <form id="MusicListForm" action="/music/musicclicked/" method="post">
+            <input type="hidden" name="youtubeId" value="H7AdAePguN4">
+            <input type="hidden" name="tag">
+            <input type="hidden" name="innerTag">
+        </form>
+    <div class="music__result" style="display: none; order: 4;">
+        <div class="youtube__code"></div>
+        <div class="search__result search__wrap">
+            <div class="search__list">
+                <div class="search__list_item">
+                    <div class="search__tools">
+            <span id="Check" class="search__tools_item material-icons" title="check" style="box-shadow: rgb(221, 221, 221) 0px 0px 0px 4px; color: rgb(255, 255, 255);">verified</span>
+            <span id="Like" class="search__tools_item material-icons" title="Like" style="box-shadow: rgb(221, 221, 221) 0px 0px 0px 4px; color: rgb(255, 255, 255);">thumb_up</span>
+            <span id="Download" class="search__tools_item material-icons" title="Download" style="box-shadow: rgb(221, 221, 221) 0px 0px 0px 4px; color: rgb(255, 255, 255);">download</span>
+        <span id="Report" class="search__tools_item material-icons" title="Report" style="box-shadow: rgb(221, 221, 221) 0px 0px 0px 4px; color: rgb(255, 255, 255);">report_gmailerrorred</span>
+        <form id="CheckForm" method="get" action="/">
+            <input type="hidden" name="searchBy" value="">
+        </form>
+        <form id="LikeForm" action="/tools/like/" method="post">
+            <input type="hidden" name="likeID">
+            <input type="hidden" name="likeTitle">
+        </form>
+        <form id="DownloadForm" action="/tools/download/" method="post">
+            <input type="hidden" name="downloadID">
+        </form>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+</main>
+
+<ul class="menu__nav menu__headless">
+    <li class="menu__nav_item nav__account">
+        <a href="/studio/settings/" class="menu__link">
+            <div class="progress__circle menu__nav_character user__noob" data-current="1" data-limit="4">
+                <di  -->
+                    v class="circle circle__left"></div>
+                <div class="circle circle__right" style="transform: rotate(270deg);"></div>
+            </div>
+            <span class="material-icons">account_circle</span>
+            <span class="menu__link_caption">STUDIO</span>
+        </a>
+    </li>
+        <li class="menu__nav_item">
+            <a href="/studio/likes/" class="menu__link">
+                <span class="material-icons">thumb_up</span>
+                <span class="menu__link_caption">LIKES</span>
+            </a>
+        </li>
+    <li class="menu__nav_item">
+        <a href="/no-copyright-music/" class="menu__link">
+            <span class="material-icons">music_note</span>
+            <span class="menu__link_caption">MUSIC</span>
+        </a>
+    </li>
+</ul>
+    <!-- JS & CSS files -->
+    
+    <link rel="stylesheet" type="text/css" href="/styles/music.css?v=28">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="/js/interface.js?v=43"></script>
+
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration and Login Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/style.css?v=28">
+    
+    <link rel="stylesheet" type="text/css" href="styles/main.css?v=28"> 
+    <link rel="stylesheet" href="styles/user.css">     
+
+    <style>
+        @font-face {
+  font-weight: 400;
+  font-style:  normal;
+  font-family: circular;
+
+  src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Book.woff2') format('woff2');
+}
+
+@font-face {
+  font-weight: 700;
+  font-style:  normal;
+  font-family: circular;
+
+  src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Bold.woff2') format('woff2');
+}
+        body {
+            background-color: #302f2f;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .form-container {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            margin-top: 5rem; /* Add margin to push the form down */
+        }
+        .nav-tabs .nav-link {
+            color: #302f2f;
+        }
+        .nav-tabs .nav-link.active {
+            background-color: #302f2f;
+            color: #ffffff;
+        }
+        .btn-primary {
+            background-color: #302f2f;
+            border-color: #302f2f;
+        }
+        .btn-primary:hover {
+            background-color: #4d4b4b;
+            border-color: #4d4b4b;
+        }
+        .form-section {
+            display: none;
+            margin-top: 20px;
+        }
+        .form-section.active {
+            display: block;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            z-index: 1000;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header__box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+        .header__nav .menu__link {
+            color: #302f2f;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+        .header__nav .menu__link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="preloader" style="display: none;">
+        <div class="preloader__wrap">
+            <img src="/images/icons/preloader_image.png" class="preloader__image" alt="eProves launching">
+            <div class="preloader__progressbar"></div>
+            <div class="preloader__background"></div>
+        </div>
+    </div>
+    <header id="header" style="position: relative; top: 0px; left: 0px; right: 0px; background-color: rgb(84, 135, 211);">
+        <div class="header__box wrap">
+            
+        <nav class="header__nav">
+            <div class="nav__user">
+                <!-- <a href="/no-copyright-music/" class="menu__link">
+                    <span class="material-icons show--icons">music_note</span> MUSIC
+                </a> -->
+                <a id="library" href="account.html" class="menu__link">
+                    <span class="material-icons show--icons">thumb_up</span> Library
+                </a>
+                <a href="login.html" class="menu__link">
+                    <span class="material-icons show--icons">account_circle</span> LOGIN
+                </a>
+            </div>
+        </nav>        
+    </div>
+    </header>
+    <main style="height: auto !important;">
+    <div class="music-content dark-theme">
+        <div class="music-content__box wrap" itemscope="" itemtype="https://schema.org/MusicPlaylist">
+            <div class="content-wrap">
+                <h1 itemprop="name">
+                    No copyright music
+                </h1>
+                <meta itemprop="numTracks" content="40">
+            </div>
+            <ul id="Tags" class="tags__list">
+            <li class="tags__list_item open--tags"><a href="#Tags">SHOW TAGS</a></li>
+                <li class="tags__list_item"><a href="/background-no-copyright-music/">Background <span class="tags__item_count">7555</span></a></li>
+                <li class="tags__list_item"><a href="/vlog-no-copyright-music/">Vlog Music <span class="tags__item_count">7170</span></a></li>
+                <li class="tags__list_item"><a href="/edm-no-copyright-music/">EDM <span class="tags__item_count">4611</span></a></li>
+                <li class="tags__list_item"><a href="/gaming-no-copyright-music/">Gaming Music <span class="tags__item_count">2909</span></a></li>
+                <li class="tags__list_item"><a href="/relax-no-copyright-music/">Relax <span class="tags__item_count">2851</span></a></li>
+                <li class="tags__list_item"><a href="/drum-and-bass-no-copyright-music/">Drum and Bass <span class="tags__item_count">2828</span></a></li>
+                <li class="tags__list_item"><a href="/summer-no-copyright-music/">Summer <span class="tags__item_count">2550</span></a></li>
+                <li class="tags__list_item"><a href="/dance-no-copyright-music/">Dance <span class="tags__item_count">2150</span></a></li>
+                <li class="tags__list_item"><a href="/cinematic-no-copyright-music/">Cinematic Music <span class="tags__item_count">1312</span></a></li>
+                <li class="tags__list_item"><a href="/beats-no-copyright-music/">Beats <span class="tags__item_count">1229</span></a></li>
+                <li class="tags__list_item"><a href="/hip-hop-no-copyright-music/">Hip Hop <span class="tags__item_count">1124</span></a></li>
+                <li class="tags__list_item"><a href="/epic-no-copyright-music/">Epic <span class="tags__item_count">1112</span></a></li>
+                <li class="tags__list_item"><a href="/ambient-no-copyright-music/">Ambient <span class="tags__item_count">1001</span></a></li>
+                <li class="tags__list_item"><a href="/bass-no-copyright-music/">Bass Boosted <span class="tags__item_count">867</span></a></li>
+                <li class="tags__list_item"><a href="/house-no-copyright-music/">Deep House <span class="tags__item_count">867</span></a></li>
+                <li class="tags__list_item"><a href="/acoustic-no-copyright-music/">Acoustic <span class="tags__item_count">739</span></a></li>
+                <li class="tags__list_item"><a href="/trap-no-copyright-music/">Trap <span class="tags__item_count">715</span></a></li>
+                <li class="tags__list_item"><a href="/lofi-no-copyright-music/">LoFi <span class="tags__item_count">632</span></a></li>
+                <li class="tags__list_item"><a href="/funny-no-copyright-music/">Funny <span class="tags__item_count">526</span></a></li>
+                <li class="tags__list_item"><a href="/cyberpunk-no-copyright-music/">Cyberpunk <span class="tags__item_count">497</span></a></li>
+                <li class="tags__list_item"><a href="/jazz-no-copyright-music/">Jazz <span class="tags__item_count">439</span></a></li>
+                <li class="tags__list_item"><a href="/remix-no-copyright-music/">Remix <span class="tags__item_count">428</span></a></li>
+                <li class="tags__list_item"><a href="/rock-no-copyright-music/">Rock <span class="tags__item_count">364</span></a></li>
+                <li class="tags__list_item"><a href="/workout-no-copyright-music/">Workout Music <span class="tags__item_count">357</span></a></li>
+                <li class="tags__list_item"><a href="/pop-no-copyright-music/">Popular <span class="tags__item_count">291</span></a></li>
+                <li class="tags__list_item"><a href="/rap-no-copyright-music/">Rap <span class="tags__item_count">260</span></a></li>
+                <li class="tags__list_item"><a href="/car-no-copyright-music/">Car Music <span class="tags__item_count">240</span></a></li>
+                <li class="tags__list_item"><a href="/christmas-no-copyright-music/">Christmas <span class="tags__item_count">120</span></a></li>
+                <li class="tags__list_item"><a href="/anime-no-copyright-music/">Anime <span class="tags__item_count">98</span></a></li>
+                <li class="tags__list_item"><a href="/phonk-no-copyright-music/">Phonk <span class="tags__item_count">93</span></a></li>
+                <li class="tags__list_item"><a href="/tik-tok-no-copyright-music/">Tik Tok <span class="tags__item_count">81</span></a></li>
+        <li class="tags__list_item scroll-to-all-tags"><a href="#AllTags">More tags <span class="tags__item_count">10000</span></a></li>
+</ul>
+
+<div class="content-wrap">
+    <h2><span class="caption">Listen online</span></h2>
+    <span class="update__list">
+        <span class="material-icons">update</span>
+        <time class="update__list_time" itemprop="dateModified" content="2024-04-07" datetime="2024-04-07">updates every week</time>
+    </span>
+    <span class="update__list">
+        <span class="material-icons">playlist_play</span>
+        <span class="update__list_time">playlist of page</span>
+    </span>
+</div>
+<div class="music__list response__content">
+            
+            <div class="music__list_item" data-youtube-id="-qa2I8UCIvk" itemprop="track" itemscope="" itemtype="https://schema.org/MusicRecording" style="order: 39;">
+                <div class="background-image-fit">
+                        <img src="https://img.youtube.com/vi/-qa2I8UCIvk/mq3.jpg" alt="">
+                </div>
+                <span class="music__name" itemprop="name">🏄‍♀️ House &amp;amp; Dance (Royalty Free Music) - &amp;quot;VIBIN&amp;#39; 53&amp;quot; by Peyruis  🇫🇷</span>
+            </div>
+            <div class="music__list_item" data-youtube-id="q_3bwwbMdh8" itemprop="track" itemscope="" itemtype="https://schema.org/MusicRecording" style="order: 40;">
+                <div class="background-image-fit">
+                        <img src="https://img.youtube.com/vi/q_3bwwbMdh8/mqdefault.jpg" alt="1">
+                </div>
+                <span class="music__name" itemprop="name">TranceCrafter - Hope Will Come Again</span>
+            </div>
+        <form id="MusicListForm" action="/music/musicclicked/" method="post">
+            <input type="hidden" name="youtubeId" value="H7AdAePguN4">
+            <input type="hidden" name="tag">
+            <input type="hidden" name="innerTag">
+        </form>
+    <div class="music__result" style="display: none; order: 4;">
+        <div class="youtube__code"></div>
+        <div class="search__result search__wrap">
+            <div class="search__list">
+                <div class="search__list_item">
+                    <div class="search__tools">
+            <span id="Check" class="search__tools_item material-icons" title="check" style="box-shadow: rgb(221, 221, 221) 0px 0px 0px 4px; color: rgb(255, 255, 255);">verified</span>
+            <span id="Like" class="search__tools_item material-icons" title="Like" style="box-shadow: rgb(221, 221, 221) 0px 0px 0px 4px; color: rgb(255, 255, 255);">thumb_up</span>
+            <span id="Download" class="search__tools_item material-icons" title="Download" style="box-shadow: rgb(221, 221, 221) 0px 0px 0px 4px; color: rgb(255, 255, 255);">download</span>
+        <span id="Report" class="search__tools_item material-icons" title="Report" style="box-shadow: rgb(221, 221, 221) 0px 0px 0px 4px; color: rgb(255, 255, 255);">report_gmailerrorred</span>
+        <form id="CheckForm" method="get" action="/">
+            <input type="hidden" name="searchBy" value="">
+        </form>
+        <form id="LikeForm" action="/tools/like/" method="post">
+            <input type="hidden" name="likeID">
+            <input type="hidden" name="likeTitle">
+        </form>
+        <form id="DownloadForm" action="/tools/download/" method="post">
+            <input type="hidden" name="downloadID">
+        </form>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ul id="AllTags" class="all-tags">
+        <li class="all-tags__item"><a href="/acoustic-no-copyright-music/">Acoustic</a></li>
+        <li class="all-tags__item smaller"><a href="/alternative-no-copyright-music/">Alternative</a></li>
+        <li class="all-tags__item"><a href="/ambient-no-copyright-music/">Ambient</a></li>
+        <li class="all-tags__item"><a href="/anime-no-copyright-music/">Anime</a></li>
+        <li class="all-tags__item"><a href="/background-no-copyright-music/">Background</a></li>
+        <li class="all-tags__item"><a href="/bass-no-copyright-music/">Bass Boosted</a></li>
+        <li class="all-tags__item"><a href="/beats-no-copyright-music/">Beats</a></li>
+        <li class="all-tags__item"><a href="/car-no-copyright-music/">Car Music</a></li>
+        <li class="all-tags__item smaller"><a href="/chill-no-copyright-music/">Chill</a></li>
+        <li class="all-tags__item"><a href="/christmas-no-copyright-music/">Christmas</a></li>
+        <li class="all-tags__item"><a href="/cinematic-no-copyright-music/">Cinematic Music</a></li>
+        <li class="all-tags__item smaller"><a href="/classical-no-copyright-music/">Classical</a></li>
+        <li class="all-tags__item smaller"><a href="/cover-no-copyright-music/">Cover</a></li>
+        <li class="all-tags__item"><a href="/cyberpunk-no-copyright-music/">Cyberpunk</a></li>
+        <li class="all-tags__item"><a href="/dance-no-copyright-music/">Dance</a></li>
+        <li class="all-tags__item"><a href="/house-no-copyright-music/">Deep House</a></li>
+        <li class="all-tags__item"><a href="/drum-and-bass-no-copyright-music/">Drum and Bass</a></li>
+        <li class="all-tags__item smaller"><a href="/dubstep-no-copyright-music/">Dubstep</a></li>
+        <li class="all-tags__item"><a href="/edm-no-copyright-music/">EDM</a></li>
+        <li class="all-tags__item"><a href="/epic-no-copyright-music/">Epic</a></li>
+        <li class="all-tags__item smaller"><a href="/funk-no-copyright-music/">Funk</a></li>
+        <li class="all-tags__item"><a href="/funny-no-copyright-music/">Funny</a></li>
+        <li class="all-tags__item smaller"><a href="/future-no-copyright-music/">Future</a></li>
+        <li class="all-tags__item"><a href="/gaming-no-copyright-music/">Gaming Music</a></li>
+        <li class="all-tags__item"><a href="/hip-hop-no-copyright-music/">Hip Hop</a></li>
+        <li class="all-tags__item smaller"><a href="/indie-no-copyright-music/">Indie</a></li>
+        <li class="all-tags__item smaller"><a href="/instrumental-no-copyright-music/">Instrumental</a></li>
+        <li class="all-tags__item"><a href="/jazz-no-copyright-music/">Jazz</a></li>
+        <li class="all-tags__item"><a href="/lofi-no-copyright-music/">LoFi</a></li>
+        <li class="all-tags__item smaller"><a href="/love-no-copyright-music/">Love</a></li>
+        <li class="all-tags__item smaller"><a href="/meditation-no-copyright-music/">Meditation</a></li>
+        <li class="all-tags__item smaller"><a href="/melodic-no-copyright-music/">Melodic</a></li>
+        <li class="all-tags__item"><a href="/phonk-no-copyright-music/">Phonk</a></li>
+        <li class="all-tags__item smaller"><a href="/piano-no-copyright-music/">Piano</a></li>
+        <li class="all-tags__item"><a href="/pop-no-copyright-music/">Popular</a></li>
+        <li class="all-tags__item"><a href="/rap-no-copyright-music/">Rap</a></li>
+        <li class="all-tags__item"><a href="/relax-no-copyright-music/">Relax</a></li>
+        <li class="all-tags__item"><a href="/remix-no-copyright-music/">Remix</a></li>
+        <li class="all-tags__item smaller"><a href="/retro-no-copyright-music/">Retro</a></li>
+        <li class="all-tags__item smaller"><a href="/rnb-no-copyright-music/">RnB</a></li>
+        <li class="all-tags__item"><a href="/rock-no-copyright-music/">Rock</a></li>
+        <li class="all-tags__item smaller"><a href="/sad-no-copyright-music/">Sad</a></li>
+        <li class="all-tags__item smaller"><a href="/sleep-no-copyright-music/">Sleep</a></li>
+        <li class="all-tags__item smaller"><a href="/soul-no-copyright-music/">Soul</a></li>
+        <li class="all-tags__item"><a href="/summer-no-copyright-music/">Summer</a></li>
+        <li class="all-tags__item smaller"><a href="/techno-no-copyright-music/">Techno</a></li>
+        <li class="all-tags__item"><a href="/tik-tok-no-copyright-music/">Tik Tok</a></li>
+        <li class="all-tags__item smaller"><a href="/trance-no-copyright-music/">Trance</a></li>
+        <li class="all-tags__item"><a href="/trap-no-copyright-music/">Trap</a></li>
+        <li class="all-tags__item"><a href="/vlog-no-copyright-music/">Vlog Music</a></li>
+        <li class="all-tags__item smaller"><a href="/vocal-no-copyright-music/">Vocal</a></li>
+        <li class="all-tags__item"><a href="/workout-no-copyright-music/">Workout Music</a></li>
+</ul>
+        </div>
+    </div>
+</main>
+
+<ul class="menu__nav menu__headless">
+    <li class="menu__nav_item nav__account">
+        <a href="/studio/settings/" class="menu__link">
+            <div class="progress__circle menu__nav_character user__noob" data-current="1" data-limit="4">
+                <di  -->
+                    v class="circle circle__left"></div>
+                <div class="circle circle__right" style="transform: rotate(270deg);"></div>
+            </div>
+            <span class="material-icons">account_circle</span>
+            <span class="menu__link_caption">STUDIO</span>
+        </a>
+    </li>
+        <li class="menu__nav_item">
+            <a href="/studio/likes/" class="menu__link">
+                <span class="material-icons">thumb_up</span>
+                <span class="menu__link_caption">LIKES</span>
+            </a>
+        </li>
+    <li class="menu__nav_item">
+        <a href="/no-copyright-music/" class="menu__link">
+            <span class="material-icons">music_note</span>
+            <span class="menu__link_caption">MUSIC</span>
+        </a>
+    </li>
+</ul>
+    <!-- JS & CSS files -->
+    
+    <link rel="stylesheet" type="text/css" href="/styles/music.css?v=28">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="/js/interface.js?v=43"></script>
+
+</body>
+</html>

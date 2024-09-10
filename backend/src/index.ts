@@ -6,9 +6,11 @@ import 'dotenv/config';
 import userRoutes from './routes';
 import authRoutes from './routes/authRoutes';
 import youtubeRoutes from './routes/youtubeRoutes';
+import musicRoutes from './routes/musicRoutes';
+import tagRoutes from './routes/tagRoutes';
 
 import bodyParser from 'body-parser';
-
+import path from 'path';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -24,6 +26,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/users', userRoutes);
 app.use('/auth', authRoutes);
 app.use('/youtube', youtubeRoutes);
+app.use('/music', musicRoutes);
+app.use('/tags', tagRoutes);
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 (async () => {
   await connectDB();

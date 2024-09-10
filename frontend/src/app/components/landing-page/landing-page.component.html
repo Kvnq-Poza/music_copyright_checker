@@ -1,0 +1,68 @@
+<app-header></app-header>
+<div class="landing-page">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h2>
+          <span class="line1 welcome-text">Find out if a YouTube video has copyright</span><br>
+          <span class="line2 welcome-text">with just a click</span><span class="caret"></span>
+        </h2>
+      </div>
+      <div id="searchBtnLocation"></div>
+    </section>
+
+    <app-music-checker (resultsChange)="handleResultsChange($event)"></app-music-checker>
+
+  
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature">
+            <img src="https://user-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_clip,w_960,h_720,f_auto,q_auto/unsplashcom/photo-1521989116480-519a01ffeb2d" alt="Quick and Easy">
+            <div class="feature-content">
+                <h3>Quick and Easy</h3>
+                <p>Simply input the YouTube link or video name and get instant results.</p>
+            </div>
+        </div>
+        <div class="feature">
+            <img src="https://user-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_clip,w_960,h_720,f_auto,q_auto/unsplashcom/photo-1655199798109-08ff7497e748" alt="Awesome Results">
+            <div class="feature-content">
+                <h3>Awesome Results</h3>
+                <p>Reliable copyright check to ensure compliance with YouTube policies.</p>
+            </div>
+        </div>
+        <div class="feature">
+            <img src="https://user-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_clip,w_960,h_720,f_auto,q_auto/unsplashcom/photo-1642726197626-f03ef77f13cf" alt="No Sign-up Required">
+            <div class="feature-content">
+                <h3>No Sign-up Required</h3>
+                <p>No need to create an account. Just check the video and go.</p>
+            </div>
+        </div>
+    </section>
+    
+  
+    <!-- Content Section -->
+    <section id="sect" class="content-section">
+      <h2>Verify Copyright Status</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="https://user-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_clip,w_960,h_720,f_auto,q_auto/unsplashcom/photo-1647301710081-97737d045a6f" alt="Instant Results">
+          <h3>Instant Results</h3>
+          <p>Get immediate feedback on the copyright status of a YouTube video.</p>
+          <a href="#" class="secondary-button">Read More</a>
+        </div>
+        <div class="card">
+          <img src="https://payhip.com/cdn-cgi/image/format=auto,width=750/https://pe56d.s3.amazonaws.com/o_1h3mr6bn2ec61uin43ucdj1tf4t.png" alt="Detailed Report">
+          <h3>Detailed Report</h3>
+          <p>Receive a detailed report on the video’s status, including any restrictions.</p>
+          <a href="#" class="secondary-button">Read More</a>
+        </div>
+        <div class="card">
+          <img src="https://user-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_clip,w_960,h_720,f_auto,q_auto/unsplashcom/photo-1649109599393-8f562dd1a86c" alt="Legal Compliance">
+          <h3>Legal Compliance</h3>
+          <p>Stay on the right side of the law by checking for copyright before using the video.</p>
+          <a href="#" class="secondary-button">Read More</a>
+        </div>
+      </div>
+    </section>
+  </div>
+  
