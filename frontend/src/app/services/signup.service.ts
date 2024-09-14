@@ -2,20 +2,24 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
+import { environment } from '../enviroments/enviroment';
 @Injectable({
   providedIn: 'root'
 })
 export class SignupService {
+  apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
   isLogged = false;
 
   registerUser(data: any): Observable<any> {
-    return this.http.post<any>(`http://localhost:3000/users`, data)
+    // return this.http.post<any>(`http://localhost:3000/users`, data)
+    return this.http.post<any>(`${this.apiUrl}/users`, data)
   }
 
   login(data: any): Observable<HttpResponse<any>> {
-    return this.http.post<any>('http://localhost:3000/auth/login', data, { observe: 'response' });
+    // return this.http.post<any>('http://localhost:3000/auth/login', data, { observe: 'response' });
+    return this.http.post<any>(`${this.apiUrl}/auth/login`, data, { observe: 'response' });
   }
 
   isAuth(): boolean {

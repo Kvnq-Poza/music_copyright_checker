@@ -1,8 +1,8 @@
-let apiKey = process.env.API_KEY
-const BASE_URL = "https://www.googleapis.com/youtube/v3"
 import axios from "axios"
 
-
+let apiKey = process.env.YOUTUBE_API_KEY
+console.log("apiKey ",apiKey)
+const BASE_URL = "https://www.googleapis.com/youtube/v3"
 export class YoutubeService {
     async getVideos(query: string): Promise<any> {
         const url = `${BASE_URL}/search?part=snippet&type=video&q=${query}&key=${apiKey}`

@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../enviroments/enviroment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
+
+  apiUrl = environment.apiUrl;
 
   constructor(
     private http: HttpClient
@@ -16,6 +20,7 @@ export class AdminService {
   addMusicToDatabase(links: string[]) {
     // send request to backend
     // return response
-    return this.http.post('http://localhost:3000/music/create-bulk', {links})
+    // return this.http.post('http://localhost:3000/music/create-bulk', {links})
+    return this.http.post(`${this.apiUrl}/music/create-bulk`, {links})
   }
 }
