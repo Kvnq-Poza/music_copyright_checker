@@ -158,7 +158,6 @@ export class MusicCheckerComponent implements OnInit {
   
   moveUp() {
     // send event to parent
-    console.log('input-clicked');
     this.emitResults('input-clicked');
   }
 
