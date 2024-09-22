@@ -43,9 +43,38 @@ export class MusicService {
     }
     // delete all without thumbnail
     async deleteAll(): Promise<string> {
-        await MusicModel.deleteMany({ thumbnail: { $exists: false } });
+        // await MusicModel.deleteMany({ thumbnail: { $exists: false } });
+        // delete all musics with empty thumbnail, title and tags
+        
+        // find all musics
+        const musics = await MusicModel.find({});
+
+        for (let i = 0; i < musics.length; i++) {
+            const music = musics[i];
+            if (!music.thumbnail || !music.title || !music.tags) {
+                console.log("Deleting music:", music);
+                await MusicModel.deleteOne({ _id: music._id });
+            }
+        }
+
+        const response = await MusicModel.deleteMany({ thumbnail: { $exists: false }, title: { $exists: false }, tags: { $exists: false } });
+        console.log("Deleted musics:", response.deletedCount);
+
         return "All musics without thumbnail deleted";
         
     }
+
+    // n last checked musics
+    async getLastCheckedMusics(n: number): Promise<Music[]> {
+        try {
+            
+            // return await MusicModel.find({}).sort({ created_at: -1 }).limit(n);
+            return await MusicModel.find({}).sort({ _id: -1 }).limit(n);
+        } catch (error:any) {
+            console.error("Error fetching last checked musics:", error.message);
+            return [];
+        }
+    }
+
 
 }

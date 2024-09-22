@@ -32,11 +32,14 @@ export class MusicCheckerComponent implements OnInit {
   clicked: boolean = false;
   isLogged: boolean = false;
   checkButtonText: string = 'Check';
+  lastChecked: any = [];
 
   constructor(private musicService: MusicCheckerService, private toastService: ToastService, private dialog: MatDialog, private sanitizer: DomSanitizer, private userService: SignupService) {}
 
   ngOnInit(): void {
     this.isAuth();
+    this.getLastChecked(8);
+
   }
 
   isAuth(): boolean {
@@ -159,6 +162,13 @@ export class MusicCheckerComponent implements OnInit {
   moveUp() {
     // send event to parent
     this.emitResults('input-clicked');
+  }
+
+  getLastChecked(n: number): void {
+    this.musicService.getLastChecked(n).subscribe((response: any) => {
+      console.log(response);
+      this.lastChecked = response;
+    });
   }
 
 }

@@ -57,5 +57,11 @@ export class MusicCheckerService {
     // return this.http.get<any>(`http://localhost:3000/tags/top/10`)
     return this.http.get<any>(`${this.apiUrl}/tags/top/10`)
   }
+
+  // get last checked musics
+  getLastChecked(n: number): Observable<any> {
+    // return this.http.get<any>(`http://localhost:3000/music/last-checked/${n}`)
+    return this.http.get<any>(`${this.apiUrl}/music/last-checked/${n}`)
+  }
   
 }

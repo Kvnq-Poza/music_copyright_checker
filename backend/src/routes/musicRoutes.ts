@@ -10,6 +10,8 @@ router.post('/', authMiddleware, musicController.createMusic);
 router.get('/user', authMiddleware, musicController.getAllMusicesByUser);
 router.post('/create-bulk', musicController.createBulkMusic);
 router.get('/all', musicController.getAllMusics);
+// last checked musics
+router.get('/last-checked/:n', musicController.lastCheckedMusics);
 // router.delete('/delete-all', musicController.deleteMusics);
 
 

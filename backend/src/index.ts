@@ -31,7 +31,7 @@ app.use('/tags', tagRoutes);
 
 // app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('*', function (req, res) {
+app.get('/', function (req, res) {
   res.send('Server is running');
 });
 

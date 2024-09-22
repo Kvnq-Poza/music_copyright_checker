@@ -53,3 +53,50 @@
     </li>
   </ul>
 </div>
+
+<!-- last checked items -->
+<div class="last-checked" *ngIf="lastChecked.length > 0">
+  <h2>Last Checked</h2>
+  <!-- <ul>
+    <li *ngFor="let item of lastChecked">
+      <mat-card class="result-item">
+        <img mat-card-image class="thumbnail" [src]="item.thumbnail" alt="Thumbnail" />
+        <mat-card-content class="result-info">
+          <h3 class="title">{{ item.title }}</h3>
+          
+        </mat-card-content>
+        <mat-card-actions *ngIf="isLogged" align="end">
+          <button mat-raised-button color="primary" class="like-button" (click)="saveMusic(item)">
+            Like
+            <mat-icon>thumb_up</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </li>
+  </ul> -->
+  <!-- <div>
+    <mat-card class="result-item" *ngFor="let item of lastChecked">
+      <img mat-card-image class="thumbnail" [src]="item.thumbnail" alt="Thumbnail" />
+      <mat-card-content class="result-info">
+        <h3 class="title">{{ item.title }}</h3>
+      </mat-card-content>
+      <mat-card-actions *ngIf="isLogged" align="end">
+        <button mat-raised-button color="primary" class="like-button" (click)="saveMusic(item)">
+          Like
+          <mat-icon>thumb_up</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div> -->
+
+  <!-- use pure html to populate the items -->
+  <div class="music-list">
+    <div class="music-item" *ngFor="let item of lastChecked">
+      <div class="music-image">
+        <img [src]="item.thumbnail" alt="Thumbnail" />
+      </div>
+      <div class="last-checked-info">
+        <h3 class="music-title">{{ item.title }}</h3>
+      </div>
+    </div>
+</div>

@@ -46,6 +46,7 @@ export class MusicController {
         this.getMusicById = this.getMusicById.bind(this);
         this.deleteMusics = this.deleteMusics.bind(this);
         this.createMusic = this.createMusic.bind(this);
+        this.lastCheckedMusics = this.lastCheckedMusics.bind(this);
 
     }
 
@@ -188,6 +189,19 @@ export class MusicController {
             const result = await this.musicService.deleteAll()
             res.json(result)
         } catch (error) {
+            res.status(500).json({ message: error })
+        }
+    }
+
+    async lastCheckedMusics (req: Request, res: Response): Promise<void> {
+        try {
+            const n = parseInt(req.params.n)
+            console.log(req.params)
+            console.log(n)
+            const musics = await this.musicService.getLastCheckedMusics(n)
+            res.json(musics)
+        } catch (error) {
+            console.log(error)
             res.status(500).json({ message: error })
         }
     }
