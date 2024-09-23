@@ -482,3 +482,35 @@ ul {
   padding: 15px;
   color: #333;
 }
+
+
+/* text */
+.button-container {
+  text-align: center;
+}
+
+.gaming-button {
+  background-color: #ffba00; /* Orange color similar to the image */
+  color: #000000;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover animation */
+.gaming-button:hover {
+  background-color: #e69a00; /* Slightly darker orange */
+  transform: translateY(-4px); /* Lift the button when hovered */
+}
+
+/* Optional: Adding a small glow effect on focus */
+.gaming-button:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(255, 186, 0, 0.8); /* Orange glow */
+}
