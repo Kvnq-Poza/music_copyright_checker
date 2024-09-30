@@ -26,4 +26,18 @@ export class NavbarComponent {
   @Input()
   link4: string = 'Contact'
   constructor() {}
+  
+  ismobile: boolean = false;
+
+  toggleNavbar() {
+    console.log('Hamburger menu clicked'); // Debugging log
+    this.ismobile = !this.ismobile;
+    console.log('ismobile: ' + this.ismobile); // Debugging log
+  }
+
+  closeNavbar() {
+    console.log('Close navbar clicked'); // Debugging log
+    this.ismobile = false;
+  }
+
 }

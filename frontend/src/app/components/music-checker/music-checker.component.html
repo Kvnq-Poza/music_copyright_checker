@@ -139,8 +139,8 @@
    
     <div id="resultCard" class="results" *ngIf="results.length > 0">
 
-          <mat-card class="result-item"  *ngFor="let result of results" (click)="playSong(result.url)">
-            <img mat-card-image  class="thumbnail" [src]="result.thumbnail" alt="Thumbnail" />
+          <mat-card class="result-item"  *ngFor="let result of results" >
+            <img mat-card-image (click)="playSong(result.url)"  class="thumbnail" [src]="result.thumbnail" alt="Thumbnail" />
             <mat-card-content class="result-info">
               <h3 class="title">{{ result.title }}</h3>
               <p class="status" *ngIf="!result.license" style="color: #4caf50">
@@ -256,6 +256,6 @@
     </div>
   </div>
   <button class="hero-action22 thq-button-outline thq-button-animated">
-    <span class="thq-body-small">Action 2</span>
+    <span class="thq-body-small">Services</span>
   </button>
 </div>

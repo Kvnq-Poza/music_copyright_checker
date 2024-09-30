@@ -17,7 +17,7 @@ export class FooterComponent {
   @Input()
   action1: string = 'Subscribe to Newsletter'
   @Input()
-  content3: string = '© 2022 Your Website. All Rights Reserved.'
+  content3: string = '© 2024 Your Website. All Rights Reserved.'
   @Input()
   link4: string = 'FAQs'
   @Input()
