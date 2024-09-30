@@ -34,7 +34,7 @@ export class LandingPageComponent implements OnInit{
 
 
   ngOnInit(): void {
-  this.renderer.addClass(this.el.nativeElement.ownerDocument.body, 'bg-img');
+  // this.renderer.addClass(this.el.nativeElement.ownerDocument.body, 'bg-img');
   this.userService.isAuth();
  }
 
