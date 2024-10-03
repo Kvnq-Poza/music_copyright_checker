@@ -14,6 +14,17 @@ export class AppComponent implements OnInit {
 
   }
 
+  isDarkMode = true;
+
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+    if (this.isDarkMode) {
+      document.documentElement.classList.add('dark-mode');
+    } else {
+      document.documentElement.classList.remove('dark-mode');
+    }
+  }
+
   constructor(private userService: SignupService) {}
 
 

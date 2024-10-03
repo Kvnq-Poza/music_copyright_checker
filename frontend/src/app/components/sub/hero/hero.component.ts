@@ -1,4 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, Renderer2 } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { MusicCheckerService } from '../../../services/music-checker.service';
+import { SignupService } from '../../../services/signup.service';
+import { MusicDialogComponent } from '../../music-dialog/music-dialog.component';
 
 @Component({
   selector: 'app-hero',
@@ -7,74 +12,104 @@ import { Component, Input } from '@angular/core';
 })
 export class HeroComponent {
 
-  @Input()
-  image3Src: string =
-    'https://images.unsplash.com/photo-1480457330430-f47a04086de9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYwOHw&ixlib=rb-4.0.3&q=80&w=1080'
-  @Input()
-  image8Alt: string = 'Hero Image'
-  @Input()
-  image2Src: string =
-    'https://images.unsplash.com/photo-1494203484021-3c454daf695d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYwOXw&ixlib=rb-4.0.3&q=80&w=1080'
-  @Input()
-  image6Alt: string = 'Hero Image'
-  @Input()
-  image11Src: string =
-    'https://images.unsplash.com/photo-1619983081563-430f63602796?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYxMHw&ixlib=rb-4.0.3&q=80&w=1080'
-  @Input()
-  image5Alt: string = 'Hero Image'
-  @Input()
-  image1Alt: string = 'Copyright Check Image'
-  @Input()
-  image7Src: string =
-    'https://images.unsplash.com/photo-1461360228754-6e81c478b882?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYxMHw&ixlib=rb-4.0.3&q=80&w=1080'
-  @Input()
-  image7Alt: string = 'Hero Image'
-  @Input()
-  image12Alt: string = 'Hero Image'
-  @Input()
-  image2Alt: string = 'Hero Image'
-  @Input()
-  image6Src: string =
-    'https://images.unsplash.com/photo-1524693220625-1ce88de88992?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYxMXw&ixlib=rb-4.0.3&q=80&w=1080'
-  @Input()
-  image12Src: string =
-    'https://images.unsplash.com/photo-1445375011782-2384686778a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYxMXw&ixlib=rb-4.0.3&q=80&w=1080'
-  @Input()
-  image3Alt: string = 'Hero Image'
-  @Input()
-  image9Src: string =
-    'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYxMXw&ixlib=rb-4.0.3&q=80&w=1080'
-  @Input()
-  image11Alt: string = 'Hero Image'
-  @Input()
-  action1: string = 'Check'
-  @Input()
-  image8Src: string =
-    'https://images.unsplash.com/photo-1437751695201-298be97a82a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYxMXw&ixlib=rb-4.0.3&q=80&w=1080'
-  @Input()
-  image5Src: string =
-    'https://images.unsplash.com/photo-1450044804117-534ccd6e6a3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYxMnw&ixlib=rb-4.0.3&q=80&w=1080'
-  @Input()
-  image4Src: string =
-    'https://images.unsplash.com/photo-1535740560992-3a223ab7ef78?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYxMnw&ixlib=rb-4.0.3&q=80&w=1080'
-  @Input()
-  image10Alt: string = 'Hero Image'
-  @Input()
-  image4Alt: string = 'Hero Image'
-  @Input()
-  heading1: string = 'Check Copyright of Your Music'
-  @Input()
-  content1: string =
-    'Enter the YouTube video link or the name of the music to verify its copyright status.'
-  @Input()
-  image10Src: string =
-    'https://images.unsplash.com/photo-1556761175-b413da4baf72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYxMnw&ixlib=rb-4.0.3&q=80&w=1080'
-  @Input()
-  image9Alt: string = 'Hero Image'
-  @Input()
-  image1Src: string =
-    'https://images.unsplash.com/photo-1501876725168-00c445821c9e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYxM3w&ixlib=rb-4.0.3&q=80&w=1080'
-  @Input()
-  textinputPlaceholder: string = 'placeholder'
-  constructor() {}
+  constructor(private musicService: MusicCheckerService, private sanitizer: DomSanitizer, private dialog: MatDialog, private userService: SignupService, private renderer: Renderer2, private el: ElementRef) {}
+  musicItems: any[] = [];  // Array to hold music data
+  currentPage: number = 1;  // Current page for pagination
+  pageSize: number = 8;  // Items per page
+  totalPages: number = 0;  // Total pages for pagination
+  limit = 100;
+  tags: string[] = ['Background', 'Vlog Music', 'EDM', 'Gaming Music', 'Relax', 'Jazz'];
+  selectedTag: string | null = '';
+  filteredMusicItems: any[] = [];
+  likedMusicItems: any[] = []; 
+  isLogged: boolean = false;
+  
+
+  ngOnInit() {
+    // Mock data, replace with actual data fetch from an API or service
+    this.isAuth();
+    this.getMusicsByUser();
+
+    this.calculateTotalPages();
+  }
+
+  isAuth(): boolean {
+    this.isLogged = this.userService.isAuth();
+    if (this.isLogged) {
+      return true;
+    }
+    return false;
+  }
+
+  getMusics(): void {
+      this.musicService.getMusics(this.limit, this.currentPage).subscribe((response: any) => {
+        this.musicItems = response;
+        this.filteredMusicItems = this.musicItems;
+        this.calculateTotalPages();
+      });
+    }
+
+    getMusicsByUser(): void {
+        if (this.isLogged) {
+          this.musicService.getMusicsByUser(this.limit, this.currentPage).subscribe((response: any) => {
+            this.likedMusicItems = response;
+            this.calculateTotalPages();
+          });
+        }
+      }
+
+    
+
+   
+
+
+
+
+
+  // Calculate the total number of pages based on the items
+  calculateTotalPages() {
+    this.totalPages = Math.ceil(this.likedMusicItems.length / this.pageSize);
+  }
+
+  // Get the items to display for the current page
+  getPaginatedItems() {
+  
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = Math.min(startIndex + this.pageSize, this.likedMusicItems.length);
+    return this.likedMusicItems.slice(startIndex, endIndex);
+  }
+
+  // Change page handler
+  changePage(direction: string) {
+    if (direction === 'next' && this.currentPage < this.totalPages) {
+      this.currentPage++;
+    } else if (direction === 'prev' && this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  // Set the current page based on number
+  setPage(pageNumber: number) {
+    this.currentPage = pageNumber;
+  }
+
+  playSong(url: string) {
+      const embedUrl = this.getEmbedUrl(url);
+      const dialogRef = this.dialog.open(MusicDialogComponent, {
+        data: { url: embedUrl },
+        width: '50%',
+        height: '55%'
+  
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
+    }
+  
+    private getEmbedUrl(url: string): SafeResourceUrl {
+      const videoId = url.split('v=')[1];
+      const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+      return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+    }
 }

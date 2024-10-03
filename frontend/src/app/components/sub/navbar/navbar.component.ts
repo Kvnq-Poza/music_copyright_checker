@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostListener } from '@angular/core';
+import { ToastService } from '../../../services/toast.service';
+import { SignupService } from '../../../services/signup.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +11,7 @@ export class NavbarComponent {
   @Input()
   link1: string = 'Home'
   @Input()
-  link5: string = 'Link5'
+  link5: string = 'Gallery'
   @Input()
   link2: string = 'About'
   @Input()
@@ -25,7 +27,9 @@ export class NavbarComponent {
   action1: string = '/'
   @Input()
   link4: string = 'Contact'
-  constructor() {}
+
+
+  constructor(private toastService: ToastService, private userService: SignupService) {}
   
   ismobile: boolean = false;
 
@@ -39,5 +43,63 @@ export class NavbarComponent {
     console.log('Close navbar clicked'); // Debugging log
     this.ismobile = false;
   }
+
+  isDarkMode = false;
+
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+    if (this.isDarkMode) {
+      document.documentElement.classList.add('dark-mode');
+    } else {
+      document.documentElement.classList.remove('dark-mode');
+    }
+  }
+
+  isDropdownOpen = false;
+
+  // Toggle dropdown on user icon click
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  // Close dropdown if clicked outside of it
+  @HostListener('document:click', ['$event'])
+  clickOutside(event: Event) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.user-dropdown')) {
+      this.isDropdownOpen = false;
+    }
+  }
+
+  closeDropdown() {
+    this.isDropdownOpen = false;
+  }
+
+
+
+  ngOnInit(): void {
+    this.isAuth();
+  }
+
+  isLogged: boolean = false;
+
+  isAuth(): boolean {
+    this.isLogged = this.userService.isAuth();
+    if (this.isLogged) {
+      return true;
+    }
+    return false;
+  }
+
+  logOut(): void {
+    if(this.isLogged) {
+      this.userService.deleteToken();
+      this.toastService.showToast('success', 'Logged out successfully');
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 2000);
+    }
+  }
+
 
 }
