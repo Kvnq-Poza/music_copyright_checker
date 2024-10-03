@@ -20,7 +20,7 @@
           <button (click)="toggleDarkMode()" class="dark-mode-toggle">
             <i [class]="isDarkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
           </button>
-          <div  class="user-dropdown" (clickOutside)="closeDropdown()">
+          <div *ngIf="isLogged" class="user-dropdown" (clickOutside)="closeDropdown()">
             <button class="user-icon" (click)="toggleDropdown()">
               <span ><img width="34" height="34" src="https://img.icons8.com/pastel-glyph/64/FFFFFF/user-male-circle.png" alt="user-male-circle"/> </span>
             </button>
@@ -29,11 +29,11 @@
                 <span  class="user-name">Adonyas Getachew</span>
                 <span class="user-email">adonya.getachewgmail.com</span>
               </div> -->
-              <div *ngIf="!isLogged" class="user-info">
+              <!-- <div *ngIf="!isLogged" class="user-info">
                 <button routerLink="/sign-in" class="sign-out-btn"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i> Sign in</button>
-              </div>
-              <button *ngIf="isLogged" routerLink="/liked-music" class="sign-out-btn"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i> Liked Music</button>
-              <button *ngIf="isLogged" (click)="logOut()" class="sign-out-btn"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Sign out</button>
+              </div> -->
+              <button routerLink="/liked-music" class="sign-out-btn"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i> Liked Music</button>
+              <button (click)="logOut()" class="sign-out-btn"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Sign out</button>
             </div>
           </div>
           
