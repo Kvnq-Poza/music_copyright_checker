@@ -14,6 +14,7 @@ export class LandingPageComponent implements OnInit{
   constructor(private userService: SignupService, private renderer: Renderer2, private el: ElementRef) {}
 
   parentResults: any[] = [];
+  lastCheckedMusics = [];
 
   handleResultsChange(newResults: any) {
     // scrollup by 300 pixel
@@ -33,7 +34,7 @@ export class LandingPageComponent implements OnInit{
 
 
   ngOnInit(): void {
-  this.renderer.addClass(this.el.nativeElement.ownerDocument.body, 'bg-img');
+  // this.renderer.addClass(this.el.nativeElement.ownerDocument.body, 'bg-img');
   this.userService.isAuth();
  }
 

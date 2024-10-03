@@ -1,0 +1,153 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f9fc;  /* Light background */
+    color: #333;  /* Dark text */
+  }
+  
+  .main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .main-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #2c3e50;  /* Darker shade for the main title */
+  }
+  
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  } 
+  
+  
+  .tag {
+    
+    background-color: #e0f7fa;  /* Light cyan color for tags */
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .tag:hover {
+    background-color: #039be5;  /* Blue highlight on hover */
+    color: #fff;
+  }
+  .tag.selected {
+    background-color: #0277bd;  /* Darker blue for selected tags */
+    color: #fff; 
+  }
+  
+  .music-section {
+    margin-top: 40px;
+  }
+  
+  .section-title {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #0277bd;  /* Light blue for section titles */
+  }
+  
+  .updates {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 16px;
+    color: #616161;  /* Gray text for additional info */
+  }
+  
+  /* Grid layout for music cards */
+  .music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+  }
+  
+  .music-card {
+    background-color: #ffffff;  /* White background for cards */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .music-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  
+  .music-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    padding: 1px;
+    font-size: 15px;
+    text-align: center;
+    background-color: #f0f4f8;  /* Light gray background for text */
+  }
+  
+  .music-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);  /* Elevated shadow on hover */
+  }
+  
+  /* Pagination styles */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .pagination-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #0277bd;  /* Light blue button */
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination-btn:hover {
+    background-color: #01579b;  /* Darker blue on hover */
+  }
+  
+  .page-numbers {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .page-number {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: 1px solid #0277bd;
+    transition: all 0.3s ease;
+  }
+  
+  .page-number:hover, .page-number.active {
+    background-color: #0277bd;  /* Highlight for active page */
+    color: #fff;
+  }
+  
+  

@@ -1,7 +1,7 @@
-<app-header></app-header>
+
 <!-- <h1>Check music for copyright</h1> -->
 
-<section class="music-checker" >
+<!-- <section class="music-checker" >
  
   <form #searchForm="ngForm" (ngSubmit)="submitForm(searchForm)">
 
@@ -20,15 +20,15 @@
     <button type="submit" class="check-btn">
      {{ checkButtonText }}
       <div *ngIf="clicked" class="spinner"></div>
-    </button>
+    </button> -->
     
     <!-- make the spinner next to the above button -->
 
-    
+<!--     
   </form>
-</section>
+</section> -->
 
-<div id="resultCard" class="results" *ngIf="results.length > 0">
+<!-- <div id="resultCard" class="results" *ngIf="results.length > 0">
 
   <ul>
     <li *ngFor="let result of results" (click)="playSong(result.url)">
@@ -52,4 +52,214 @@
       </mat-card>
     </li>
   </ul>
+</div> -->
+
+<!-- last checked items -->
+<!-- <div class="last-checked" *ngIf="lastChecked.length > 0">
+  <div class="button-container">
+    <button class="gaming-button">Last Checked</button>
+</div>
+<br> -->
+  <!-- <h2>Last Checked</h2> -->
+  <!-- <ul>
+    <li *ngFor="let item of lastChecked">
+      <mat-card class="result-item">
+        <img mat-card-image class="thumbnail" [src]="item.thumbnail" alt="Thumbnail" />
+        <mat-card-content class="result-info">
+          <h3 class="title">{{ item.title }}</h3>
+          
+        </mat-card-content>
+        <mat-card-actions *ngIf="isLogged" align="end">
+          <button mat-raised-button color="primary" class="like-button" (click)="saveMusic(item)">
+            Like
+            <mat-icon>thumb_up</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </li>
+  </ul> -->
+  <!-- <div>
+    <mat-card class="result-item" *ngFor="let item of lastChecked">
+      <img mat-card-image class="thumbnail" [src]="item.thumbnail" alt="Thumbnail" />
+      <mat-card-content class="result-info">
+        <h3 class="title">{{ item.title }}</h3>
+      </mat-card-content>
+      <mat-card-actions *ngIf="isLogged" align="end">
+        <button mat-raised-button color="primary" class="like-button" (click)="saveMusic(item)">
+          Like
+          <mat-icon>thumb_up</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div> -->
+
+  <!-- use pure html to populate the items -->
+  <!-- <div class="music-list">
+    <div class="music-item" *ngFor="let item of lastChecked">
+      <div class="music-image">
+        <img [src]="item.thumbnail" alt="Thumbnail" />
+      </div>
+      <div class="last-checked-info">
+        <h3 class="music-title">{{ item.title }}</h3>
+      </div>
+    </div>
+</div> -->
+<div class="hero-header78">
+  <div class="hero-column thq-section-padding thq-section-max-width">
+    <div class="hero-content1">
+      <h1 class="hero-text1 thq-heading-1">{{ heading1 }}</h1>
+      <p class="hero-text2 thq-body-large">{{ content1 }}</p>
+    </div>
+    <form #searchForm="ngForm" (ngSubmit)="submitForm(searchForm)">
+
+        <div class="searchBar">
+          <input id="searchQueryInput" type="text" [attr.placeholder]="textinputPlaceholder" [(ngModel)]="search_query" [ngModelOptions]="{standalone: true}"/>
+          <button id="searchQuerySubmit" type="submit" name="searchQuerySubmit">
+            
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="#666666" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+            </svg>
+          </button><br> <br> <div *ngIf="clicked" class="spinner-box">
+            <div class="circle-border">
+              <div class="circle-core"></div>
+            </div>  
+          </div>
+        </div>
+        <div class="radio-group">
+          <input type="radio" id="byName" name="searchType" value="name" [(ngModel)]="searchType">
+          <label for="byName" class="radio-label">By Name</label>
+    
+          <input type="radio" id="byLink" name="searchType" value="link" [(ngModel)]="searchType">
+          <label for="byLink" class="radio-label">By Link</label>
+        </div>
+
+    <!-- <input
+      type="text"
+      [attr.placeholder]="textinputPlaceholder"
+      class="hero-textinput input"
+      [(ngModel)]="search_query" [ngModelOptions]="{standalone: true}"
+    /> -->
+  </form>
+  
+   
+    <div id="resultCard" class="results" *ngIf="results.length > 0">
+
+          <mat-card class="result-item"  *ngFor="let result of results" >
+            <img mat-card-image (click)="playSong(result.url)"  class="thumbnail" [src]="result.thumbnail" alt="Thumbnail" />
+            <mat-card-content class="result-info">
+              <h3 class="title">{{ result.title }}</h3>
+              <p class="status" *ngIf="!result.license" style="color: #4caf50">
+                No Copyright: <img *ngIf="!result.license" src="https://img.icons8.com/fluency/48/verified-account--v1.png" alt="verified-account--v1"/>
+              </p>
+              <p class="status" *ngIf="result.license" style="color: #f44336">
+                Potential Copyright: <img *ngIf="result.license" src="https://img.icons8.com/ios-filled/50/FA5252/verified-account.png" alt="cancel--v1"/>
+              </p>
+            </mat-card-content>
+            <mat-card-actions *ngIf="isLogged" align="end">
+              <button mat-raised-button color="primary" class="like-button" (click)="saveMusic(result)">
+                Like
+                <mat-icon>thumb_up</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+    </div>
+    <!-- <div class="hero-actions">
+      <button class="thq-button-filled hero-button">
+        <span class="thq-body-small">{{ action1 }}</span>
+      </button>
+    </div> -->
+  </div>
+  <button class="hero-action21 thq-button-outline thq-button-animated">
+    <span class="thq-body-small">Last Checked</span>
+  </button>
+  <div class="hero-content2">
+    <div 
+      class="hero-row-container1 thq-animated-group-container-horizontal thq-mask-image-horizontal"
+    >
+      <div class="thq-animated-group-horizontal">
+         
+            <img *ngFor="let item of lastChecked" [attr.src]="item.thumbnail"
+              class="hero-placeholder-image10 thq-img-scale thq-img-ratio-1-1"
+            />
+     
+        
+      </div>
+    </div>
+    <div
+      class="hero-row-container2 thq-animated-group-container-horizontal thq-mask-image-horizontal"
+    >
+      <div class="thq-animated-group-horizontal-reverse">
+        <!-- <img
+          [attr.alt]="image7Alt"
+          [attr.src]="image7Src"
+          class="hero-placeholder-image22 thq-img-scale thq-img-ratio-1-1"
+        />
+        <img
+          [attr.alt]="image8Alt"
+          [attr.src]="image8Src"
+          class="hero-placeholder-image23 thq-img-scale thq-img-ratio-1-1"
+        />
+        <img
+          [attr.alt]="image9Alt"
+          [attr.src]="image9Src"
+          class="hero-placeholder-image24 thq-img-scale thq-img-ratio-1-1"
+        />
+        <img
+          [attr.alt]="image10Alt"
+          [attr.src]="image10Src"
+          class="hero-placeholder-image25 thq-img-scale thq-img-ratio-1-1"
+        />
+        <img
+          [attr.alt]="image11Alt"
+          [attr.src]="image11Src"
+          class="hero-placeholder-image26 thq-img-scale thq-img-ratio-1-1"
+        />
+        <img
+          [attr.alt]="image12Alt"
+          [attr.src]="image12Src"
+          class="hero-placeholder-image27 thq-img-scale thq-img-ratio-1-1"
+        /> -->
+      </div>
+      <div class="thq-animated-group-horizontal-reverse">
+        <!-- <img
+          [attr.alt]="image7Alt"
+          [attr.src]="image7Src"
+          class="hero-placeholder-image28 thq-img-scale thq-img-ratio-1-1"
+        />
+        <img
+          [attr.alt]="image8Alt"
+          [attr.src]="image8Src"
+          class="hero-placeholder-image29 thq-img-scale thq-img-ratio-1-1"
+        />
+        <img
+          [attr.alt]="image9Alt"
+          [attr.src]="image9Src"
+          class="hero-placeholder-image30 thq-img-scale thq-img-ratio-1-1"
+        />
+        <img
+          [attr.alt]="image10Alt"
+          [attr.src]="image10Src"
+          class="hero-placeholder-image31 thq-img-scale thq-img-ratio-1-1"
+        />
+        <img
+          [attr.alt]="image11Alt"
+          [attr.src]="image11Src"
+          class="hero-placeholder-image32 thq-img-scale thq-img-ratio-1-1"
+        />
+        <img
+          alt="Hero Image"
+          src="https://images.unsplash.com/photo-1568214379698-8aeb8c6c6ac8?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDEyfHxncmFmaWN8ZW58MHx8fHwxNzE1Nzk0OTk5fDA&amp;ixlib=rb-4.0.3&amp;w=1500"
+          class="hero-placeholder-image33 thq-img-scale thq-img-ratio-1-1"
+        /> -->
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="hero-container2">
+
+   
+    </div>
+  </div>
+  <button class="hero-action22 thq-button-outline thq-button-animated">
+    <span class="thq-body-small">Services</span>
+  </button>
 </div>

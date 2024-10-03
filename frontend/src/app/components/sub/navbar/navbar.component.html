@@ -1,0 +1,85 @@
+<header class="navbar-container">
+    <header data-thq="thq-navbar" class="navbar-navbar-interactive">
+      <img [attr.alt]="logoAlt" [attr.src]="logoSrc" class="navbar-image1" />
+      <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">
+        <nav class="navbar-links1">
+          <span routerLink="/" class="thq-link thq-body-small">{{ link1 }}</span>
+          <span routerLink="/steps" class="thq-link thq-body-small">{{ link2 }}</span>
+          <span routerLink="/service" class="thq-link thq-body-small">{{ link3 }}</span>
+          <span routerLink="/contact" class="thq-link thq-body-small">{{ link4 }}</span>
+          <span routerLink="/music-gallery" class="thq-link thq-body-small">{{ link5 }}</span>
+        </nav>
+        <div  class="navbar-buttons1">
+          <button *ngIf="!isLogged" class="navbar-action11 thq-button-animated thq-button-filled">
+            <span routerLink="/sign-in"  class="thq-body-small">Log In</span>
+          </button>
+          <button *ngIf="!isLogged" class="navbar-action21 thq-button-outline thq-button-animated">
+            <span routerLink="/sign-up" class="thq-body-small"> Register</span>
+          
+          </button>
+          <button (click)="toggleDarkMode()" class="dark-mode-toggle">
+            <i [class]="isDarkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
+          </button>
+          <div *ngIf="isLogged" class="user-dropdown" (clickOutside)="closeDropdown()">
+            <button class="user-icon" (click)="toggleDropdown()">
+              <span ><img width="34" height="34" src="https://img.icons8.com/pastel-glyph/64/FFFFFF/user-male-circle.png" alt="user-male-circle"/> </span>
+            </button>
+            <div class="dropdown-content" *ngIf="isDropdownOpen">
+              <!-- <div *ngIf="isLogged" class="user-info">
+                <span  class="user-name">Adonyas Getachew</span>
+                <span class="user-email">adonya.getachewgmail.com</span>
+              </div> -->
+              <!-- <div *ngIf="!isLogged" class="user-info">
+                <button routerLink="/sign-in" class="sign-out-btn"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i> Sign in</button>
+              </div> -->
+              <button routerLink="/liked-music" class="sign-out-btn"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i> Liked Music</button>
+              <button (click)="logOut()" class="sign-out-btn"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Sign out</button>
+            </div>
+          </div>
+          
+          
+          
+        </div>
+      </div>
+      <div data-thq="thq-burger-menu" class="navbar-burger-menu" (click)="toggleNavbar()">
+        <svg viewBox="0 0 1024 1024" class="navbar-icon1">
+          <path
+            d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
+          ></path>
+        </svg>
+      </div>
+      <div data-thq="thq-mobile-menu" class="navbar-mobile-menu" *ngIf="ismobile">
+  
+        <div class="navbar-nav">
+          <div class="navbar-top">
+            <img [attr.alt]="logoAlt" [attr.src]="logoSrc" class="navbar-logo" />
+            <div data-thq="thq-close-menu" class="navbar-close-menu" (click)="closeNavbar()">
+              <svg viewBox="0 0 1024 1024" class="navbar-icon3">
+                <path
+                  d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <nav class="navbar-links2">
+            <span routerLink="/" class="thq-link thq-body-small">{{ link1 }}</span>
+            <span routerLink="/steps" class="thq-link thq-body-small">{{ link2 }}</span>
+            <span routerLink="/service" class="thq-link thq-body-small">{{ link3 }}</span>
+            <span routerLink="/contact" class="thq-link thq-body-small">{{ link4 }}</span>
+          </nav>
+        </div>
+        <div class="navbar-buttons2">
+          <button routerLink="/sign-in" class="thq-button-filled">Login</button>
+          <button routerLink="/sign-up" class="thq-button-outline">Register</button>
+          <button (click)="toggleDarkMode()" class="dark-mode-toggle">
+            <i [class]="isDarkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
+          </button>
+          
+        </div>
+      </div>
+  
+ 
+  
+    </header>
+  </header>
+  

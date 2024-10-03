@@ -1,19 +1,17 @@
-<div  class="main-container">
+
+
+<div *ngIf="isLogged"  class="main-container">
   <header class="header">
-    <h1 class="main-title">No Copyright Music</h1>
-    <div  class="tag-cloud">
-      <!-- Example tags, update or bind dynamically if required -->
-       <span  [class.selected] = 'selectedTag === null' (click) ="selectedTags(null)" class="tag">All catagories</span>
-        <span *ngFor="let tag of tags" [class.selected] = 'selectedTag === tag' (click) ="selectedTags(tag)"  class="tag">{{ tag }}</span>
-    </div>
+    <h1 class="main-title">Liked Music</h1>
   </header>
 
   <section class="music-section">
     <h2 class="section-title">Listen Online</h2>
     <p class="updates">Updates every week • Playlist of page</p>
 
+
     <!-- Music Grid Container -->
-    <div class="music-grid">
+    <div *ngIf="isLogged" class="music-grid">
       <!-- Render music items dynamically based on pagination -->
       <div *ngFor="let item of getPaginatedItems()" class="music-card">
         <img [src]="item.thumbnail" [alt]="item.title" (click)="playSong(item.url)">
@@ -42,4 +40,3 @@
     </div>
   </section>
 </div>
-

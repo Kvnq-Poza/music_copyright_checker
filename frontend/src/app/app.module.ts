@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +21,13 @@ import { MusicGalleryComponent } from './components/music-gallery/music-gallery.
 import { MusicDialogComponent } from './components/music-dialog/music-dialog.component';
 import {MatIconModule} from '@angular/material/icon';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { ContactComponent } from './components/sub/contact/contact.component';
+import { NavbarComponent } from './components/sub/navbar/navbar.component';
+import { HeroComponent } from './components/sub/hero/hero.component';
+import { Features1Component } from './components/sub/features1/features1.component';
+import { Features2Component } from './components/sub/features2/features2.component';
+import { CtaComponent } from './components/sub/cta/cta.component';
+import { StepsComponent } from './components/sub/steps/steps.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +42,13 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     MusicGalleryComponent,
     MusicDialogComponent,
     LandingPageComponent,
+    ContactComponent,
+    NavbarComponent,
+    HeroComponent,
+    Features1Component,
+    Features2Component,
+    CtaComponent,
+    StepsComponent,
 
 
   ],
@@ -55,6 +69,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     provideHttpClient(),
     provideAnimationsAsync()
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
