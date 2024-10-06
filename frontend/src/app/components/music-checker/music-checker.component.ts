@@ -96,6 +96,8 @@ export class MusicCheckerComponent implements OnInit {
       this.results.push(response)
       // this.search_query = '';
       console.log(response)
+      this.relatedVideos = response.relatedVideos;
+      
       this.clicked = false;
       this.checkButtonText = 'Check';
       this.emitResults('results');

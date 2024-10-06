@@ -279,6 +279,12 @@
     .searchBar {
       width: 100%;
     }
+    .results {
+      width: 150%;
+    }
+    #resultCard {
+      width: 100%;
+    }
     #searchQueryInput {
       width: 100%;
     }
@@ -290,11 +296,18 @@
     #searchQueryInput {
       width: 100%;
     }
+    .results {
+      width: 100%;
+    }
+    #resultCard {
+      width: 100%;
+    }
   }
 
   .results {
     /* display: flex; */
     /* flex-direction: column; */
+    width: 130%;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
