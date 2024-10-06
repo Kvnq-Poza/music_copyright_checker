@@ -208,6 +208,8 @@
           <div  class="music-list single-card"> 
               <div *ngFor="let res of relatedVideos" class="music-card">
                   <img [src]="res.thumbnail" alt="music thumbnail">
+                  <!-- slice the title -->
+                   
                   <p>{{res.title}}</p>
                   <button class="check-button" (click)="checkVideo(res.title)">CHECK</button>
               </div>
@@ -215,25 +217,6 @@
       </div>
     </div>
             
-
-          <mat-card class="result-item"  *ngFor="let result of results" >
-            <img mat-card-image (click)="playSong(result.url)"  class="thumbnail" [src]="result.thumbnail" alt="Thumbnail" />
-            <mat-card-content class="result-info">
-              <h3 class="title">{{ result.title }}</h3>
-              <p class="status" *ngIf="!result.license" style="color: #4caf50">
-                No Copyright: <img *ngIf="!result.license" src="https://img.icons8.com/fluency/48/verified-account--v1.png" alt="verified-account--v1"/>
-              </p>
-              <p class="status" *ngIf="result.license" style="color: #f44336">
-                Potential Copyright: <img *ngIf="result.license" src="https://img.icons8.com/ios-filled/50/FA5252/verified-account.png" alt="cancel--v1"/>
-              </p>
-            </mat-card-content>
-            <mat-card-actions *ngIf="isLogged" align="end">
-              <button mat-raised-button color="primary" class="like-button" (click)="saveMusic(result)">
-                Like
-                <mat-icon>thumb_up</mat-icon>
-              </button>
-            </mat-card-actions>
-          </mat-card>
     </div>
     <!-- <div class="hero-actions">
       <button class="thq-button-filled hero-button">
