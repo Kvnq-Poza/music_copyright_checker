@@ -21,9 +21,7 @@ export class SigninComponent implements OnInit {
   clicked: boolean = false;
 
   ngOnInit() {
-    // this.renderer.addClass(document.body, 'bg-img');
-    //     this.renderer.setStyle(this.el.nativeElement.ownerDocument.body, 'background-color', '#222');
-    this.renderer.setStyle(this.el.nativeElement.ownerDocument.body, 'background-image', 'url(' + this.imagePath + ')');
+
   }
 
   onSubmit(): void {
