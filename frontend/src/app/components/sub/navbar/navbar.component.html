@@ -7,14 +7,14 @@
           <span routerLink="/steps" class="thq-link thq-body-small">{{ link2 }}</span>
           <span routerLink="/service" class="thq-link thq-body-small">{{ link3 }}</span>
           <span routerLink="/contact" class="thq-link thq-body-small">{{ link4 }}</span>
-          <span routerLink="/music-gallery" class="thq-link thq-body-small">{{ link5 }}</span>
+          <span routerLink="/no-copyright-music" class="thq-link thq-body-small">{{ link5 }}</span>
         </nav>
         <div  class="navbar-buttons1">
-          <button *ngIf="!isLogged" class="navbar-action11 thq-button-animated thq-button-filled">
-            <span routerLink="/sign-in"  class="thq-body-small">Log In</span>
+          <button routerLink="/sign-in"  *ngIf="!isLogged" class="navbar-action11 thq-button-animated thq-button-filled">
+            <span   class="thq-body-small">Log In</span>
           </button>
-          <button *ngIf="!isLogged" class="navbar-action21 thq-button-outline thq-button-animated">
-            <span routerLink="/sign-up" class="thq-body-small"> Register</span>
+          <button routerLink="/sign-up" *ngIf="!isLogged" class="navbar-action21 thq-button-outline thq-button-animated">
+            <span class="thq-body-small"> Register</span>
           
           </button>
           <button (click)="toggleDarkMode()" class="dark-mode-toggle">

@@ -4,6 +4,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
 import { MusicDialogComponent } from '../music-dialog/music-dialog.component'; 
 import { SignupService } from '../../services/signup.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-music-gallery',
@@ -14,7 +15,8 @@ export class MusicGalleryComponent implements OnInit {
  
   constructor(
     private musicService: MusicCheckerService, private sanitizer: DomSanitizer, 
-    private dialog: MatDialog, private userService: SignupService
+    private dialog: MatDialog, private userService: SignupService, private router: Router, 
+    private route: ActivatedRoute
   ) {}
   
   musicItems: any[] = [];  // Array to hold music data
@@ -24,23 +26,37 @@ export class MusicGalleryComponent implements OnInit {
   limit = 100;
   tags: string[] = ['Background', 'Vlog Music', 'EDM', 'Gaming Music', 'Relax', 'Jazz'];
   selectedTag: string | null = '';
-  filteredMusicItems: any[] = []; 
+  filteredMusicItems: any[] = [];
+  currentTag: string | null = null;
   
 
   ngOnInit() {
+
     this.getMusics();
     this.calculateTotalPages();
+    this.route.paramMap.subscribe(params =>{
+      this.currentTag = params.get('tag');
+      this.selectedTags(this.currentTag);
+      if (this.currentTag) {
+        console.log(this.currentTag); 
+      }
+    } )
+
   }
+
+
 
   getMusics(): void {
       this.musicService.getMusics(this.limit, this.currentPage).subscribe((response: any) => {
         this.musicItems = response;
         this.filteredMusicItems = this.musicItems;
         this.calculateTotalPages();
+        this.filterMusicItems();
       });
     }
 
     selectedTags(tag: string | null) {
+
     
       this.selectedTag  = tag;
       this.filterMusicItems();
@@ -105,6 +121,11 @@ export class MusicGalleryComponent implements OnInit {
       const embedUrl = `https://www.youtube.com/embed/${videoId}`;
       return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
     }
+
+    tagClicked(tag: string) {
+      this.router.navigate(['/no-copyright-music', tag]);
+    }
+
     
     // getTags(): string[] {
   //   this.musicService.getTags().subscribe((response: any) => {

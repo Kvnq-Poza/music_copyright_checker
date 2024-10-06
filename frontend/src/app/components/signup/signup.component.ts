@@ -58,8 +58,7 @@ export class SignupComponent {
   }
 
   ngOnInit() {
-    // this.renderer.addClass(document.body, 'bg-img');
-    this.renderer.setStyle(this.el.nativeElement.ownerDocument.body, 'background-image', 'url(' + this.imagePath + ')');
+
   }
 
   goBack() {
@@ -68,8 +67,7 @@ export class SignupComponent {
   }
 
   ngOnDestroy() {
-    this.renderer.removeStyle(this.el.nativeElement.ownerDocument.body, 'background-image');
-;
+
   }
 
 

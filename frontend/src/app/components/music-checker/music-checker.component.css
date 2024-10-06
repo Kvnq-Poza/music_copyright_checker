@@ -327,3 +327,306 @@
   border-radius: 10px;
   margin-right: 20px;
 }
+
+
+
+/* Main Container Styling */
+.container {
+  width: 50%; /* 50% width for balanced appearance */
+  margin: 30px auto;
+  background: #ffffff; /* White background for the container */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+@media (max-width: 768px) {
+  .container {
+      width: 70%; /* Reduce container width for medium screens */
+      padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+      width: 90%; /* Full-width for mobile devices */
+      padding: 10px;
+  }
+}
+
+/* Header Section */
+.header {
+  text-align: center;
+  background-color: #467e9e; /* Gold header */
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  margin: 0;
+  color: #fffefe; /* Dark text for contrast */
+  font-size: 1.5em;
+}
+
+.header p {
+  color: #ffffff; /* Subtle text color */
+}
+
+/* Icon Section */
+.icon-section {
+  display: flex;
+  justify-content: center;
+  gap: 25px; /* Increased spacing for icons */
+  margin: 20px 0;
+}
+
+.icon {
+  width: 60px; /* Icon size */
+  height: 60px;
+  /* filter: blur(0.7px); Light blur effect */
+}
+
+/* .green-icon {
+  background-color: rgba(0, 255, 0, 0.2); 
+  border-radius: 50%;
+}
+
+.red-icon {
+  background-color: rgba(255, 0, 0, 0.2); 
+  border-radius: 50%;
+} */
+
+@media (max-width: 480px) {
+  .icon {
+      width: 45px; /* Smaller icons on mobile */
+      height: 45px;
+  }
+}
+
+/* Result Section */
+.result {
+  text-align: center;
+  color: #147487; /* Theme color text */
+  margin: 10px 0;
+}
+
+.result p {
+  margin: 10px 0;
+}
+
+.subscribe-button {
+  background-color: #ff8c00;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.subscribe-button:hover {
+  background-color: #ff6600;
+}
+
+/* Feedback Section */
+.feedback {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.feedback-btn {
+  font-size: 26px; /* Larger feedback icons */
+  margin: 0 15px;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .feedback-btn {
+      font-size: 20px; /* Smaller feedback icons on mobile */
+      margin: 0 10px;
+  }
+}
+
+/* Similar Music Section */
+.similar-music {
+  margin-top: 25px;
+  background: #fff; /* White background */
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for cards */
+}
+
+.similar-music h3 {
+  text-align: center;
+  color: #147487;
+  font-size: 1.2em;
+}
+
+.music-list {
+  display: flex;
+  justify-content: space-between;
+}
+.music-list .music-card:only-child {
+  margin: 0 auto;
+  flex: 1, 1, 60%;
+}
+
+.music-card {
+  width: 30%; /* Equal width for each card */
+  padding: 12px;
+  background: #f7f7f7; /* Light gray card background */
+  border-radius: 10px;
+  text-align: center;
+}
+
+.music-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.check-button {
+  background-color: #0277bd;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.check-button:hover {
+  background-color: #0277bd;
+}
+
+@media (max-width: 768px) {
+  .music-list {
+      flex-wrap: wrap; /* Allow cards to wrap on medium screens */
+      justify-content: center;
+
+  }
+
+  .music-card {
+      width: 70%; /* Smaller cards on medium screens */
+      margin-bottom: 15px;
+  }
+  .video-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+  }
+  .video-section iframe {
+      width: 100%;
+      height: 200px;
+      border-radius: 10px;
+  }
+}
+
+@media  (max-width: 1100px) {
+  .video-section iframe {
+      height: 250px;
+      width: 100%;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .music-list {
+      flex-direction: column; /* Stack cards on top of each other */
+      align-items: center;
+  }
+
+  .music-card {
+      width: 100%; /* Full-width cards on mobile */
+      margin-bottom: 15px;
+  }
+
+  .check-button {
+      width: 70%; /* Reduced button width */
+  }
+}
+
+/* Result Container */
+.result-container {
+  width: 80%;
+  margin: 20px auto;
+  background: #f8f8f8; /* Light background for the section */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Header for the Result */
+.result-header {
+  color: #147487; /* Themed color */
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+/* Content Box for Result */
+.result-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Box that shows the license status */
+.result-box {
+  width: 70%;
+  background-color: #d1f7c4; /* Greenish background for non-copyright */
+  border: 2px solid #147487;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-text {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #147487; /* Text in theme color */
+  margin: 0;
+}
+
+.status-icon {
+  font-size: 2.5em;
+  margin-left: 15px;
+  color: #28a745; /* Green for checkmark (change to red for crossmark) */
+}
+
+#license-status.copyrighted {
+  background-color: #f8d7da; /* Light red for copyright warning */
+  border-color: #d9534f; /* Darker border for emphasis */
+}
+
+#license-status.copyrighted .status-text {
+  color: #d9534f; /* Red text for copyrighted status */
+}
+
+#license-status.copyrighted .status-icon {
+  color: #d9534f; /* Red crossmark */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 480px) {
+  .result-container {
+      width: 90%;
+      padding: 10px;
+  }
+
+  .result-box {
+      flex-direction: column;
+  }
+
+  .status-text {
+      margin-bottom: 10px;
+  }
+
+  .status-icon {
+      margin-left: 0;
+  }
+}
+
