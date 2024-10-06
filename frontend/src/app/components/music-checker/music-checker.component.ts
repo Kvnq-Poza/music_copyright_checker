@@ -49,6 +49,7 @@ export class MusicCheckerComponent implements OnInit {
   checkButtonText: string = 'Check';
   lastChecked: any = [];
   relatedVideos: any[] = [];
+  searchTime: number | null = null;
   
 
   constructor(private musicService: MusicCheckerService,
@@ -76,11 +77,19 @@ export class MusicCheckerComponent implements OnInit {
   }
 
   searchByName(): void {
+    // IF SEARCH QUERY IS LINK THEN SEARCH BY ID
+    if (this.search_query.includes('youtube.com')) {
+      this.searchById();
+      return;
+    }
+    const searchTime = Date.now();
     this.clicked = true;
     this.checkButtonText = 'Checking...';
     this.musicService.getVidsByName(this.search_query).subscribe((response: any) => {
       this.results.push(response)
       this.relatedVideos = response.relatedVideos;
+      this.searchTime = (Date.now() - searchTime) / 1000;
+      this.searchTime = Math.round(this.searchTime * 100) / 100;
       // this.search_query = '';
       console.log(response)
       this.clicked = false;
@@ -91,8 +100,22 @@ export class MusicCheckerComponent implements OnInit {
   }
 
   searchById(): void {
+    // if search query is not link search by name
+    
+    const searchTime = Date.now();
     this.checkButtonText = 'Checking...';
     this.musicService.getVidsById(this.search_query).subscribe((response: any) => {
+      //handle if invalid link is passed
+      if (this.search_query.trim().length < 11) {
+        this.toastService.showToast('error', 'Invalid video link');
+        this.clicked = false;
+        this.checkButtonText = 'Check';
+        return;
+      }
+     
+      this.searchTime = (Date.now() - searchTime) / 1000; 
+ 
+      this.searchTime = Math.round(this.searchTime * 100) / 100;
       this.results.push(response)
       // this.search_query = '';
       console.log(response)
