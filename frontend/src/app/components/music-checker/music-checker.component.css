@@ -279,6 +279,12 @@
     .searchBar {
       width: 100%;
     }
+    .results {
+      width: 150%;
+    }
+    #resultCard {
+      width: 100%;
+    }
     #searchQueryInput {
       width: 100%;
     }
@@ -290,11 +296,18 @@
     #searchQueryInput {
       width: 100%;
     }
+    .results {
+      width: 100%;
+    }
+    #resultCard {
+      width: 100%;
+    }
   }
 
   .results {
     /* display: flex; */
     /* flex-direction: column; */
+    width: 130%;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
@@ -634,4 +647,74 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+
+
+
+
+
+/* Container for the copy button */
+.copy-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Button styling */
+.copy-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px; /* Original: 60px; 20% reduction */
+  height: 48px; /* Original: 60px; 20% reduction */
+  border-radius: 50%;
+  background: linear-gradient(135deg, #147487, #40a3b4); /* Using the specified color */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+/* Icon effect on hover */
+.copy-button:hover .copy-icon {
+  fill: #e0f4f8;
+  transform: scale(1.2);
+}
+
+
+
+/* Display the popup when the .show class is added */
+.copy-popup.show {
+  opacity: 1;
+  transform: translateY(-10px); /* Slight movement effect */
+}
+.copy-icon {
+  width: 24px; /* Original: 30px; 20% reduction */
+  height: 24px; /* Original: 30px; 20% reduction */
+  fill: #ffffff;
+  transition: transform 0.3s ease-in-out, fill 0.3s ease-in-out;
+}
+
+/* Hover effect for the copy button */
+.copy-button:hover {
+  background: linear-gradient(135deg, #0e5b68, #2f97a6); /* Darkened shades for hover */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+}
+
+/* Reduced popup text */
+.copy-popup {
+  position: absolute;
+  bottom: 65px; /* Adjusted to be above the smaller button */
+  background: #147487; /* Match popup color with button */
+  color: #ffffff;
+  padding: 4px 8px; /* Slightly reduced padding */
+  border-radius: 5px;
+  font-size: 12px; /* Slightly smaller font */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
