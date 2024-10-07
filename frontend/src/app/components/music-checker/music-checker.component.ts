@@ -49,6 +49,7 @@ export class MusicCheckerComponent implements OnInit {
   checkButtonText: string = 'Check';
   lastChecked: any = [];
   relatedVideos: any[] = [];
+  copied: boolean = false;
   
 
   constructor(private musicService: MusicCheckerService,
@@ -61,6 +62,16 @@ export class MusicCheckerComponent implements OnInit {
     this.getLastChecked(8);
     // check request body if title is present
     }
+
+     // Function to show the "Copied!" message
+  showCopiedMessage(): void {
+    this.copied = true; // Set the copied state to true to display the popup
+
+    // Hide the popup after 1 second
+    setTimeout(() => {
+      this.copied = false;
+    }, 1000);
+  }
 
     scrollToElement() {
       console.log(this.targetElement)
