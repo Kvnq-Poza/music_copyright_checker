@@ -143,7 +143,7 @@
         <div class="header">
             <h2>Search result</h2>
             <p>The accuracy of finding a license of a song is 95%</p>
-            <p>Time spent: 1.3 sec</p>
+            <p>Time spent: {{searchTime}}s</p>
         </div>
     
         <!-- Result Section -->
@@ -228,6 +228,16 @@
                   <p>{{res.title}}</p>
                   <button class="check-button" (click)="checkVideo(res.title)">CHECK</button>
               </div>
+              <div *ngIf="relatedVideos.length == 0" class="no-music">
+                <!-- perform searchs like reverb, slow motion of the original song  -->
+                 <div *ngFor="let res of results">
+                  <button class="check-btn" (click)="checkVideo(res.title +'slow')">check</button>
+                 </div>
+
+
+                  <p>No similar music found</p>
+              </div>
+      
           </div>
       </div>
     </div>
