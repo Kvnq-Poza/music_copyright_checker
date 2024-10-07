@@ -64,14 +64,16 @@ export class MusicCheckerComponent implements OnInit {
     }
 
      // Function to show the "Copied!" message
-  showCopiedMessage(): void {
-    this.copied = true; // Set the copied state to true to display the popup
-
-    // Hide the popup after 1 second
-    setTimeout(() => {
-      this.copied = false;
-    }, 1000);
-  }
+     showCopiedMessage(): void {
+      // Copy a sample text (you can replace with dynamic text)
+      navigator.clipboard.writeText(this.results[0].title).then(() => {
+        this.copied = true; // Show "Copied!" message
+    
+        setTimeout(() => {
+          this.copied = false; // Hide the popup after 1 second
+        }, 1000);
+      });
+    }
 
     scrollToElement() {
       console.log(this.targetElement)
