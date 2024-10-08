@@ -370,6 +370,9 @@
       width: 90%; /* Full-width for mobile devices */
       padding: 10px;
   }
+  .header h2 {
+      font-size: 1.2em; /* Smaller header text on mobile */
+  }
 }
 
 /* Header Section */
@@ -783,12 +786,51 @@
 }
 
 @media (max-width: 768px) {
+
+  .header p {
+    font-size: 0.8em;
+  }
+  .header h2 {
+    font-size: 0.8em
+  }
+
   .title {
-    font-size: 10px;
+    font-size: 14px;
   }
   .site {
-    font-size: 10px;
+    font-size: 12px;
   }
+
+  .status-text {
+    font-size: 1em;
+  }
+  .similar-music h3 {
+    font-size: 0.7em;
+  }
+  .copy-button {
+    width: 30px;
+    height: 30px;
+  }
+  .copy-icon {
+    width: 14px;
+    height: 14px;
+  }
+  .button-container{
+    flex-direction: column;
+
+  }
+  .custom-button {
+    font-size: 12px;
+  }
+  .custom-text {
+    font-size: 12px;
+  }
+  .video-section iframe {
+    height: 200px;
+    width: 60%;
+  }
+  
+  
 }
 
 @media (max-width: 480px) {
