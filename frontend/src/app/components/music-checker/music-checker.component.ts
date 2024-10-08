@@ -91,10 +91,14 @@ export class MusicCheckerComponent implements OnInit {
 
   searchByName(): void {
     // IF SEARCH QUERY IS LINK THEN SEARCH BY ID
+
     if (this.search_query.includes('youtube.com')) {
+      this.toastService.showToast('info', 'Using video link instead of name');
+
       this.searchById();
       return;
     }
+
     const searchTime = Date.now();
     this.clicked = true;
     this.checkButtonText = 'Checking...';
@@ -106,26 +110,30 @@ export class MusicCheckerComponent implements OnInit {
       // this.search_query = '';
       console.log(response)
       this.clicked = false;
-      this.checkButtonText = 'Check';
-      this.emitResults('results');
       return response
+    } , (error: any) => { 
+      this.toastService.showToast('error', 'Failed to fetch video, please check the name');
+      this.clicked = false;
     });
   }
 
   searchById(): void {
+
+
     // if search query is not link search by name
+    if (!this.search_query.includes('youtube.com')) {
+      this.toastService.showToast('info', 'Using video name instead of link');
+      this.searchByName();
+      return;
+    } 
+
     
     const searchTime = Date.now();
     this.checkButtonText = 'Checking...';
     this.musicService.getVidsById(this.search_query).subscribe((response: any) => {
-      //handle if invalid link is passed
-      if (this.search_query.trim().length < 11) {
-        this.toastService.showToast('error', 'Invalid video link');
-        this.clicked = false;
-        this.checkButtonText = 'Check';
-        return;
-      }
-     
+
+      
+    
       this.searchTime = (Date.now() - searchTime) / 1000; 
  
       this.searchTime = Math.round(this.searchTime * 100) / 100;
@@ -138,8 +146,13 @@ export class MusicCheckerComponent implements OnInit {
       this.checkButtonText = 'Check';
       this.emitResults('results');
       return response
+    }, (error: any) => {
+      this.toastService.showToast('error', 'Failed to fetch video, please check the link');
+      this.clicked = false;
     });
   }
+
+
   emitResults(source:string): void {
     this.resultsChange.emit(this.results);
   }
