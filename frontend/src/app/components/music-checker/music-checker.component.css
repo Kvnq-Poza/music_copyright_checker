@@ -371,7 +371,7 @@
       padding: 10px;
   }
   .header h2 {
-      font-size: 1.2em; /* Smaller header text on mobile */
+      font-size: 1.2em; 
   }
 }
 
@@ -787,12 +787,12 @@
 
 @media (max-width: 768px) {
 
-  .header p {
+  /* .header p {
     font-size: 0.8em;
   }
   .header h2 {
     font-size: 0.8em
-  }
+  } */
 
   .title {
     font-size: 14px;
@@ -850,7 +850,7 @@
   }
   .title {
     font-size: 12px;
-    /* max-width: 300px; */
+    max-width: 300px;
   }
   .site {
     font-size: 9px;
