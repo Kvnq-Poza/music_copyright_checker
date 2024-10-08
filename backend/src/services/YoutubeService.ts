@@ -56,9 +56,7 @@ export class YoutubeService {
                     thumbnail,
                     relatedVideos
                 };
-            } else {
-                throw new Error('No video details found.');
-            }
+            } 
         } catch (error: any) {
             console.error('Error fetching video details:', error.message);
             throw error;

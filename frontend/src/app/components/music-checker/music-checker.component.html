@@ -162,14 +162,14 @@
                         <span class="status-icon" [ngStyle]= "{'color': 'red'}"  id="status-icon">&#10008;</span>
                     </div>
                     <div *ngIf="!result.license" class="result-box" id="license-status">
-                      <p class="status-text">This song is free to use without a license.</p>
+                      <p class="status-text">Usage permitted with reference to the source (Creative Commons)</p>
                       <span class="status-icon" id="status-icon">&#10004;</span>
                   </div>
                 </div>
             </div>
     
             <div class="song-details">
-                <p><strong>The song from the video:</strong> {{result.title}} </p>
+                <p><i>The song from the video: </i> {{result.title}} </p>
 
                 <div class="copy-container">
                   <!-- Copy button with SVG icon -->
@@ -185,11 +185,12 @@
               
                         
                                 
-                <p>Checked on the site: <a href="https://tubemusic.io">tubemusic.io</a></p>
+                
                 <div class="progress-bar">
                     <div class="progress" style="width: 100%;"></div>
                 </div>
             </div>
+            <p class="site">Checked on the site: <a href="https://tubemusic.io">tubemusic.io</a></p>
             <div class="video-section">
                 <iframe width="560" height="315" [src]="safePipe(result.url)"  frameborder="0" allowfullscreen></iframe>
             
@@ -223,23 +224,25 @@
           <div  class="music-list single-card"> 
               <div *ngFor="let res of relatedVideos" class="music-card">
                   <img [src]="res.thumbnail" alt="music thumbnail">
-                  <!-- slice the title -->
-                   
                   <p>{{res.title}}</p>
                   <button class="check-button" (click)="checkVideo(res.title)">CHECK</button>
               </div>
-              <div *ngIf="relatedVideos.length == 0" class="no-music">
-                <!-- perform searchs like reverb, slow motion of the original song  -->
-                 <div *ngFor="let res of results">
-                  <button class="check-btn" (click)="checkVideo(res.title +'slow')">check</button>
-                 </div>
+              <div *ngIf="relatedVideos.length === 0" class="button-container">
+                <span class="custom-text">Find copyright free: </span> <br>
+                <span class="custom-button" (click)="checkVideo(results[0].title + ' ' + 'no copcopyright')">+no copyright</span>
+                <span class="custom-button" (click)="checkVideo(results[0].title + ' ' + 'remix')">+remix</span>
+                <span class="custom-button" (click)="checkVideo(results[0].title + ' ' + 'trap')">+trap</span>
+                <span class="custom-button" (click)="checkVideo(results[0].title + ' ' + 'cover')">+cover</span>
+                <span class="custom-button" (click)="checkVideo(results[0].title + ' ' + 'bass')">+bass</span>
+                <span class="custom-button" (click)="checkVideo(results[0].title + ' ' + 'slowed')">+slowed</span>
+            </div>
+              
 
-
-                  <p>No similar music found</p>
-              </div>
       
           </div>
-      </div>
+          
+        </div>
+      
     </div>
             
     </div>
