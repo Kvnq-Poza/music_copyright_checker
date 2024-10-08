@@ -169,27 +169,24 @@
             </div>
     
             <div class="song-details">
-                <p><i>The song from the video: </i> {{result.title}} </p>
+  <div class="song-title-container">
+    <p class="song-title"><i>The song from the video: </i> {{ result.title }} </p>
 
-                <div class="copy-container">
-                  <!-- Copy button with SVG icon -->
-                  <div class="copy-button" title="Copy" (click)="showCopiedMessage()">
-                      <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                          <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
-                      </svg>
-                  </div>
-              
-                  <!-- Popup text for "Copied!" message -->
-                  <div class="copy-popup" [class.show]="copied">Copied!</div>
-              </div>
-              
-                        
-                                
-                
-                <div class="progress-bar">
-                    <div class="progress" style="width: 100%;"></div>
-                </div>
-            </div>
+    <!-- Copy button with SVG icon -->
+    <div class="copy-container">
+      <div class="copy-button" title="Copy" (click)="showCopiedMessage()">
+        <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+        </svg>
+      </div>
+      <div class="copy-popup" [class.show]="copied">Copied!</div>
+
+    </div>
+
+    <!-- Popup text for "Copied!" message -->
+  </div>
+</div>
+
             <p class="site">Checked on the site: <a href="https://tubemusic.io">tubemusic.io</a></p>
             <div class="video-section">
                 <iframe width="560" height="315" [src]="safePipe(result.url)"  frameborder="0" allowfullscreen></iframe>

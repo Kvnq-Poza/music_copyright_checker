@@ -753,7 +753,11 @@
 }
 
 
-
+.song-title-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adds spacing between title and copy button */
+}
 
 .site {
   font-family: 'Roboto', sans-serif;
