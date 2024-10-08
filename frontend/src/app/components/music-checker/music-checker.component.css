@@ -273,6 +273,7 @@
       transform: rotate(360deg);
     }
   } 
+  
 
   /* make the searchbar responsive */
   @media (max-width: 768px) {
@@ -288,6 +289,10 @@
     #searchQueryInput {
       width: 100%;
     }
+    .responsive-container {
+      width: 100% !important;
+    }
+    
   }
   @media (max-width: 479px) {
     .searchBar {
