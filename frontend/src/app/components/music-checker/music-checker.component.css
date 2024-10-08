@@ -752,27 +752,8 @@
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.song-details {
-  display: flex;
-  flex-direction: wrap;
-  justify-content: center;
-  gap: 10px;
-}
 
-.song-details p {
-  /* style for title */
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-  color: #2c3e50;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 16px;
-  white-space: nowrap; /* Prevents line breaks */
-  overflow: hidden; /* Hides overflowing text */
-  text-overflow: ellipsis; /* Adds ellipsis (...) at the end of truncated text */
-  max-width: 600px;
 
-}
 
 .site {
   font-family: 'Roboto', sans-serif;
