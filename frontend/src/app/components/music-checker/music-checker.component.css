@@ -475,7 +475,7 @@
 }
 
 .similar-music h3 {
-  /* text-align: center; */
+  text-align: center;
   color: #147487;
   font-size: 1em;
 }
@@ -555,7 +555,7 @@
   }
 
   .music-card {
-      width: 100%; /* Full-width cards on mobile */
+      /* width: 100%; Full-width cards on mobile */
       margin-bottom: 15px;
   }
 
@@ -631,7 +631,7 @@
 /* Responsive Design for Smaller Screens */
 @media (max-width: 480px) {
   .result-container {
-      width: 90%;
+      width: 70%;
       padding: 10px;
   }
 
@@ -660,7 +660,7 @@
   
 }
 
-.custom-text {
+/* .custom-text {
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
 
@@ -678,7 +678,7 @@
   text-decoration-color: green;
   border: none;
   cursor: pointer;
-}
+} */
 
 .custom-button:hover {
   color: #000;
@@ -700,8 +700,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px; /* Original: 60px; 20% reduction */
-  height: 48px; /* Original: 60px; 20% reduction */
+  width: 38px; /* Original: 60px; 20% reduction */
+  height: 38px; /* Original: 60px; 20% reduction */
   border-radius: 50%;
   background: linear-gradient(135deg, #147487, #40a3b4); /* Using the specified color */
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
@@ -725,8 +725,8 @@
   transform: translateY(-10px); /* Slight movement effect */
 }
 .copy-icon {
-  width: 24px; /* Original: 30px; 20% reduction */
-  height: 24px; /* Original: 30px; 20% reduction */
+  width: 20px; /* Original: 30px; 20% reduction */
+  height: 20px; /* Original: 30px; 20% reduction */
   fill: #ffffff;
   transition: transform 0.3s ease-in-out, fill 0.3s ease-in-out;
 }
@@ -753,10 +753,25 @@
 }
 
 
-.song-title-container {
+.song-details {
   display: flex;
-  align-items: center;
-  gap: 10px; /* Adds spacing between title and copy button */
+  flex-direction: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.title {
+    font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 16px;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+    max-width: 600px;
+
 }
 
 .site {
@@ -766,3 +781,53 @@
   font-size: 16px;
   margin-top: 5px;
 }
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 10px;
+  }
+  .site {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .status-text {
+    font-size: 1em;
+  }
+  .similar-music h3 {
+    font-size: 0.7em;
+  }
+  .copy-button {
+    width: 30px;
+    height: 30px;
+  }
+  .copy-icon {
+    width: 14px;
+    height: 14px;
+  }
+  .title {
+    font-size: 12px;
+    /* max-width: 300px; */
+  }
+  .site {
+    font-size: 9px;
+  }
+  .button-container{
+    flex-direction: column;
+
+  }
+  .custom-button {
+    font-size: 12px;
+  }
+  .custom-text {
+    font-size: 12px;
+  }
+  .video-section iframe {
+    height: 200px;
+    width: 60%;
+  }
+  
+
+}
+ 
