@@ -67,7 +67,7 @@ export class MusicCheckerComponent implements OnInit {
      // Function to show the "Copied!" message
      showCopiedMessage(): void {
       // Copy a sample text (you can replace with dynamic text)
-      navigator.clipboard.writeText(this.results[0].title).then(() => {
+      navigator.clipboard.writeText(this.results[0].title + '\nChecked on the website: https://tubemusic.io').then(() => {
         this.copied = true; // Show "Copied!" message
     
         setTimeout(() => {
