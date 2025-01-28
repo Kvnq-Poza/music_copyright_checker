@@ -36,6 +36,8 @@ import { TermsConditionsComponent } from './components/legal/terms-conditions/te
 import { PrivacyPolicyComponent } from './components/legal/privacy-policy/privacy-policy.component';
 import { CopyrightPolicyComponent } from './components/legal/copyright-policy/copyright-policy.component';
 import { DmcaComponent } from './components/legal/dmca/dmca.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { Cta2Component } from './components/cta2/cta2.component';
 
 @NgModule({
   declarations: [
@@ -64,9 +66,9 @@ import { DmcaComponent } from './components/legal/dmca/dmca.component';
     TermsConditionsComponent,
     PrivacyPolicyComponent,
     CopyrightPolicyComponent,
-    DmcaComponent
-
-
+    DmcaComponent,
+    AboutUsComponent,
+    Cta2Component
   ],
   imports: [
     BrowserModule,
@@ -77,8 +79,6 @@ import { DmcaComponent } from './components/legal/dmca/dmca.component';
     MatCardModule,
     MatInputModule,
     MatIconModule
-
-
   ],
   providers: [
     provideClientHydration(),

@@ -17,6 +17,7 @@ import { TermsConditionsComponent } from './components/legal/terms-conditions/te
 import { PrivacyPolicyComponent } from './components/legal/privacy-policy/privacy-policy.component';
 import { CopyrightPolicyComponent } from './components/legal/copyright-policy/copyright-policy.component';
 import { DmcaComponent } from './components/legal/dmca/dmca.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -35,7 +36,8 @@ const routes: Routes = [
   {path: 'terms', component: TermsConditionsComponent},
   {path: 'privacy', component: PrivacyPolicyComponent},
   {path: 'copyright', component: CopyrightPolicyComponent},
-  {path: 'dmca', component: DmcaComponent}
+  {path: 'dmca', component: DmcaComponent},
+  {path: 'about', component: AboutUsComponent},
 ];
 
 @NgModule({

@@ -1,10 +1,32 @@
 :host { 
   display: contents; 
 }
+
 .home-container {
   width: 100%;
   display: flex;
   min-height: 100vh;
   align-items: center;
   flex-direction: column;
+}
+
+.home-container > * {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.home-container > app-music-checker {
+  margin-bottom: 4rem;
+}
+
+.home-container > app-about-us {
+  margin: 2rem 0 4rem;
+}
+
+.home-container > app-features1 {
+  margin: 4rem 0;
+}
+
+.home-container > app-footer {
+  margin-bottom: 0;
 }
