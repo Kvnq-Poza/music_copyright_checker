@@ -1,0 +1,24 @@
+<div class="faq-container">
+    <div class="faq-header">
+        <h1>Frequently Asked Questions</h1>
+        <p>Find answers to common questions about our music copyright checker and gallery.</p>
+    </div>
+
+    <div class="faq-content">
+        <div class="faq-item" *ngFor="let item of faqItems; let i = index">
+            <div class="faq-question" (click)="toggleFaq(i)" [class.active]="item.isOpen">
+                <h3>{{ item.question }}</h3>
+                <span class="toggle-icon">{{ item.isOpen ? '−' : '+' }}</span>
+            </div>
+            <div class="faq-answer" [@slideInOut]="item.isOpen ? 'open' : 'closed'">
+                <p>{{ item.answer }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq-footer">
+        <h2>Still have questions?</h2>
+        <p>Can't find the answer you're looking for? Please contact our support team.</p>
+        <button class="contact-btn" routerLink="/contact">Contact Support</button>
+    </div>
+</div>

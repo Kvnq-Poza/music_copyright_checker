@@ -28,6 +28,7 @@ import { Features1Component } from './components/sub/features1/features1.compone
 import { Features2Component } from './components/sub/features2/features2.component';
 import { CtaComponent } from './components/sub/cta/cta.component';
 import { StepsComponent } from './components/sub/steps/steps.component';
+import { FaqComponent } from './components/faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { StepsComponent } from './components/sub/steps/steps.component';
     Features2Component,
     CtaComponent,
     StepsComponent,
+    FaqComponent,
 
 
   ],

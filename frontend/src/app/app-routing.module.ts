@@ -11,6 +11,7 @@ import { ContactComponent } from './components/sub/contact/contact.component';
 import { StepsComponent } from './components/sub/steps/steps.component';
 import { Features1Component } from './components/sub/features1/features1.component';
 import { HeroComponent } from './components/sub/hero/hero.component';
+import { FaqComponent } from './components/faq/faq.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -23,8 +24,8 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'steps', component: StepsComponent},
   {path: 'service', component: Features1Component},
-  {path: 'liked-music', component: HeroComponent}
-
+  {path: 'liked-music', component: HeroComponent},
+  {path: 'faq', component: FaqComponent}
 ];
 
 @NgModule({
