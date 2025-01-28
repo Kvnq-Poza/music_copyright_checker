@@ -1,28 +1,6 @@
 <footer class="footer-footer1 thq-section-padding">
   <div class="footer-max-width thq-section-max-width">
     <div class="footer-content">
-      <!-- <div class="footer-newsletter">
-        <img [attr.alt]="logoAlt" [attr.src]="logoSrc" class="footer-image1" />
-        <span class="thq-body-small">
-          Subscribe to our newsletter for the latest updates on new features and
-          product releases.
-        </span>
-        <div class="footer-actions">
-          <div class="footer-form">
-            <div class="footer-container">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                class="footer-text-input thq-input"
-              />
-            </div>
-            <button class="thq-button-outline footer-button">
-              <span class="thq-body-small">{{ action1 }}</span>
-            </button>
-          </div>
-          <span class="footer-content2 thq-body-small">{{ content2 }}</span>
-        </div>
-      </div> -->
       <div class="footer-links">
         <div class="footer-column1">
           <strong class="thq-body-large footer-column1-title">
@@ -30,94 +8,70 @@
           </strong>
           <div class="footer-footer-links1">
             <a
-              href="https://example.com"
-              target="_blank"
+              href="/"
               rel="noreferrer noopener"
               class="thq-body-small"
             >
               {{ link1 }}
             </a>
             <a
-              href="https://example.com"
-              target="_blank"
+              href="/steps"
               rel="noreferrer noopener"
               class="thq-body-small"
             >
               {{ link2 }}
             </a>
             <a
-              href="https://example.com"
-              target="_blank"
+              href="/contact"
               rel="noreferrer noopener"
               class="thq-body-small"
             >
               {{ link3 }}
             </a>
             <a
-              href="https://example.com"
-              target="_blank"
+              href="/faq"
               rel="noreferrer noopener"
               class="thq-body-small"
             >
               {{ link4 }}
             </a>
+          </div>
+        </div>
+        <div class="footer-column2">
+          <strong class="thq-body-large footer-column2-title">
+            {{ column2Title }}
+          </strong>
+          <div class="footer-footer-links2">
             <a
-              href="https://example.com"
-              target="_blank"
+              href="/terms"
               rel="noreferrer noopener"
               class="thq-body-small"
             >
-              {{ link5 }}
-            </a>  
+              {{ link6 }}
+            </a>
+            <a
+              href="/privacy"
+              rel="noreferrer noopener"
+              class="thq-body-small"
+            >
+              {{ link7 }}
+            </a>
+            <a
+              href="/copyright"
+              rel="noreferrer noopener"
+              class="thq-body-small"
+            >
+              {{ link8 }}
+            </a>
+            <a
+              href="/dmca"
+              rel="noreferrer noopener"
+              class="thq-body-small"
+            >
+              {{ link9 }}
+            </a>
           </div>
         </div>
-          <div class="footer-column2">
-            <strong class="thq-body-large footer-column2-title">
-              {{ column2Title }}
-            </strong>
-            <div class="footer-footer-links2">
-              <a
-                href="https://example.com"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="thq-body-small"
-              >
-                {{ link6 }}
-              </a>
-              <a
-                href="https://example.com"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="thq-body-small"
-              >
-                {{ link7 }}
-              </a>
-              <a
-                href="https://example.com"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="thq-body-small"
-              >
-                {{ link8 }}
-              </a>
-              <a
-                href="https://example.com"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="thq-body-small"
-              >
-                {{ link9 }}
-              </a>
-              <a
-                href="https://example.com"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="thq-body-small"
-              >
-                {{ link10 }}
-              </a>
-            </div>
-          </div>
         <div class="footer-column3">
           <strong class="thq-body-large footer-social-link1-title">
             {{ socialLinkTitleCategory }}
@@ -172,9 +126,10 @@
       <div class="footer-row">
         <span class="thq-body-small">{{ content3 }}</span>
         <div class="footer-footer-links3">
-          <span class="thq-body-small">{{ privacyLink }}</span>
-          <span class="thq-body-small">{{ termsLink }}</span>
-          <span class="thq-body-small">{{ cookiesLink }}</span>
+          <a href="/privacy" class="thq-body-small">{{ privacyLink }}</a>
+          <a href="/terms" class="thq-body-small">{{ termsLink }}</a>
+          <a href="/copyright" class="thq-body-small">{{ cookiesLink }}</a>
+          <a href="/dmca" class="thq-body-small">{{ dmcaLink }}</a>
         </div>
       </div>
     </div>

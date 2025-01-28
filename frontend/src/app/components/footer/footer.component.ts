@@ -9,7 +9,7 @@ export class FooterComponent {
   @Input()
   column2Title: string = 'Quick Links'
   @Input()
-  link7: string = 'Cookie Policy'
+  link7: string = 'Privacy Policy'
   @Input()
   link5: string = 'Terms of Use'
   @Input()
@@ -24,25 +24,27 @@ export class FooterComponent {
   logoSrc: string =
     'https://presentation-website-assets.teleporthq.io/logos/logo.png'
   @Input()
-  cookiesLink: string = '/cookie-policy'
+  cookiesLink: string = 'Copyright Policy'
+  @Input()
+  dmcaLink: string = 'DMCA'
   @Input()
   content2: string = 'Stay updated with our latest news and offers.'
   @Input()
-  link9: string = 'Report Abuse'
+  link9: string = 'DMCA'
   @Input()
-  link6: string = 'Privacy Policy'
+  link6: string = 'Terms And Conditions'
   @Input()
   logoAlt: string = 'Your Website Logo'
   @Input()
   link1: string = 'Home'
   @Input()
-  privacyLink: string = '/privacy-policy'
+  privacyLink: string = 'Privacy Policy'
   @Input()
   link10: string = 'Sitemap'
   @Input()
   column1Title: string = 'Company'
   @Input()
-  termsLink: string = '/terms-of-use'
+  termsLink: string = 'Terms And Conditions'
   @Input()
   link3: string = 'Contact Us'
   @Input()

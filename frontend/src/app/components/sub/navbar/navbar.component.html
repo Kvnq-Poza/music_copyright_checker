@@ -18,9 +18,6 @@
             <span class="thq-body-small"> Register</span>
           
           </button>
-          <button (click)="toggleDarkMode()" class="dark-mode-toggle">
-            <i [class]="isDarkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
-          </button>
           <div *ngIf="isLogged" class="user-dropdown" (clickOutside)="closeDropdown()">
             <button class="user-icon" (click)="toggleDropdown()">
               <span ><img width="34" height="34" src="https://img.icons8.com/pastel-glyph/64/FFFFFF/user-male-circle.png" alt="user-male-circle"/> </span>
@@ -73,9 +70,6 @@
         <div class="navbar-buttons2">
           <button routerLink="/sign-in" class="thq-button-filled">Login</button>
           <button routerLink="/sign-up" class="thq-button-outline">Register</button>
-          <button (click)="toggleDarkMode()" class="dark-mode-toggle">
-            <i [class]="isDarkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
-          </button>
           
         </div>
       </div>

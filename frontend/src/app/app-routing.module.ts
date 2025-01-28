@@ -12,6 +12,11 @@ import { StepsComponent } from './components/sub/steps/steps.component';
 import { Features1Component } from './components/sub/features1/features1.component';
 import { HeroComponent } from './components/sub/hero/hero.component';
 import { FaqComponent } from './components/faq/faq.component';
+import { OtherTextComponent } from './components/other-text/other-text.component';
+import { TermsConditionsComponent } from './components/legal/terms-conditions/terms-conditions.component';
+import { PrivacyPolicyComponent } from './components/legal/privacy-policy/privacy-policy.component';
+import { CopyrightPolicyComponent } from './components/legal/copyright-policy/copyright-policy.component';
+import { DmcaComponent } from './components/legal/dmca/dmca.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -25,7 +30,12 @@ const routes: Routes = [
   {path: 'steps', component: StepsComponent},
   {path: 'service', component: Features1Component},
   {path: 'liked-music', component: HeroComponent},
-  {path: 'faq', component: FaqComponent}
+  {path: 'faq', component: FaqComponent},
+  {path: 'comparison', component: OtherTextComponent},
+  {path: 'terms', component: TermsConditionsComponent},
+  {path: 'privacy', component: PrivacyPolicyComponent},
+  {path: 'copyright', component: CopyrightPolicyComponent},
+  {path: 'dmca', component: DmcaComponent}
 ];
 
 @NgModule({

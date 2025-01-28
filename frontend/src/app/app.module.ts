@@ -31,6 +31,11 @@ import { FaqComponent } from './components/faq/faq.component';
 import { Step1Component } from './components/sub/step1/step1.component';
 import { StepComponent } from './components/sub/step/step.component';
 import { StepsComponent } from './components/sub/steps/steps.component';
+import { OtherTextComponent } from './components/other-text/other-text.component';
+import { TermsConditionsComponent } from './components/legal/terms-conditions/terms-conditions.component';
+import { PrivacyPolicyComponent } from './components/legal/privacy-policy/privacy-policy.component';
+import { CopyrightPolicyComponent } from './components/legal/copyright-policy/copyright-policy.component';
+import { DmcaComponent } from './components/legal/dmca/dmca.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +59,12 @@ import { StepsComponent } from './components/sub/steps/steps.component';
     FaqComponent,
     Step1Component,
     StepComponent,
-    StepsComponent
+    StepsComponent,
+    OtherTextComponent,
+    TermsConditionsComponent,
+    PrivacyPolicyComponent,
+    CopyrightPolicyComponent,
+    DmcaComponent
 
 
   ],

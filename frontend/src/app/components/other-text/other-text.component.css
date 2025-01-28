@@ -1,0 +1,145 @@
+.comparison-section {
+    padding: 5rem 1rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.table-wrapper {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
+.comparison-table th {
+    background: #1e293b;
+    color: white;
+    padding: 1.5rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.comparison-table th:first-child {
+    border-top-left-radius: 16px;
+}
+
+.comparison-table th:last-child {
+    border-top-right-radius: 16px;
+}
+
+.comparison-table td {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+    line-height: 1.6;
+}
+
+.comparison-table tr:last-child td {
+    border-bottom: none;
+}
+
+.point {
+    font-weight: 600;
+    color: #1e293b;
+    width: 15%;
+}
+
+.our-tool, .other-tools {
+    width: 42.5%;
+}
+
+.feature-tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+}
+
+.feature-tag.positive {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.feature-tag.negative {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.our-tool {
+    background-color: #f8fafc;
+}
+
+/* Hover effect for rows */
+.comparison-table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .comparison-section {
+        padding: 3rem 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .comparison-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .feature-tag {
+        padding: 0.35rem 0.75rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Animation for hover */
+.comparison-table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+/* Gradient border effect */
+.table-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+    border-radius: 18px;
+    z-index: -1;
+    opacity: 0.1;
+}
