@@ -7,22 +7,19 @@ import { Component, Input } from '@angular/core';
 })
 export class ContactComponent {
   @Input()
-  content2: string =
-    'Fill out the form below or use the contact details provided.'
-  @Input()
   email1: string = 'contact@musiccopyrightcheck.com'
   @Input()
   address1: string = '123 Music Copyright Way, Suite 101, Music City, USA'
   @Input()
-  content3: string = 'We aim to respond to all inquiries within 24 hours.'
+  content3: string = 'Send us a message with your questions or feedback anytime.'
   @Input()
-  content1: string = 'Have a question or feedback? Reach out to us!'
+  content1: string = 'Need some assistance? Get in touch with us easily for all your music copyright queries!'
   @Input()
-  content4: string = 'For business inquiries, please email us directly.'
+  content4: string = 'Reach out directly for quick support.'
   @Input()
   heading1: string = 'Contact Us'
   @Input()
-  content5: string = 'Follow us on social media for updates and news.'
+  content5: string = 'Stay updated by following us on social media for the latest tips.'
   @Input()
   phone1: string = '+1-800-123-4567'
   constructor() {}
