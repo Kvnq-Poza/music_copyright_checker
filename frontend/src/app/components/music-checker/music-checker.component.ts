@@ -31,10 +31,10 @@ export class MusicCheckerComponent implements OnInit {
 
   
   @Input()
-  heading1: string = 'Check Copyright of Your Music'
+  heading1: string = 'Check Your Music Rights Now!'
   @Input()
   content1: string =
-    'Enter the YouTube video link or the name of the video to verify its copyright status.'
+    'Get instant copyright verification for hassle-free uploads. Try it now for free!'
   @Input()
   action1: string = 'Check'
 

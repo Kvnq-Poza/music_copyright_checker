@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    apiUrl: 'http://localhost:3000', // Your local API URL
+    apiUrl: 'https://music-licence-checker.onrender.com', // Your local API URL
   };
   
