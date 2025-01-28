@@ -1,4 +1,9 @@
 <div class="thq-section-padding">
+  <h2 style="margin-bottom: 50px;">Why You Must Check Copyright?</h2>
+  <p style="max-width: 1500px;
+    margin: 1rem auto;
+    color: #475569;
+    font-size: 1.1rem;">Copyright checks are a must for content creators, especially on platforms like YouTube, where using copyrighted material without permission can even lead to account bans. Check out some reasons to do it every time before you upload a video:</p>
     <div class="features2-container2 thq-section-max-width">
       <div class="features2-tabs-menu">
         <div (click)="activeTab = 0" class="features2-tab-horizontal1">
@@ -6,8 +11,8 @@
             <div *ngIf="activeTab === 0" class="features2-container3"></div>
           </div>
           <div class="features2-content1">
-            <h2 class="thq-heading-2">{{ feature1Title }}</h2>
-            <span class="thq-body-small">{{ feature1Description }}</span>
+            <h2 class="thq-heading-2">Protecting Your Revenue</h2>
+            <span class="thq-body-small">Using copyrighted music without permission can lead to demonetization of your videos. No matter how good the video performs, the entire ad revenue goes to the copyright holder, not you. Therefore, it is always better to check the copyright of a video before uploading to make sure that the revenue from it remains in your pocket. </span>
           </div>
         </div>
         <div (click)="activeTab = 1" class="features2-tab-horizontal2">
@@ -15,8 +20,8 @@
             <div *ngIf="activeTab === 1" class="features2-container4"></div>
           </div>
           <div class="features2-content2">
-            <h2 class="thq-heading-2">{{ feature2Title }}</h2>
-            <span class="thq-body-small">{{ feature2Description }}</span>
+            <h2 class="thq-heading-2">Legal Protection</h2>
+            <span class="thq-body-small">What if, instead of earning from your video, you end up having to pay to use it? Well, if a copyright holder decides to take action against unauthorized use of their work, it can lead to costly legal settlements. Checking copyrights can protect you legally.</span>
           </div>
         </div>
         <div (click)="activeTab = 2" class="features2-tab-horizontal3">
@@ -24,10 +29,29 @@
             <div *ngIf="activeTab === 2" class="features2-container5"></div>
           </div>
           <div class="features2-content3">
-            <h2 class="thq-heading-2">{{ feature3Title }}</h2>
-            <span class="thq-body-small">{{ feature3Description }}</span>
+            <h2 class="thq-heading-2">Avoid Copyright Strikes</h2>
+            <span class="thq-body-small">If you use copyrighted music without permission, YouTube’s Content ID system can automatically detect it and issue a strike. Too many strikes can lead to your videos being removed. After three strikes, your entire channel could be taken down. Our YouTube song copyright checker can prevent this by flagging copyrighted material before you upload it.</span>
           </div>
         </div>
+        <div (click)="activeTab = 3" class="features2-tab-horizontal2">
+          <div class="features2-divider-container2">
+            <div *ngIf="activeTab === 3" class="features2-container4"></div>
+          </div>
+          <div class="features2-content2">
+            <h2 class="thq-heading-2">Maintain Creative Control</h2>
+            <span class="thq-body-small">When you use copyrighted music, you lose control over the video. Copyright holders can impose restrictions that limit your ability to distribute and use it. So, to be on the safe side, verify whether you have complete ownership over the audio through a YouTube audio copyright checker. </span>
+          </div>
+        </div>
+        <div (click)="activeTab = 4" class="features2-tab-horizontal3">
+          <div class="features2-divider-container3">
+            <div *ngIf="activeTab === 4" class="features2-container5"></div>
+          </div>
+          <div class="features2-content3">
+            <h2 class="thq-heading-2">Save Your Channel Performance</h2>
+            <span class="thq-body-small">YouTube algorithms often classify channels that repeatedly publish copyright material and punish them. It may take your video down from recommendations and even restrict your account. This affects not just the copyrighted content but all your videos. As a result, your visibility may fall all of a sudden. The only way to stay out of this is through regular copyright checks.</span>
+          </div>
+        </div>
+        <button onclick="window.location.href='https://tubemusic.io/youtube-song-copyright-checker'" class="thq-button-outline features1-button">YES, I WANT TO CHECK NOW!</button>
       </div>
       <div class="features2-image-container">
         <img
@@ -46,6 +70,18 @@
           [attr.alt]="feature3ImgAlt"
           [attr.src]="feature3ImgSrc"
           *ngIf="activeTab === 2"
+          class="features2-image3 thq-img-ratio-16-9"
+        />
+        <img
+          [attr.alt]="feature2ImgAlt"
+          [attr.src]="feature2ImgSrc"
+          *ngIf="activeTab === 3"
+          class="features2-image2 thq-img-ratio-16-9"
+        />
+        <img
+          [attr.alt]="feature3ImgAlt"
+          [attr.src]="feature3ImgSrc"
+          *ngIf="activeTab === 4"
           class="features2-image3 thq-img-ratio-16-9"
         />
       </div>

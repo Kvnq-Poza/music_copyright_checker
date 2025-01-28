@@ -27,8 +27,10 @@ import { HeroComponent } from './components/sub/hero/hero.component';
 import { Features1Component } from './components/sub/features1/features1.component';
 import { Features2Component } from './components/sub/features2/features2.component';
 import { CtaComponent } from './components/sub/cta/cta.component';
-import { StepsComponent } from './components/sub/steps/steps.component';
 import { FaqComponent } from './components/faq/faq.component';
+import { Step1Component } from './components/sub/step1/step1.component';
+import { StepComponent } from './components/sub/step/step.component';
+import { StepsComponent } from './components/sub/steps/steps.component';
 
 @NgModule({
   declarations: [
@@ -49,8 +51,10 @@ import { FaqComponent } from './components/faq/faq.component';
     Features1Component,
     Features2Component,
     CtaComponent,
-    StepsComponent,
     FaqComponent,
+    Step1Component,
+    StepComponent,
+    StepsComponent
 
 
   ],

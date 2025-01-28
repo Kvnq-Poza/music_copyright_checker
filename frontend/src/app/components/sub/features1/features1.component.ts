@@ -9,9 +9,9 @@ export class Features1Component {
   @Input()
   feature1ImgAlt: string = 'Search Input for Checking Copyright'
   @Input()
-  feature3Description: string = 'Get instant results on copyright status'
+  feature3Description: string = 'Our YouTube music copyright checker is created for everyone, especially beginners, to make copyright checks simple.  Just copy and paste a link or type in a song name, and you\'re good to go. '
   @Input()
-  feature3Title: string = 'Instant Results'
+  feature3Title: string = 'User-Friendly Experience'
   @Input()
   feature3ImgSrc: string =
     'https://images.unsplash.com/photo-1484712548363-bad7b2ff3878?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYwOXw&ixlib=rb-4.0.3&q=80&w=1080'
@@ -19,21 +19,21 @@ export class Features1Component {
   feature1ImgSrc: string =
     'https://images.unsplash.com/photo-1465821185615-20b3c2fbf41b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYwOXw&ixlib=rb-4.0.3&q=80&w=1080'
   @Input()
-  feature2Description: string = 'Search by video link or name'
+  feature2Description: string = 'Our tool scans a massive database of copyrighted music worldwide. We search through popular tracks, indie music, and even lesser-known songs. So you can trust the results you get. '
   @Input()
-  feature1Title: string = 'Quick Copyright Check'
+  feature1Title: string = 'Real-Time Scanning'
   @Input()
   feature3ImgAlt: string = 'Instant Results Icon'
   @Input()
   feature1Description: string =
-    'Enter the video link or name to check copyright'
+    'Just drop your video link, and within seconds, know if your song is safe to use. That means you can publish your content faster without worrying about copyright strikes.'
   @Input()
   feature2ImgSrc: string =
     'https://images.unsplash.com/photo-1619983081563-430f63602796?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYxMHw&ixlib=rb-4.0.3&q=80&w=1080'
   @Input()
   feature2ImgAlt: string = 'Search Options Icon'
   @Input()
-  feature2Title: string = 'Multiple Search Options'
+  feature2Title: string = '99.99% Accuracy'
   activeTab: number = 0
   constructor() {}
 }

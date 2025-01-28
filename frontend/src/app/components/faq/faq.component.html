@@ -1,24 +1,103 @@
 <div class="faq-container">
     <div class="faq-header">
-        <h1>Frequently Asked Questions</h1>
-        <p>Find answers to common questions about our music copyright checker and gallery.</p>
+      <h1>Frequently Asked Questions</h1>
+      <p>Find answers to common questions about our music copyright checker and gallery.</p>
     </div>
-
+  
     <div class="faq-content">
-        <div class="faq-item" *ngFor="let item of faqItems; let i = index">
-            <div class="faq-question" (click)="toggleFaq(i)" [class.active]="item.isOpen">
-                <h3>{{ item.question }}</h3>
-                <span class="toggle-icon">{{ item.isOpen ? '−' : '+' }}</span>
-            </div>
-            <div class="faq-answer" [@slideInOut]="item.isOpen ? 'open' : 'closed'">
-                <p>{{ item.answer }}</p>
-            </div>
+      <div class="faq-item">
+        <div class="faq-question" (click)="toggleFaq(0)" [class.active]="faqStates[0]">
+          <h3>How to check if a song is copyrighted on YouTube?</h3>
+          <span class="toggle-icon">{{ faqStates[0] ? '−' : '+' }}</span>
         </div>
+        <div class="faq-answer" [@slideInOut]="faqStates[0] ? 'open' : 'closed'">
+          <p>
+            Go to our <a href="https://tubemusic.io/">website</a>. Paste the link or enter the name of the song that you want to check. Within seconds, our YouTube Music Copyright Checker displays whether it is safe to use or not.
+          </p>
+        </div>
+      </div>
+  
+      <div class="faq-item">
+        <div class="faq-question" (click)="toggleFaq(1)" [class.active]="faqStates[1]">
+          <h3>What happens if a song is copyrighted?</h3>
+          <span class="toggle-icon">{{ faqStates[1] ? '−' : '+' }}</span>
+        </div>
+        <div class="faq-answer" [@slideInOut]="faqStates[1] ? 'open' : 'closed'">
+          <p>
+            If a song is copyrighted, you cannot use it without permission from the copyright holder. Using them may result in suspensions or even bans from platforms like YouTube. On top of that, the copyright holder can sue for a hefty amount.
+          </p>
+        </div>
+      </div>
+  
+      <div class="faq-item">
+        <div class="faq-question" (click)="toggleFaq(2)" [class.active]="faqStates[2]">
+          <h3>Can I use copyrighted music if I give credit?</h3>
+          <span class="toggle-icon">{{ faqStates[2] ? '−' : '+' }}</span>
+        </div>
+        <div class="faq-answer" [@slideInOut]="faqStates[2] ? 'open' : 'closed'">
+          <p>
+            No. Giving credit does not always protect you from copyright claims. Even if you mention the artist, YouTube’s copyright system may flag your video. You must purchase the license to use the music from the original copyright holder. 
+          </p>
+        </div>
+      </div>
+  
+      <div class="faq-item">
+        <div class="faq-question" (click)="toggleFaq(3)" [class.active]="faqStates[3]">
+          <h3>Is all music on YouTube copyrighted?</h3>
+          <span class="toggle-icon">{{ faqStates[3] ? '−' : '+' }}</span>
+        </div>
+        <div class="faq-answer" [@slideInOut]="faqStates[3] ? 'open' : 'closed'">
+          <p>
+            Not all music on YouTube is copyrighted! Many creators offer their music under <a href="https://support.google.com/youtube/answer/2797468?hl=en&sjid=2133933789853475714-AP">Creative Commons</a> licenses or provide royalty-free options. It is always better to check the descriptions and with third-party tools like ours to verify the copyright status of music before using them.
+          </p>
+        </div>
+      </div>
+  
+      <div class="faq-item">
+        <div class="faq-question" (click)="toggleFaq(4)" [class.active]="faqStates[4]">
+          <h3>What types of music are considered copyright-free?</h3>
+          <span class="toggle-icon">{{ faqStates[4] ? '−' : '+' }}</span>
+        </div>
+        <div class="faq-answer" [@slideInOut]="faqStates[4] ? 'open' : 'closed'">
+          <p>
+            Well, it includes anything without a copyright license. You can count on tracks that are in the public domain, those licensed under Creative Commons, and royalty-free music (those without paying ongoing fees).
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" (click)="toggleFaq(5)" [class.active]="faqStates[5]">
+          <h3>How can I use copyright-free YouTube music?</h3>
+          <span class="toggle-icon">{{ faqStates[5] ? '−' : '+' }}</span>
+        </div>
+        <div class="faq-answer" [@slideInOut]="faqStates[5] ? 'open' : 'closed'">
+          <p>
+            There are many ways to create or find copyright-free YouTube music. You can use the YouTube audio library or any external websites, like our <a href="https://tubemusic.io/copyright-free-music">gallery of copyright free music</a>, to get access to music that you can use. You can even create royalty-free music on your own without any cost and experience <a href="https://aiforeveryone.org/ai-category/ai-music">by using AI tools</a>.
+          </p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" (click)="toggleFaq(6)" [class.active]="faqStates[6]">
+          <h3>How accurate is your copyright checker?</h3>
+          <span class="toggle-icon">{{ faqStates[6] ? '−' : '+' }}</span>
+        </div>
+        <div class="faq-answer" [@slideInOut]="faqStates[6] ? 'open' : 'closed'">
+          <p>
+            Our tool offers 95% accuracy by fetching real-time data from YouTube's database. Even though we try to correctly inform about the copyright status of the music, we do not guarantee the accuracy. 
+          </p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" (click)="toggleFaq(7)" [class.active]="faqStates[7]">
+          <h3>What should I do if my video gets a copyright claim?</h3>
+          <span class="toggle-icon">{{ faqStates[7] ? '−' : '+' }}</span>
+        </div>
+        <div class="faq-answer" [@slideInOut]="faqStates[7] ? 'open' : 'closed'">
+          <p>
+            Paste the link to it in our tool and see if the music used is indeed copyrighted. In case it is still flagged, consider removing the track or replacing it with one that’s copyright-free from our gallery. If you believe it is wrongly flagged, you can submit a <a href="https://support.google.com/youtube/answer/2807622?sjid=2133933789853475714-AP">copyright removal request</a>.
+          </p>
+        </div>
+      </div>
     </div>
 
-    <div class="faq-footer">
-        <h2>Still have questions?</h2>
-        <p>Can't find the answer you're looking for? Please contact our support team.</p>
-        <button class="contact-btn" routerLink="/contact">Contact Support</button>
-    </div>
 </div>
