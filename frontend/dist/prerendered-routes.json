@@ -1,0 +1,21 @@
+{
+  "routes": [
+    "/",
+    "/about",
+    "/admin",
+    "/comparison",
+    "/contact",
+    "/copyright",
+    "/dmca",
+    "/faq",
+    "/home",
+    "/liked-music",
+    "/no-copyright-music",
+    "/privacy",
+    "/service",
+    "/sign-in",
+    "/sign-up",
+    "/steps",
+    "/terms"
+  ]
+}
