@@ -8,24 +8,24 @@ import { Component } from '@angular/core';
 export class TestimonialsComponent {
   testimonials = [
     {
-      name: 'Sarah Johnson',
+      name: 'Thomas',
       role: 'Music Producer',
-      image: 'assets/testimonial1.jpg',
-      quote: 'This tool has saved me countless hours of work. It\'s incredibly accurate and easy to use!',
+      image: 'avataaars.png',
+      quote: 'As a vlogger, I used to worry constantly about copyright strikes. That’s when I came across this YouTube song copyright checker. Now, I can verify several audio tracks within seconds. I love knowing that my videos are safe to upload.',
       rating: 5
     },
     {
-      name: 'Mike Chen',
+      name: 'Raphael',
       role: 'Independent Artist',
-      image: 'assets/testimonial2.jpg',
-      quote: 'As an indie artist, knowing my music is original is crucial. This copyright checker gives me peace of mind.',
+      image: 'avataaars1.png',
+      quote: 'I’ve tried other copyright checkers, but none compare to this one. No subscriptions. No sign-ups. We can check the audio directly. You’re doing a great service!',
       rating: 5
     },
     {
-      name: 'Emily Rodriguez',
+      name: 'Kuljit',
       role: 'Studio Manager',
-      image: 'assets/testimonial3.jpg',
-      quote: 'The best copyright checking tool I\'ve used. Fast, reliable, and user-friendly.',
+      image: 'avataaars2.png',
+      quote: 'What a cool tool! I’ve been using this for years and have not yet faced any copyright issues.  I highly recommend this to any YT content creator who plans to use music in the video.',
       rating: 5
     }
   ];
