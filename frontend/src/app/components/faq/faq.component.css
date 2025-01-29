@@ -14,9 +14,7 @@
     font-weight: 800;
     color: #1e293b;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #2c3e50;
 }
 
 .faq-header p {
@@ -61,7 +59,7 @@
 
 .toggle-icon {
     font-size: 1.5rem;
-    color: #0ea5e9;
+    color: #2c3e50;
     font-weight: 300;
     transition: transform 0.3s ease;
 }

@@ -1,0 +1,25 @@
+<div class="testimonials-container">
+  <div class="testimonials-header">
+    <h2>What Our Users Say</h2>
+    <p>Trusted by musicians and producers worldwide</p>
+  </div>
+  
+  <div class="testimonials-grid">
+    <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+      <div class="testimonial-content">
+        <div class="quote-icon">❝</div>
+        <p class="quote">{{testimonial.quote}}</p>
+        <div class="rating">
+          <span class="star" *ngFor="let star of [1,2,3,4,5]">★</span>
+        </div>
+      </div>
+      <div class="testimonial-author">
+        <img [src]="testimonial.image" [alt]="testimonial.name" class="author-image">
+        <div class="author-info">
+          <h3>{{testimonial.name}}</h3>
+          <p>{{testimonial.role}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
