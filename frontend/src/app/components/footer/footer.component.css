@@ -434,3 +434,10 @@
     font-size: 0.9rem;
   }
 }
+
+.hello{
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.95rem;
+}

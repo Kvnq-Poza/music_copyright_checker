@@ -20,7 +20,7 @@ body, html {
 .main-title {
   font-size: 48px;
   font-weight: 700;
-  color: #2c3e50;  /* Darker shade for the main title */
+  color: #137181;  /* Primary brand color for the main title */
 }
 
 .tag-cloud {
@@ -43,11 +43,11 @@ body, html {
 }
 
 .tag:hover {
-  background-color: #039be5;  /* Blue highlight on hover */
+  background-color: #137181;  /* Primary brand color on hover */
   color: #fff;
 }
 .tag.selected {
-  background-color: #0277bd;  /* Darker blue for selected tags */
+  background-color: #137181;  /* Primary brand color for selected tags */
   color: #fff; 
 }
 

@@ -17,9 +17,8 @@
 
 .table-wrapper {
     background: white;
-    border-radius: 16px;
+    border: 1px solid #e2e8f0;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
 }
 
 .comparison-table {
@@ -30,25 +29,22 @@
 
 .comparison-table th {
     background: var(--dl-color-theme-accent1);
-    color: black;
-    padding: 1.5rem;
+    color: #2c3e50;
+    padding: 2rem;
     text-align: left;
-    font-weight: 600;
+    font-weight: normal;
     font-size: 1.1rem;
 }
 
-.comparison-table th:first-child {
-    border-top-left-radius: 16px;
-}
-
-.comparison-table th:last-child {
-    border-top-right-radius: 16px;
+.comparison-table th {
+    border: 1px solid #e2e8f0;
 }
 
 .comparison-table td {
-    padding: 1.5rem;
-    border-bottom: 1px solid #e2e8f0;
+    padding: 2rem;
+    border: 1px solid #e2e8f0;
     vertical-align: top;
+    background-color: rgba(255, 255, 255, 0.6);
     line-height: 1.6;
 }
 

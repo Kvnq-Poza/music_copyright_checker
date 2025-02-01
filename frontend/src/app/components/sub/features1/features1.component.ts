@@ -36,4 +36,8 @@ export class Features1Component {
   feature2Title: string = '99.99% Accuracy'
   activeTab: number = 0
   constructor() {}
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
