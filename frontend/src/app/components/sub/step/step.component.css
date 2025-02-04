@@ -23,11 +23,11 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 600px;
   background: linear-gradient(to bottom,
     rgba(255, 255, 255, 1) 0%,
     rgba(201, 232, 255, 0.95) 10%,
-    rgba(201, 232, 255, 0.95) 90%,
+    rgba(201, 232, 255, 0.95) 100%,
     rgba(255, 255, 255, 1) 100%
   );
   z-index: -1;
@@ -99,7 +99,7 @@
 }
 
 .steps-section-header:nth-of-type(even) {
-  background-color: #DDEBF3;
+  background-color: #B2D1E6  ;
 }
 
 .steps-section-header h2 {
