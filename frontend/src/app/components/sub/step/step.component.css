@@ -23,14 +23,16 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 1000px; /* Increase height for a longer effect */
-  background: linear-gradient(to bottom,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(201, 232, 255, 0.98) 10%,
-    rgba(201, 232, 255, 0.95) 30%,
-    rgba(201, 232, 255, 0.9) 60%,
-    rgba(201, 232, 255, 0.5) 85%, /* Extended fading */
-    rgba(255, 255, 255, 0) 100% /* Fully transparent at the end */
+  height: 1000px; /* Increased height for a longer fade */
+  background: linear-gradient(to bottom, 
+  rgba(255, 255, 255, 1) 0%,
+  rgba(201, 232, 255, 0.98) 10%,
+  rgba(201, 232, 255, 0.95) 30%,
+  rgba(201, 232, 255, 0.9) 60%,
+  rgba(201, 232, 255, 0.7) 70%,
+  rgba(201, 232, 255, 0.6) 80%,
+  rgba(201, 232, 255, 0.5) 85%, /* Extended fading */
+  rgba(255, 255, 255, 0) 100% 
   );
   z-index: -1;
 }
