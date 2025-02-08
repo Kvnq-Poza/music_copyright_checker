@@ -17,15 +17,25 @@ export class Features2Component {
   @Input()
   feature3ImgAlt: string = 'image'
   @Input()
+  feature4ImgAlt: string = 'image'
+  @Input()
+  feature5ImgAlt: string = 'image'
+  @Input()
   feature2Title: string = 'Instant Copyright Check'
   @Input()
   feature1Title: string = 'Feature #1'
   @Input()
   feature1ImgSrc: string =
-    'https://images.unsplash.com/photo-1501876725168-00c445821c9e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYwOXw&ixlib=rb-4.0.3&q=80&w=1080'
+    'Protecting Your Revenue.png'
   @Input()
   feature3ImgSrc: string =
-    'https://images.unsplash.com/photo-1528071542637-2ca6095eaab4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYwOXw&ixlib=rb-4.0.3&q=80&w=1080'
+    'Avoid Copyright Strikes.png'
+  @Input()
+  feature4ImgSrc: string =
+    'Maintain Creative Control.png'
+  @Input()
+  feature5ImgSrc: string =
+    'Save Your Channel Performance.png'
   @Input()
   feature2Description: string =
     'Enter the YouTube video link or the name of the music to instantly check its copyright status.'
@@ -35,7 +45,7 @@ export class Features2Component {
   feature2ImgAlt: string = 'Illustration of a music note with a checkmark'
   @Input()
   feature2ImgSrc: string =
-    'https://images.unsplash.com/photo-1450044804117-534ccd6e6a3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYxMHw&ixlib=rb-4.0.3&q=80&w=1080'
+    'Legal Protection.png'
   activeTab: number = 0
   constructor() {}
 

@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-features1',
-  templateUrl: './features1.component.html',
-  styleUrl: './features1.component.css'
+  selector: 'app-features5',
+  templateUrl: './features5.component.html',
+  styleUrl: './features5.component.css'
 })
-export class Features1Component {
+export class Features5Component {
   @Input()
   feature1ImgAlt: string = 'Search Input for Checking Copyright'
   @Input()
@@ -14,10 +14,10 @@ export class Features1Component {
   feature3Title: string = 'User-Friendly Experience'
   @Input()
   feature3ImgSrc: string =
-    'User-Friendly Experience.png'
+    'Multiple Search Options.png'
   @Input()
   feature1ImgSrc: string =
-    'Real-Time Scanning.png'
+    'Completely Free.png'
   @Input()
   feature2Description: string = 'Our tool scans a massive database of copyrighted music worldwide. We search through popular tracks, indie music, and even lesser-known songs. So you can trust the results you get. '
   @Input()
@@ -29,7 +29,7 @@ export class Features1Component {
     'Just drop your video link, and within seconds, know if your song is safe to use. That means you can publish your content faster without worrying about copyright strikes.'
   @Input()
   feature2ImgSrc: string =
-    '99.99Accuracy.png'
+    'Instant Results.png'
   @Input()
   feature2ImgAlt: string = 'Search Options Icon'
   @Input()
