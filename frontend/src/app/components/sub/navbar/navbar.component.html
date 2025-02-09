@@ -1,6 +1,11 @@
 <header class="navbar-container">
     <header data-thq="thq-navbar" class="navbar-navbar-interactive">
-      <img [attr.alt]="logoAlt" [attr.src]="logoSrc" class="navbar-image1" />
+      <div class="logo-container">
+        <i class="fa fa-play-circle logo-icon" aria-hidden="true"></i>
+        <span class="logo-text">
+          <span class="logo-tube">Tube</span><span class="logo-music">Music</span>
+        </span>
+      </div>
       <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">
         <nav class="navbar-links1">
           <span routerLink="/" class="thq-link thq-body-small">{{ link1 }}</span>

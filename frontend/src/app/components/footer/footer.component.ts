@@ -9,15 +9,15 @@ export class FooterComponent {
   @Input()
   column2Title: string = 'Quick Links'
   @Input()
-  link7: string = 'Privacy Policy'
+  link7: string = 'About'
   @Input()
   link5: string = 'Terms of Use'
   @Input()
-  link8: string = 'Copyright Policy'
+  link8: string = 'Contact'
   @Input()
   action1: string = 'Subscribe to Newsletter'
   @Input()
-  content3: string = '© 2024 Your Website. All Rights Reserved.'
+  content3: string = '© TubeMusic.io All Rights Reserved.'
   @Input()
   link4: string = 'FAQs'
   @Input()
@@ -30,9 +30,9 @@ export class FooterComponent {
   @Input()
   content2: string = 'Stay updated with our latest news and offers.'
   @Input()
-  link9: string = 'DMCA'
+  link9: string = 'Gallery'
   @Input()
-  link6: string = 'Terms And Conditions'
+  link6: string = 'Home'
   @Input()
   logoAlt: string = 'Your Website Logo'
   @Input()
@@ -40,7 +40,7 @@ export class FooterComponent {
   @Input()
   privacyLink: string = 'Privacy Policy'
   @Input()
-  link10: string = 'Sitemap'
+  link10: string = 'FAQs'
   @Input()
   column1Title: string = 'Company'
   @Input()

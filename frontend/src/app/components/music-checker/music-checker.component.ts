@@ -38,12 +38,29 @@ export class MusicCheckerComponent implements OnInit {
   @Input()
   action1: string = 'Check'
 
-   @Input()
-  textinputPlaceholder: string = 'placeholder'
+   // Add two different placeholder texts
+  private nameSearchPlaceholder = 'Enter Song Name (e.g., "Shape of You")';
+  private linkSearchPlaceholder = 'Enter YouTube Link (e.g., https://youtube.com/...)';
+  
+  // Update the textinputPlaceholder property
+  textinputPlaceholder = this.nameSearchPlaceholder;  // default value
+  
+  // Modify searchType setter to update placeholder
+  @Input()
+  set searchType(value: string) {
+    this._searchType = value;
+    // Update placeholder based on search type
+    this.textinputPlaceholder = value === 'name' 
+      ? this.nameSearchPlaceholder 
+      : this.linkSearchPlaceholder;
+  }
+  get searchType(): string {
+    return this._searchType;
+  }
+  private _searchType: string = 'name';  // default value
 
   search_query: string = '';
   results: any[] = []
-  searchType: string = 'name';
   clicked: boolean = false;
   isLogged: boolean = false;
   checkButtonText: string = 'Check';

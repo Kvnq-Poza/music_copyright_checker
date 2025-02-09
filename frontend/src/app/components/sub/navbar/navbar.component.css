@@ -222,3 +222,28 @@
 .sign-out-btn:hover {
   background-color: #f0f0f0;
 }
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-icon {
+  font-size: 24px;
+  color: #B2D1E6;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+}
+
+.logo-tube {
+  color: black;
+}
+
+.logo-music {
+  color: #B2D1E6;
+}

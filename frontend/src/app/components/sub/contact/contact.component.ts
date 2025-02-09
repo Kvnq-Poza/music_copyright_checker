@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ContactComponent {
   @Input()
-  email1: string = 'contact@musiccopyrightcheck.com'
+  email1: string = 'contact@tubemusic.io'
   @Input()
   address1: string = '123 Music Copyright Way, Suite 101, Music City, USA'
   @Input()
@@ -21,7 +21,7 @@ export class ContactComponent {
   @Input()
   content5: string = 'Stay updated by following us on social media for the latest tips.'
   @Input()
-  phone1: string = '+1-800-123-4567'
+  phone1: string = '+1 417 323 0121'
   constructor() {}
 
 }
