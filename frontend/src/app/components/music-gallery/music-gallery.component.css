@@ -3,11 +3,10 @@ body, html {
   padding: 0;
   font-family: 'Roboto', sans-serif;
   background-color: #f7f9fc;  /* Light background */
-  color: #333;  /* Dark text */
+  color: black;  /* Dark text */
 }
 
 .main-container {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -65,7 +64,7 @@ body, html {
   text-align: center;
   margin-bottom: 30px;
   font-size: 16px;
-  color: #616161;  /* Gray text for additional info */
+  color: black;  /* Gray text for additional info */
 }
 
 /* Grid layout for music cards */
@@ -163,7 +162,7 @@ body, html {
 
 .info-content h2 {
   font-size: 32px;
-  color: #2c3e50;
+  color: black;
   text-align: center;
   margin-bottom: 20px;
   font-weight: 600;
@@ -171,7 +170,7 @@ body, html {
 
 .info-content h4 {
   font-size: 24px;
-  color: #2c3e50;
+  color: black;
   text-align: center;
   margin-bottom: 20px;
   font-weight: 600;
@@ -179,10 +178,9 @@ body, html {
 
 .info-content > p {
   text-align: center;
-  color: #64748b;
+  color: black;
   font-size: 16px;
   line-height: 1.6;
-  max-width: 700px;
   margin: 0 auto 50px;
 }
 
@@ -233,7 +231,7 @@ body, html {
 }
 
 .feature-item p {
-  color: #64748b;
+  color: black;
   font-size: 15px;
   line-height: 1.5;
 }

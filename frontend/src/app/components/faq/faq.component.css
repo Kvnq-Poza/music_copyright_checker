@@ -19,7 +19,7 @@
 
 .faq-header p {
     font-size: 1.1rem;
-    color: #64748b;
+    color: black;
     max-width: 600px;
     margin: 0 auto;
 }
@@ -53,13 +53,13 @@
 .faq-question h3 {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #1e293b;
+    color: black;
     margin: 0;
 }
 
 .toggle-icon {
     font-size: 1.5rem;
-    color: #2c3e50;
+    color: black;
     font-weight: 300;
     transition: transform 0.3s ease;
 }
@@ -70,7 +70,7 @@
 
 .faq-answer {
     padding: 0 1.5rem;
-    color: #475569;
+    color: black;
     line-height: 1.6;
 }
 
@@ -89,12 +89,12 @@
 
 .faq-footer h2 {
     font-size: 1.5rem;
-    color: #1e293b;
+    color: black;
     margin-bottom: 1rem;
 }
 
 .faq-footer p {
-    color: #64748b;
+    color: black;
     margin-bottom: 1.5rem;
 }
 

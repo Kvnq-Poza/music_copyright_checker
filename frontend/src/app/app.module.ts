@@ -40,6 +40,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { Cta2Component } from './components/cta2/cta2.component';
 import { TestimonialsComponent } from './components/sub/testimonials/testimonials.component';
 import { Features5Component } from './sub/features5/features5.component';
+import { StepGalleryComponent } from './sub/step-gallery/step-gallery.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { Features5Component } from './sub/features5/features5.component';
     AboutUsComponent,
     Cta2Component,
     TestimonialsComponent,
-    Features5Component
+    Features5Component,
+    StepGalleryComponent
   ],
   imports: [
     BrowserModule,
