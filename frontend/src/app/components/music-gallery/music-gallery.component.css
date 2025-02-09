@@ -3,10 +3,11 @@ body, html {
   padding: 0;
   font-family: 'Roboto', sans-serif;
   background-color: #f7f9fc;  /* Light background */
-  color: black;  /* Dark text */
+  color: #333;  /* Dark text */
 }
 
 .main-container {
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -19,7 +20,7 @@ body, html {
 .main-title {
   font-size: 48px;
   font-weight: 700;
-  color: #137181;  /* Primary brand color for the main title */
+  color: #2c3e50;  /* Darker shade for the main title */
 }
 
 .tag-cloud {
@@ -42,11 +43,11 @@ body, html {
 }
 
 .tag:hover {
-  background-color: #137181;  /* Primary brand color on hover */
+  background-color: #039be5;  /* Blue highlight on hover */
   color: #fff;
 }
 .tag.selected {
-  background-color: #137181;  /* Primary brand color for selected tags */
+  background-color: #0277bd;  /* Darker blue for selected tags */
   color: #fff; 
 }
 
@@ -57,14 +58,14 @@ body, html {
 .section-title {
   font-size: 32px;
   margin-bottom: 10px;
-  color: black; /* Light blue for section titles */
+  color: #0277bd;  /* Light blue for section titles */
 }
 
 .updates {
   text-align: center;
   margin-bottom: 30px;
   font-size: 16px;
-  color: black;  /* Gray text for additional info */
+  color: #616161;  /* Gray text for additional info */
 }
 
 /* Grid layout for music cards */
@@ -118,7 +119,7 @@ body, html {
 .pagination-btn {
   padding: 10px 20px;
   border: none;
-  background-color: #137181;  /* Light blue button */
+  background-color: #0277bd;  /* Light blue button */
   color: #fff;
   cursor: pointer;
   border-radius: 5px;
@@ -127,7 +128,7 @@ body, html {
 }
 
 .pagination-btn:hover {
-  background-color: #137181;  /* Darker blue on hover */
+  background-color: #01579b;  /* Darker blue on hover */
 }
 
 .page-numbers {
@@ -140,98 +141,11 @@ body, html {
   cursor: pointer;
   border-radius: 5px;
   background-color: #ffffff;
-  border: 1px solid #137181;
+  border: 1px solid #0277bd;
   transition: all 0.3s ease;
 }
 
 .page-number:hover, .page-number.active {
-  background-color: #137181;  /* Highlight for active page */
+  background-color: #0277bd;  /* Highlight for active page */
   color: #fff;
-}
-
-/* Info section styles */
-.info-section {
-  margin-top: 80px;
-  padding: 60px 20px;
-}
-
-.info-content {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.info-content h2 {
-  font-size: 32px;
-  color: black;
-  text-align: center;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-
-.info-content h4 {
-  font-size: 24px;
-  color: black;
-  text-align: center;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-
-.info-content > p {
-  text-align: center;
-  color: black;
-  font-size: 16px;
-  line-height: 1.6;
-  margin: 0 auto 50px;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 30px;
-  padding: 20px 0;
-}
-
-.feature-item {
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.feature-item h3 {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 15px;
-}
-
-.feature-icon {
-  font-size: 20px;
-  color: #137181;
-  background: rgba(19, 113, 129, 0.1);
-  min-width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 5px;
-}
-
-.feature-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-}
-
-.feature-item h3 {
-  color: black;
-  font-size: 20px;
-  margin-bottom: 12px;
-  font-weight: 500;
-}
-
-.feature-item p {
-  color: black;
-  font-size: 15px;
-  line-height: 1.5;
 }
