@@ -1,39 +1,38 @@
-
 <div class="thq-section-padding">
     <h2 style="margin-bottom: 20px;">Check Your Music, Protect Your Channel!</h2>
     <p style="max-width: 1200px;
     margin: 1rem auto;
     color: #475569;
-    font-size: 1.1rem; margin-bottom: 30px;">Tired of copyright headaches? Remember, a single copyright strike can stop your hard work from reaching your audience. That’s where our YouTube music copyright checker comes in.  Our system instantly scans your music with a vast database to check for any copyright risks. With real-time results, you can verify the safety of your video in no time. Let’s get started!</p>
+    font-size: 1.1rem; margin-bottom: 30px;">Tired of copyright headaches? Remember, a single copyright strike can stop your hard work from reaching your audience. That's where our YouTube music copyright checker comes in.  Our system instantly scans your music with a vast database to check for any copyright risks. With real-time results, you can verify the safety of your video in no time. Let's get started!</p>
     <button style="margin-bottom: 50px;" (click)="scrollToTop()" class="thq-button-outline features1-button">TRY NOW!</button>
     <div class="features1-container2 thq-section-max-width">
       
       <div class="features1-tabs-menu">
-        <div (click)="activeTab = 0" class="features1-tab-horizontal1">
+        <div #section1 class="features1-tab-horizontal1">
           <div class="features1-divider-container1">
-            <div *ngIf="activeTab === 0" class="features1-container3"></div>
+            <div [class.active]="activeTab === 0" class="features1-container3"></div>
           </div>
           <div class="features1-content1">
             <h5 class="thq-heading-2">Completely Free</h5>
-            <span class="thq-body-small">No more subscription plans or annoying ads! Our YouTube music copyright checker is entirely free. Check as many songs as you want without any restrictions. You need not even sign up for an account!</span>
+            <span class="thq-body-small">{{ feature1Description }}</span>
           </div>
         </div>
-        <div (click)="activeTab = 1" class="features1-tab-horizontal2">
+        <div #section2 class="features1-tab-horizontal2">
           <div class="features1-divider-container2">
-            <div *ngIf="activeTab === 1" class="features1-container4"></div>
+            <div [class.active]="activeTab === 1" class="features1-container4"></div>
           </div>
           <div class="features1-content2">
             <h5 class="thq-heading-2">Instant Results</h5>
-            <span class="thq-body-small">Our YouTube song copyright checker works super-fast. We use an advanced algorithm to analyze your uploaded track against a vast copyright database. Within seconds, it scans the song and checks for any matches with copyrighted materials. As a result, you can know the copyright status of your song within seconds. </span>
+            <span class="thq-body-small">{{ feature2Description }}</span>
           </div>
         </div>
-        <div (click)="activeTab = 2" class="features1-tab-horizontal3">
+        <div #section3 class="features1-tab-horizontal3">
           <div class="features1-divider-container3">
-            <div *ngIf="activeTab === 2" class="features1-container5"></div>
+            <div [class.active]="activeTab === 2" class="features1-container5"></div>
           </div>
           <div class="features1-content3">
             <h5 class="thq-heading-2">Multiple Search Options</h5>
-            <span class="thq-body-small">Our YouTube music copyright checker offers flexible search options. When you enter a song name, our system matches it against a massive database to check for copyright issues. If you have a link, simply paste it, and our system analyzes the audio content directly from the video. </span>
+            <span class="thq-body-small">{{ feature3Description }}</span>
           </div>
         </div>
       </div>
@@ -41,19 +40,19 @@
         <img
           [attr.alt]="feature1ImgAlt"
           [attr.src]="feature1ImgSrc"
-          *ngIf="activeTab === 0"
+          [class.active]="activeTab === 0"
           class="features1-image1 thq-img-ratio-16-9"
         />
         <img
           [attr.alt]="feature2ImgAlt"
           [attr.src]="feature2ImgSrc"
-          *ngIf="activeTab === 1"
+          [class.active]="activeTab === 1"
           class="features1-image2 thq-img-ratio-16-9"
         />
         <img
           [attr.alt]="feature3ImgAlt"
           [attr.src]="feature3ImgSrc"
-          *ngIf="activeTab === 2"
+          [class.active]="activeTab === 2"
           class="features1-image3 thq-img-ratio-16-9"
         />
       </div>

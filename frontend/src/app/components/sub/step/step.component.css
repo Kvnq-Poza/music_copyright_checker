@@ -149,12 +149,25 @@
 
 .steps-container5,
 .steps-container7 {
-  background-color: #DDEBF3;
+  background-color: #000000;
+  color: #ffffff;
 }
 
 .steps-container5 .steps-text15,
 .steps-container7 .steps-text15 {
-  color: #DDEBF3;
+  color: #000000;
+}
+
+.steps-container5 .thq-card h2,
+.steps-container7 .thq-card h2,
+.steps-container5 .thq-card span,
+.steps-container7 .thq-card span {
+  color: #ffffff;
+}
+
+.steps-container5 label,
+.steps-container7 label {
+  color: #ffffff;
 }
 
 .steps-container4:hover,
@@ -202,13 +215,6 @@
   z-index: 0;
   opacity: 0.15;
   transition: all 0.3s ease;
-}
-
-.steps-container4 label,
-.steps-container6 label,
-.steps-container5 label,
-.steps-container7 label {
-  color: #000000;
 }
 
 .thq-card:hover label {

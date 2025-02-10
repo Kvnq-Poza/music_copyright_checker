@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, ViewChildren, QueryList, HostListener, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-features5',
   templateUrl: './features5.component.html',
   styleUrl: './features5.component.css'
 })
-export class Features5Component {
+export class Features5Component implements AfterViewInit {
   @Input()
   feature1ImgAlt: string = 'Search Input for Checking Copyright'
   @Input()
@@ -35,7 +35,29 @@ export class Features5Component {
   @Input()
   feature2Title: string = '99.99% Accuracy'
   activeTab: number = 0
+  
+  @ViewChildren('section1, section2, section3')
+  sections!: QueryList<ElementRef>;
+
   constructor() {}
+
+  ngAfterViewInit() {
+    this.checkScroll();
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  checkScroll() {
+    const sectionElements = this.sections.toArray();
+    
+    sectionElements.forEach((section, index) => {
+      const rect = section.nativeElement.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      if (rect.top >= 0 && rect.top <= windowHeight * 0.5) {
+        this.activeTab = index;
+      }
+    });
+  }
 
   scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });

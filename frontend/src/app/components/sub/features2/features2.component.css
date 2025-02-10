@@ -107,45 +107,27 @@
     justify-content: center;
   }
   .features2-image-container {
-    height: auto; /* Let the container adjust its height */
-    display: flex;
     position: relative;
-    justify-content: center; /* Center images */
-    align-items: center;
-    overflow: hidden; /* Prevent overflow */
+    height: 400px;
   }
-  .features2-image1 {
-    animation-name: fadeIn;
-    animation-delay: 0s;
-    animation-duration: 300ms;
-    animation-direction: normal;
-    animation-iteration-count: 1;
-    animation-timing-function: ease;
-    width: 100%; /* Make the images take full width */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: contain; /* Ensures the full image is visible */
+  .features2-image-container img {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
-  .features2-image2 {
-    animation-name: fadeIn;
-    animation-delay: 0s;
-    animation-duration: 300ms;
-    animation-direction: normal;
-    animation-iteration-count: 1;
-    animation-timing-function: ease;
-    width: 100%; /* Make the images take full width */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: contain; /* Ensures the full image is visible */
+  .features2-image-container img.active {
+    opacity: 1;
   }
-  .features2-image3 {
-    animation-name: fadeIn;
-    animation-delay: 0s;
-    animation-duration: 300ms;
-    animation-direction: normal;
-    animation-iteration-count: 1;
-    animation-timing-function: ease;
-    width: 100%; /* Make the images take full width */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: contain; /* Ensures the full image is visible */
+  .features2-container3.active,
+  .features2-container4.active,
+  .features2-container5.active {
+    background-color: red;
+    transform: scale(1.1);
   }
   @media(max-width: 991px) {
     .features2-container2 {

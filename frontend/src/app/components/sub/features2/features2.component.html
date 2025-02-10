@@ -6,45 +6,45 @@
     font-size: 1.1rem; margin-bottom: 40px;">Copyright checks are a must for content creators, especially on platforms like YouTube, where using copyrighted material without permission can even lead to account bans. Check out some reasons to do it every time before you upload a video:</p>
     <div class="features2-container2 thq-section-max-width">
       <div class="features2-tabs-menu">
-        <div (click)="activeTab = 0" class="features2-tab-horizontal1">
+        <div #section1 class="features2-tab-horizontal1">
           <div class="features2-divider-container1">
-            <div *ngIf="activeTab === 0" class="features2-container3"></div>
+            <div [class.active]="activeTab === 0" class="features2-container3"></div>
           </div>
           <div class="features2-content1">
             <h5 class="thq-heading-2">Protecting Your Revenue</h5>
             <span class="thq-body-small">Using copyrighted music without permission can lead to demonetization of your videos. No matter how good the video performs, the entire ad revenue goes to the copyright holder, not you. Therefore, it is always better to check the copyright of a video before uploading to make sure that the revenue from it remains in your pocket. </span>
           </div>
         </div>
-        <div (click)="activeTab = 1" class="features2-tab-horizontal2">
+        <div #section2 class="features2-tab-horizontal2">
           <div class="features2-divider-container2">
-            <div *ngIf="activeTab === 1" class="features2-container4"></div>
+            <div [class.active]="activeTab === 1" class="features2-container4"></div>
           </div>
           <div class="features2-content2">
             <h5 class="thq-heading-2">Legal Protection</h5>
             <span class="thq-body-small">What if, instead of earning from your video, you end up having to pay to use it? Well, if a copyright holder decides to take action against unauthorized use of their work, it can lead to costly legal settlements. Checking copyrights can protect you legally.</span>
           </div>
         </div>
-        <div (click)="activeTab = 2" class="features2-tab-horizontal3">
+        <div #section3 class="features2-tab-horizontal3">
           <div class="features2-divider-container3">
-            <div *ngIf="activeTab === 2" class="features2-container5"></div>
+            <div [class.active]="activeTab === 2" class="features2-container5"></div>
           </div>
           <div class="features2-content3">
             <h5 class="thq-heading-2">Avoid Copyright Strikes</h5>
             <span class="thq-body-small">If you use copyrighted music without permission, YouTube’s Content ID system can automatically detect it and issue a strike. Too many strikes can lead to your videos being removed. After three strikes, your entire channel could be taken down. Our YouTube song copyright checker can prevent this by flagging copyrighted material before you upload it.</span>
           </div>
         </div>
-        <div (click)="activeTab = 3" class="features2-tab-horizontal2">
+        <div #section4 class="features2-tab-horizontal2">
           <div class="features2-divider-container2">
-            <div *ngIf="activeTab === 3" class="features2-container4"></div>
+            <div [class.active]="activeTab === 3" class="features2-container4"></div>
           </div>
           <div class="features2-content2">
             <h5 class="thq-heading-2">Maintain Creative Control</h5>
             <span class="thq-body-small">When you use copyrighted music, you lose control over the video. Copyright holders can impose restrictions that limit your ability to distribute and use it. So, to be on the safe side, verify whether you have complete ownership over the audio through a YouTube audio copyright checker. </span>
           </div>
         </div>
-        <div (click)="activeTab = 4" class="features2-tab-horizontal3">
+        <div #section5 class="features2-tab-horizontal3">
           <div class="features2-divider-container3">
-            <div *ngIf="activeTab === 4" class="features2-container5"></div>
+            <div [class.active]="activeTab === 4" class="features2-container5"></div>
           </div>
           <div class="features2-content3">
             <h5 class="thq-heading-2">Save Your Channel Performance</h5>
@@ -57,31 +57,31 @@
         <img
           [attr.alt]="feature1ImgAlt"
           [attr.src]="feature1ImgSrc"
-          *ngIf="activeTab === 0"
+          [class.active]="activeTab === 0"
           class="features2-image1 thq-img-ratio-16-9"
         />
         <img
           [attr.alt]="feature2ImgAlt"
           [attr.src]="feature2ImgSrc"
-          *ngIf="activeTab === 1"
+          [class.active]="activeTab === 1"
           class="features2-image2 thq-img-ratio-16-9"
         />
         <img
           [attr.alt]="feature3ImgAlt"
           [attr.src]="feature3ImgSrc"
-          *ngIf="activeTab === 2"
+          [class.active]="activeTab === 2"
           class="features2-image3 thq-img-ratio-16-9"
         />
         <img
           [attr.alt]="feature4ImgAlt"
           [attr.src]="feature4ImgSrc"
-          *ngIf="activeTab === 3"
+          [class.active]="activeTab === 3"
           class="features2-image2 thq-img-ratio-16-9"
         />
         <img
           [attr.alt]="feature5ImgAlt"
           [attr.src]="feature5ImgSrc"
-          *ngIf="activeTab === 4"
+          [class.active]="activeTab === 4"
           class="features2-image3 thq-img-ratio-16-9"
         />
       </div>
