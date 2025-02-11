@@ -1,3 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.thq-flex-column,
+.thq-flex-row,
+app-root {
+  width: 100%;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0 var(--dl-space-space-unit);
+}
+
 /* .bg-img {
     background-image: url("https://images.pexels.com/photos/167092/pexels-photo-167092.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
     background-repeat: no-repeat;
@@ -77,9 +98,12 @@
     --dl-space-space-oneandhalfunits: 24px;
   }
   .dark-mode body {
-   
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    max-width: 100%;
+    overflow-x: hidden;
     background-color: var(--dl-color-theme-neutral-light);
-
   }
 
 

@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, ViewChildren, QueryList, HostListener, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-features1',
   templateUrl: './features1.component.html',
   styleUrl: './features1.component.css'
 })
-export class Features1Component {
+export class Features1Component implements AfterViewInit {
   @Input()
   feature1ImgAlt: string = 'Search Input for Checking Copyright'
   @Input()
@@ -14,10 +14,10 @@ export class Features1Component {
   feature3Title: string = 'User-Friendly Experience'
   @Input()
   feature3ImgSrc: string =
-    'https://images.unsplash.com/photo-1484712548363-bad7b2ff3878?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYwOXw&ixlib=rb-4.0.3&q=80&w=1080'
+    'User-Friendly Experience.png'
   @Input()
   feature1ImgSrc: string =
-    'https://images.unsplash.com/photo-1465821185615-20b3c2fbf41b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYwOXw&ixlib=rb-4.0.3&q=80&w=1080'
+    'Real-Time Scanning.png'
   @Input()
   feature2Description: string = 'Our tool scans a massive database of copyrighted music worldwide. We search through popular tracks, indie music, and even lesser-known songs. So you can trust the results you get. '
   @Input()
@@ -29,11 +29,38 @@ export class Features1Component {
     'Just drop your video link, and within seconds, know if your song is safe to use. That means you can publish your content faster without worrying about copyright strikes.'
   @Input()
   feature2ImgSrc: string =
-    'https://images.unsplash.com/photo-1619983081563-430f63602796?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNzU5NTYxMHw&ixlib=rb-4.0.3&q=80&w=1080'
+    '99.99Accuracy.png'
   @Input()
   feature2ImgAlt: string = 'Search Options Icon'
   @Input()
   feature2Title: string = '99.99% Accuracy'
-  activeTab: number = 0
+  activeTab = 0;
+  
+  @ViewChildren('section1, section2, section3')
+  sections!: QueryList<ElementRef>;
+
   constructor() {}
+
+  ngAfterViewInit() {
+    this.checkScroll();
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  checkScroll() {
+    const sectionElements = this.sections.toArray();
+    
+    sectionElements.forEach((section, index) => {
+      const rect = section.nativeElement.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Check if section is in viewport
+      if (rect.top >= 0 && rect.top <= windowHeight * 0.5) {
+        this.activeTab = index;
+      }
+    });
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }

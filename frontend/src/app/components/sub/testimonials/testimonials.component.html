@@ -1,0 +1,22 @@
+<div class="testimonials-container">
+  <div class="testimonials-header">
+    <h2>Testimonials</h2>
+    <p>Our YouTube audio copyright checker has helped many content creators like you hit the upload button confidently. But don’t just take our word for it—here’s what some of our satisfied users have to say about their experiences. </p>
+  </div>
+  
+  <div class="testimonials-grid">
+    <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+      <div class="testimonial-content" style="margin-top: 30px;">
+        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+        <p class="quote">{{testimonial.quote}}</p>
+        <div class="rating">
+          <span class="star" *ngFor="let star of [1,2,3,4,5]">★</span>
+        </div>
+      </div>
+      <div class="testimonial-author">
+        <h3>{{testimonial.name}}</h3>
+        <p>YouTube creator</p>
+      </div>
+    </div>
+  </div>
+</div>

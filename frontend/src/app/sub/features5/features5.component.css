@@ -1,0 +1,183 @@
+:host { 
+    display: contents; 
+  }
+  .features1-container2 {
+    width: 100%;
+    display: grid;
+    grid-gap: var(--dl-space-space-fiveunits);
+    position: relative;
+    grid-template-columns: 1fr 1fr;
+  }
+  .features1-image-container {
+    position: relative;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .features1-image-container img {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+  .features1-image-container img.active {
+    opacity: 1;
+  }
+  .features1-image1 {
+    animation-name: fadeIn;
+    animation-delay: 0s;
+    animation-duration: 300ms;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    width: 100%; /* Make the images take full width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensures the full image is visible */
+  }
+  .features1-image2 {
+    animation-name: fadeIn;
+    animation-delay: 0s;
+    animation-duration: 300ms;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    width: 100%; /* Make the images take full width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensures the full image is visible */
+  }
+  .features1-image3 {
+    animation-name: fadeIn;
+    animation-delay: 0s;
+    animation-duration: 300ms;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    width: 100%; /* Make the images take full width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensures the full image is visible */
+  }
+  .features1-tabs-menu {
+    gap: var(--dl-space-space-twounits);
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .features1-tab-horizontal1 {
+    gap: var(--dl-space-space-twounits);
+    cursor: pointer;
+    display: flex;
+    overflow: hidden;
+    align-self: stretch;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+  .features1-divider-container1 {
+    display: flex;
+    align-self: stretch;
+    align-items: flex-start;
+  }
+  .features1-container3 {
+    width: 2px;
+    align-self: stretch;
+    background-color: var(--dl-color-theme-neutral-dark);
+  }
+  .features1-container3.active {
+    background-color: orange;
+    transform: scale(1.1);
+  }
+  .features1-content1 {
+    gap: 16px;
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    flex-grow: 1;
+    align-items: flex-start;
+    flex-shrink: 0;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .features1-tab-horizontal2 {
+    gap: var(--dl-space-space-twounits);
+    cursor: pointer;
+    display: flex;
+    overflow: hidden;
+    align-self: stretch;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+  .features1-divider-container2 {
+    display: flex;
+    align-self: stretch;
+    align-items: flex-start;
+  }
+  .features1-container4 {
+    width: 2px;
+    align-self: stretch;
+    background-color: var(--dl-color-theme-neutral-dark);
+  }
+  .features1-container4.active {
+    background-color: orange;
+    transform: scale(1.1);
+  }
+  .features1-content2 {
+    gap: 16px;
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    flex-grow: 1;
+    align-items: flex-start;
+    flex-shrink: 0;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .features1-tab-horizontal3 {
+    gap: var(--dl-space-space-twounits);
+    cursor: pointer;
+    display: flex;
+    overflow: hidden;
+    align-self: stretch;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+  .features1-divider-container3 {
+    display: flex;
+    align-self: stretch;
+    align-items: flex-start;
+  }
+  .features1-container5 {
+    width: 2px;
+    align-self: stretch;
+    background-color: var(--dl-color-theme-neutral-dark);
+  }
+  .features1-container5.active {
+    background-color: orange;
+    transform: scale(1.1);
+  }
+  .features1-content3 {
+    gap: 16px;
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    flex-grow: 1;
+    align-items: flex-start;
+    flex-shrink: 0;
+    flex-direction: column;
+    justify-content: center;
+  }
+  @media(max-width: 991px) {
+    .features1-container2 {
+      grid-gap: var(--dl-space-space-twounits);
+      grid-template-columns: 1fr;
+    }
+  }
+  

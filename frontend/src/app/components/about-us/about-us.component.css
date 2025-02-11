@@ -2,7 +2,6 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     color: #1a1a1a;
 }
 
@@ -38,7 +37,7 @@
 .subtitle {
     font-size: 1.125rem;
     line-height: 1.75;
-    color: #374151;
+    color: black;
     max-width: 800px;
     margin: 0 auto;
     padding: 0 1rem;
@@ -111,7 +110,7 @@
 }
 
 .stat-label {
-    color: #6b7280;
+    color: black;
     font-size: 0.875rem;
     font-weight: 500;
     text-transform: uppercase;
@@ -175,7 +174,7 @@
 }
 
 .feature-item p {
-    color: #4b5563;
+    color: black;
 }
 
 /* CTA Section */
@@ -318,7 +317,7 @@
 }
 
 .section-card p {
-  color: #4a5568;
+  color: black;
   line-height: 1.8;
   font-size: 1.05rem;
   margin-bottom: 1rem;
@@ -335,7 +334,7 @@
 
 .features-list li {
   padding: 0.7rem 0;
-  color: #4a5568;
+  color: black;
   display: flex;
   align-items: center;
   font-size: 1.05rem;
@@ -414,4 +413,14 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Global font styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+}
+
+body, p, div, span {
+  font-family: serif;
 }

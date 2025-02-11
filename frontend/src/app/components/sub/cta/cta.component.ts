@@ -14,4 +14,7 @@ export class CtaComponent {
   @Input()
   action1: string = 'TRY NOW!'
   constructor() {}
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }

@@ -145,4 +145,17 @@
       align-items: stretch;
     }
   }
+  .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  .social-link {
+    color: #333;
+    font-size: 20px;
+    transition: color 0.3s ease;
+  }
+  .social-link:hover {
+    color: #B2D1E6;
+  }
   

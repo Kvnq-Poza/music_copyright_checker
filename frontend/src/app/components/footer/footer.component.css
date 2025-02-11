@@ -102,17 +102,48 @@
   justify-content: flex-end;
 }
 .footer-column1 {
-  gap: var(--dl-space-space-unit);
-  width: auto;
-  display: flex;
-  overflow: hidden;
-  flex-grow: 1;
-  max-width: 300px;
-  align-items: flex-start;
-  flex-shrink: 0;
-  flex-direction: column;
   display: flex;
   flex-direction: column;
+  gap: 20px;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo-icon {
+  font-size: 24px;
+  color: #B2D1E6;
+}
+.logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+}
+.logo-tube {
+  color: white;
+}
+.logo-music {
+  color: #B2D1E6;
+}
+.footer-description {
+  color: #94a3b8;
+  max-width: 250px;
+  line-height: 1.5;
+}
+.login-button {
+  background-color: #B2D1E6;
+  color: #1a1a1a;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  width: fit-content;
+  transition: background-color 0.3s ease;
+}
+.login-button:hover {
+  background-color: #9dbfd8;
 }
 .footer-column-title {
   font-size: 1.1rem;
@@ -433,4 +464,34 @@
   .footer-footer-links1 a {
     font-size: 0.9rem;
   }
+}
+
+.hello{
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.95rem;
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Global font styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+}
+
+body, p, div, span {
+  font-family: serif;
+}
+
+.social-icon {
+  color: #94a3b8;
+  font-size: 18px;
+  width: 24px;
+}
+
+.footer-link14, .footer-link15, .footer-link16 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0px;
 }

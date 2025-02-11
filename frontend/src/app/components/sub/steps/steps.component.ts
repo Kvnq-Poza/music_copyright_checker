@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './steps.component.css'
 })
 export class StepsComponent {
-
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
