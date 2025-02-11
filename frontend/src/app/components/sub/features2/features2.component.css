@@ -132,7 +132,7 @@
   .features2-container3.active,
   .features2-container4.active,
   .features2-container5.active {
-    background-color: red;
+    background-color: orange;
     transform: scale(1.1);
   }
   @media(max-width: 991px) {
