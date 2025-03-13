@@ -1,6 +1,7 @@
 import { Component, Renderer2, ElementRef } from '@angular/core';
 import { SignupService } from '../../services/signup.service';
 import { ToastService } from '../../services/toast.service';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-signup',
@@ -19,7 +20,7 @@ export class SignupComponent {
   imagePath: string = "https://images.pexels.com/photos/96857/pexels-photo-96857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 
 
-  constructor(private userService: SignupService, private toastService: ToastService, private renderer: Renderer2, private el: ElementRef) {}
+  constructor(private userService: SignupService, private toastService: ToastService, private renderer: Renderer2, private el: ElementRef, private titleService: Title, private metaService: Meta) {}
 
   onSubmit(): void {
     this.clicked=true
@@ -58,6 +59,15 @@ export class SignupComponent {
   }
 
   ngOnInit() {
+    this.setMetaData();
+  }
+
+  setMetaData() {
+    // Set the title
+    this.titleService.setTitle('Sign Up | TubeMusic.io  ');
+
+    // Set the meta description
+    this.metaService.updateTag({ name: 'description', content: 'Create a free TubeMusic.io account to check music copyright, find copyright-free tracks, and unlock exclusive features for content creators.' });
 
   }
 

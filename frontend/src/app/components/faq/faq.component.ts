@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-faq',
@@ -22,7 +23,22 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     ]),
   ],
 })
-export class FaqComponent {
+export class FaqComponent implements OnInit {
+
+  constructor(private titleService: Title, private metaService: Meta) { }
+
+  ngOnInit(): void {
+    this.setMetaData();
+  }
+
+  setMetaData() {
+    // Set the title
+    this.titleService.setTitle('Frequently Asked Questions | TubeMusic.io');
+
+    // Set the meta description
+    this.metaService.updateTag({ name: 'description', content: 'Get answers to common questions about music copyright, free music, and how TubeMusic.io helps you find safe, legal tracks for your content.' });
+
+  }
   faqStates: boolean[] = [false, false, false, false, false, false, false, false];
 
   toggleFaq(index: number): void {

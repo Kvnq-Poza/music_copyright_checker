@@ -1,11 +1,25 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
+
+
+  ngOnInit(): void {
+    this.setMetaData();
+  }
+
+  setMetaData() {
+    // Set the title
+    this.titleService.setTitle('Contact Us | TubeMusic.io');
+
+    // Set the meta description
+    this.metaService.updateTag({ name: 'description', content: 'Have questions or need support? Contact TubeMusic.io for assistance with music copyright checks, free music, and creator-friendly tools.' });
+  }
   @Input()
   email1: string = 'contact@tubemusic.io'
   @Input()
@@ -22,6 +36,6 @@ export class ContactComponent {
   content5: string = 'Stay updated by following us on social media for the latest tips.'
   @Input()
   phone1: string = '+1 417 323 0121'
-  constructor() {}
+  constructor(private titleService: Title, private metaService: Meta) {}
 
 }
