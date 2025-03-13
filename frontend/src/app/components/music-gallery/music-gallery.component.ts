@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MusicCheckerService } from '../../services/music-checker.service';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, Meta, SafeResourceUrl, Title } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
 import { MusicDialogComponent } from '../music-dialog/music-dialog.component'; 
 import { SignupService } from '../../services/signup.service';
@@ -16,7 +16,8 @@ export class MusicGalleryComponent implements OnInit {
   constructor(
     private musicService: MusicCheckerService, private sanitizer: DomSanitizer, 
     private dialog: MatDialog, private userService: SignupService, private router: Router, 
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private titleService: Title, private metaService: Meta
   ) {}
   
   musicItems: any[] = [];  // Array to hold music data
@@ -41,6 +42,15 @@ export class MusicGalleryComponent implements OnInit {
         console.log(this.currentTag); 
       }
     } )
+    this.setMetaData();
+
+  }
+  setMetaData() {
+    // Set the title
+    this.titleService.setTitle('100% Free Music | Find Music That Is NOT Copyrighted!');
+
+    // Set the meta description
+    this.metaService.updateTag({ name: 'description', content: 'Discover a huge collection of copyright-free music for your videos, streams, and projects. No claims, no strikes—just safe-to-use tracks' });
 
   }
 

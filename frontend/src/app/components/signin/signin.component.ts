@@ -1,6 +1,7 @@
 import { Component, Renderer2, ElementRef, OnInit, OnDestroy} from '@angular/core';
 import { SignupService } from '../../services/signup.service';
 import { ToastService } from '../../services/toast.service';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-signin',
@@ -9,7 +10,7 @@ import { ToastService } from '../../services/toast.service';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private userService: SignupService, private toastService: ToastService, private renderer: Renderer2, private el: ElementRef) {}
+  constructor(private userService: SignupService, private toastService: ToastService, private renderer: Renderer2, private el: ElementRef, private titleService: Title, private metaService: Meta) {}
 
   username: string = '';
   password: string = '';
@@ -21,6 +22,15 @@ export class SigninComponent implements OnInit {
   clicked: boolean = false;
 
   ngOnInit() {
+    this.setMetaData();
+  }
+
+  setMetaData() {
+    // Set the title
+    this.titleService.setTitle('Sign In | TubeMusic.io  ');
+
+    // Set the meta description
+    this.metaService.updateTag({ name: 'description', content: 'Log in to your TubeMusic.io account to check music copyright, access free tracks, and manage your saved searches with ease.' });
 
   }
 
