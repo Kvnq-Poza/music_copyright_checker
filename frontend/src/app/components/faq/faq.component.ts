@@ -39,7 +39,7 @@ export class FaqComponent implements OnInit {
     this.metaService.updateTag({ name: 'description', content: 'Get answers to common questions about music copyright, free music, and how TubeMusic.io helps you find safe, legal tracks for your content.' });
 
   }
-  faqStates: boolean[] = [false, false, false, false, false, false, false, false];
+  faqStates: boolean[] = [false, false, false, false, false, false, false, false, false, false];
 
   toggleFaq(index: number): void {
     this.faqStates[index] = !this.faqStates[index];
