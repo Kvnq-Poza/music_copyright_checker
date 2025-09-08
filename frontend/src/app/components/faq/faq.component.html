@@ -98,6 +98,30 @@
           </p>
         </div>
       </div>
+
+      <div class="faq-item">
+        <div class="faq-question" (click)="toggleFaq(8)" [class.active]="faqStates[8]">
+          <h3>How do I download audio from YouTube videos?</h3>
+          <span class="toggle-icon">{{ faqStates[8] ? '−' : '+' }}</span>
+        </div>
+        <div class="faq-answer" [@slideInOut]="faqStates[8] ? 'open' : 'closed'">
+          <p>
+            Use our <a href="/audio-download">audio download tool</a>. Just paste the YouTube video URL, click "Get Video Info" to see the video details, then hit "Download Audio". The tool will process the video and give you a high-quality audio file to download.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" (click)="toggleFaq(9)" [class.active]="faqStates[9]">
+          <h3>Is it legal to download audio from YouTube?</h3>
+          <span class="toggle-icon">{{ faqStates[9] ? '−' : '+' }}</span>
+        </div>
+        <div class="faq-answer" [@slideInOut]="faqStates[9] ? 'open' : 'closed'">
+          <p>
+            Downloading audio is only legal if you have permission from the copyright holder or if the content is in the public domain. Always check the video's copyright status first using our checker tool. Use downloads responsibly and respect creators' rights.
+          </p>
+        </div>
+      </div>
     </div>
 
 </div>
