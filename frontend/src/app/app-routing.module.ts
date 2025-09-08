@@ -18,6 +18,7 @@ import { PrivacyPolicyComponent } from './components/legal/privacy-policy/privac
 import { CopyrightPolicyComponent } from './components/legal/copyright-policy/copyright-policy.component';
 import { DmcaComponent } from './components/legal/dmca/dmca.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { AudioDownloadComponent } from './components/audio-download/audio-download.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path: 'copyright-policy', component: CopyrightPolicyComponent},
   {path: 'dmca', component: DmcaComponent},
   {path: 'about', component: AboutUsComponent},
+  {path: 'audio-download', component: AudioDownloadComponent},
 ];
 
 @NgModule({
