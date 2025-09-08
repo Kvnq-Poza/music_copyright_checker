@@ -1,10 +1,22 @@
-<div  class="main-container">
+<div class="main-container">
   <header class="header">
     <h1 class="main-title">Copyright Free Music</h1>
-    <div  class="tag-cloud">
+    <div class="tag-cloud">
       <!-- Example tags, update or bind dynamically if required -->
-       <span  [class.selected] = 'selectedTag === null' (click) ="selectedTags(null)" class="tag">All catagories</span>
-        <span *ngFor="let tag of tags" [class.selected] = 'selectedTag === tag' (click) ="tagClicked(tag)" (click) ="selectedTags(tag)"  class="tag">{{ tag }}</span>
+      <span
+        [class.selected]="selectedTag === null"
+        (click)="selectedTags(null)"
+        class="tag"
+        >All catagories</span
+      >
+      <span
+        *ngFor="let tag of tags"
+        [class.selected]="selectedTag === tag"
+        (click)="tagClicked(tag)"
+        (click)="selectedTags(tag)"
+        class="tag"
+        >{{ tag }}</span
+      >
     </div>
   </header>
 
@@ -15,34 +27,46 @@
     <!-- Music Grid Container -->
     <div class="music-grid">
       <!-- Render music items dynamically based on pagination -->
-      <div  *ngFor="let item of getPaginatedItems()" class="music-card">
-        <img [src]="item.thumbnail" [alt]="item.title" (click)="playSong(item.url)">
+      <div
+        *ngFor="let item of getPaginatedItems()"
+        class="music-card"
+        (click)="playSong(item)"
+      >
+        <img [src]="item.thumbnail" [alt]="item.title" />
         <p class="music-title">{{ item.title }}</p>
       </div>
     </div>
 
-
-    
-
     <!-- Pagination Controls -->
     <div class="pagination">
-      <button class="pagination-btn" (click)="changePage('prev')" [disabled]="currentPage === 1">
+      <button
+        class="pagination-btn"
+        (click)="changePage('prev')"
+        [disabled]="currentPage === 1"
+      >
         &#171;
       </button>
       <div class="page-numbers">
-        <div *ngFor="let page of [].constructor(totalPages); let i = index"
+        <div
+          *ngFor="let page of [].constructor(totalPages); let i = index"
           class="page-number"
           [class.active]="i + 1 === currentPage"
-          (click)="setPage(i + 1)">
+          (click)="setPage(i + 1)"
+        >
           {{ i + 1 }}
         </div>
       </div>
-      <button class="pagination-btn" (click)="changePage('next')" [disabled]="currentPage === totalPages">
+      <button
+        class="pagination-btn"
+        (click)="changePage('next')"
+        [disabled]="currentPage === totalPages"
+      >
         &#187;
       </button>
     </div>
   </section>
 
+  <app-music-carousel></app-music-carousel>
+
   <app-step-gallery></app-step-gallery>
 </div>
-
