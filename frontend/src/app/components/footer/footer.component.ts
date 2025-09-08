@@ -3,53 +3,55 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.css'
+  styleUrl: './footer.component.css',
 })
 export class FooterComponent {
   @Input()
-  column2Title: string = 'Quick Links'
+  column2Title: string = 'Quick Links';
   @Input()
-  link7: string = 'About'
+  link7: string = 'About';
   @Input()
-  link5: string = 'Terms of Use'
+  link5: string = 'Terms of Use';
   @Input()
-  link8: string = 'Contact'
+  link8: string = 'Contact';
   @Input()
-  action1: string = 'Subscribe to Newsletter'
+  action1: string = 'Subscribe to Newsletter';
   @Input()
-  content3: string = '© TubeMusic.io All Rights Reserved.'
+  content3: string = '© TubeMusic.io All Rights Reserved.';
   @Input()
-  link4: string = 'FAQs'
+  link4: string = 'FAQs';
   @Input()
   logoSrc: string =
-    'https://presentation-website-assets.teleporthq.io/logos/logo.png'
+    'https://presentation-website-assets.teleporthq.io/logos/logo.png';
   @Input()
-  cookiesLink: string = 'Copyright Policy'
+  cookiesLink: string = 'Copyright Policy';
   @Input()
-  dmcaLink: string = 'DMCA'
+  dmcaLink: string = 'DMCA';
   @Input()
-  content2: string = 'Stay updated with our latest news and offers.'
+  content2: string = 'Stay updated with our latest news and offers.';
   @Input()
-  link9: string = 'Gallery'
+  link9: string = 'Gallery';
   @Input()
-  link6: string = 'Home'
+  link6: string = 'Home';
   @Input()
-  logoAlt: string = 'Your Website Logo'
+  logoAlt: string = 'Your Website Logo';
   @Input()
-  link1: string = 'Home'
+  link1: string = 'Home';
   @Input()
-  privacyLink: string = 'Privacy Policy'
+  privacyLink: string = 'Privacy Policy';
   @Input()
-  link10: string = 'FAQs'
+  link10: string = 'Download';
   @Input()
-  column1Title: string = 'Company'
+  link11: string = 'FAQs';
   @Input()
-  termsLink: string = 'Terms And Conditions'
+  column1Title: string = 'Company';
   @Input()
-  link3: string = 'Contact Us'
+  termsLink: string = 'Terms And Conditions';
   @Input()
-  link2: string = 'About Us'
+  link3: string = 'Contact Us';
   @Input()
-  socialLinkTitleCategory: string = 'Connect with Us'
+  link2: string = 'About Us';
+  @Input()
+  socialLinkTitleCategory: string = 'Connect with Us';
   constructor() {}
 }
