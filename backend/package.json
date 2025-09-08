@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
     "start": "ts-node src/index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "carousel": "node scripts/update-carousel.js"
   },
   "keywords": [],
   "author": "",
