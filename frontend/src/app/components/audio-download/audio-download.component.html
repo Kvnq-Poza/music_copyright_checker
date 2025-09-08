@@ -1,0 +1,204 @@
+<div class="main-container">
+  <div class="section-header">
+    <h2>Audio Download</h2>
+    <div class="underline"></div>
+  </div>
+
+  <p class="intro-text">
+    Download high-quality audio from YouTube videos quickly and easily. Our tool
+    extracts audio in the best available quality, providing you with clean,
+    professional-grade audio files for your projects. <br /><br />
+    Whether you're a content creator, podcaster, or just need audio from your
+    favorite videos, our downloader makes the process simple and
+    straightforward. Just paste the link and get your audio file in seconds.
+    <br /><br />
+    Our audio extraction tool is designed with simplicity in mind, ensuring that
+    you can focus on your creative work rather than dealing with complicated
+    software or lengthy processes.
+  </p>
+
+  <div class="sections-grid">
+    <!-- URL Input Section -->
+    <div class="section-card">
+      <div class="icon-container">
+        <i class="fas fa-link"></i>
+      </div>
+      <div class="content-wrapper">
+        <h5>Enter Video URL</h5>
+        <p>
+          Paste your YouTube video link below and click "Get Video Info" to
+          start the process. We'll fetch the video details and prepare it for
+          audio extraction.
+        </p>
+
+        <div class="input-section">
+          <input
+            type="text"
+            [(ngModel)]="url"
+            (keydown.enter)="fetchVideoInfo()"
+            [disabled]="isLoadingInfo || isDownloading"
+            placeholder="Paste your YouTube URL here..."
+            class="url-input"
+          />
+          <button
+            (click)="fetchVideoInfo()"
+            [disabled]="isLoadingInfo || isDownloading"
+            class="fetch-btn thq-button-animated thq-button-filled"
+          >
+            Get Video Info
+          </button>
+        </div>
+
+        <div *ngIf="isLoadingInfo" class="loading-container">
+          <div class="spinner-wrapper">
+            <div class="modern-loader"></div>
+            <div class="spinner-dots"></div>
+          </div>
+          <p class="loading-text">Fetching video information...</p>
+        </div>
+
+        <!-- Video Info Display -->
+        <div *ngIf="videoInfo && step !== 'input'">
+          <div class="video-info-card">
+            <img
+              [src]="videoInfo.thumbnail"
+              alt="Video thumbnail"
+              class="video-thumbnail"
+            />
+            <div class="video-details">
+              <h3 class="video-title">{{ videoInfo.title }}</h3>
+              <div class="video-meta">
+                <div class="meta-item">
+                  <i class="fas fa-clock"></i>
+                  <span>{{ formatDuration(videoInfo.duration) }}</span>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-eye"></i>
+                  <span>{{ formatNumber(videoInfo.viewCount) }} views</span>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-thumbs-up"></i>
+                  <span>{{ formatNumber(videoInfo.likeCount) }}</span>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-user"></i>
+                  <span>{{ videoInfo.channelTitle }}</span>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-calendar"></i>
+                  <span>{{ formatDate(videoInfo.publishedAt) }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            *ngIf="step === 'info'"
+            style="text-align: center; margin: 20px 0"
+          >
+            <button
+              (click)="startDownload()"
+              class="download-btn thq-button-animated thq-button-filled"
+            >
+              Download Audio
+            </button>
+          </div>
+
+          <!-- Download Progress -->
+          <div *ngIf="step === 'downloading'" class="progress-container">
+            <h3>Download Progress</h3>
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                [style.width.%]="getProgressPercentage()"
+              ></div>
+            </div>
+            <p class="progress-text">
+              {{ getProgressPercentage().toFixed(2) }}% -
+              {{ message || "Processing..." }}
+            </p>
+          </div>
+
+          <!-- Download Complete -->
+          <div *ngIf="step === 'completed'" class="completion-card">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h3>Download Ready!</h3>
+            <p>Your audio file has been processed and is ready for download.</p>
+            <div
+              style="
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+                flex-wrap: wrap;
+              "
+            >
+              <button
+                (click)="downloadFile()"
+                class="download-ready-btn thq-button-animated thq-button-filled"
+              >
+                Download File
+              </button>
+              <button
+                (click)="resetForm()"
+                class="fetch-btn thq-button-animated thq-button-filled"
+                style="background: #6c757d"
+              >
+                Download Another
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="section-card">
+      <div class="icon-container">
+        <i class="fas fa-cogs"></i>
+      </div>
+      <div class="content-wrapper">
+        <h5>How It Works</h5>
+        <p>
+          Getting audio from YouTube videos is super easy with our tool. Just
+          paste the video link, and we'll extract the high-quality audio for
+          you. No complicated steps or confusing interfaces - just simple,
+          straightforward downloading.
+        </p>
+      </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <div class="section-card">
+      <div class="icon-container">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <div class="content-wrapper">
+        <h5>Why Choose Our Downloader?</h5>
+        <p>
+          Want to know why our audio downloader stands out? Out of numerous
+          tools available online, our YouTube audio downloader excels for many
+          reasons like:
+        </p>
+
+        <ul class="features-list">
+          <li>
+            Extract audio in the highest quality available from the source video
+            with no compression artifacts or quality loss.
+          </li>
+          <li>
+            Most downloads complete in under a minute using our powerful cloud
+            infrastructure and optimized processing algorithms.
+          </li>
+          <li>
+            Your downloads are completely private and secure. We don't store
+            files or share your data with third parties.
+          </li>
+          <li>
+            Works perfectly on desktop, tablet, and mobile devices. No app
+            installation or software download required.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
