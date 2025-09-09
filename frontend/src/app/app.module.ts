@@ -41,6 +41,8 @@ import { Cta2Component } from './components/cta2/cta2.component';
 import { TestimonialsComponent } from './components/sub/testimonials/testimonials.component';
 import { Features5Component } from './sub/features5/features5.component';
 import { StepGalleryComponent } from './sub/step-gallery/step-gallery.component';
+import { AudioDownloadComponent } from './components/audio-download/audio-download.component';
+import { MusicCarouselComponent } from './components/music-carousel/music-carousel.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,9 @@ import { StepGalleryComponent } from './sub/step-gallery/step-gallery.component'
     Cta2Component,
     TestimonialsComponent,
     Features5Component,
-    StepGalleryComponent
+    StepGalleryComponent,
+    AudioDownloadComponent,
+    MusicCarouselComponent
   ],
   imports: [
     BrowserModule,
