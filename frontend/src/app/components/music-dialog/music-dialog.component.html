@@ -1,7 +1,29 @@
-<h1 mat-dialog-title class="dialog-title">Now Playing</h1>
-<div mat-dialog-content class="dialog-content">
-  <iframe [src]="data.url" class="dialog-iframe" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="modal-header">
+  <h1 mat-dialog-title class="dialog-title">{{ data.title || 'Now Playing' }}</h1>
+  <button mat-icon-button (click)="onClose()" class="close-btn">
+    <mat-icon>close</mat-icon>
+  </button>
 </div>
+
+<div mat-dialog-content class="dialog-content">
+  <div class="video-container">
+    <iframe 
+      [src]="data.url" 
+      class="dialog-iframe" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+  
+  <div class="music-info" *ngIf="data.title || data.tags">
+    <h3 *ngIf="data.title" class="music-title">{{ data.title }}</h3>
+    <div class="tags-container" *ngIf="data.tags && data.tags.length > 0">
+      <span *ngFor="let tag of data.tags" class="tag">{{ tag }}</span>
+    </div>
+  </div>
+</div>
+
 <div mat-dialog-actions class="dialog-footer">
-  <button mat-button (click)="onClose()">Close</button>
+  <button mat-raised-button color="primary" (click)="onClose()">Close</button>
 </div>
