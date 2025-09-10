@@ -87,7 +87,6 @@ export class MusicCheckerComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAuth();
-    this.getLastChecked(8);
     // check request body if title is present
   }
 
@@ -143,7 +142,7 @@ export class MusicCheckerComponent implements OnInit {
         this.searchTime = (Date.now() - searchTime) / 1000;
         this.searchTime = Math.round(this.searchTime * 100) / 100;
         // this.search_query = '';
-        console.log(response);
+        console.log('searchByName:', response);
         this.clicked = false;
         return response;
       },
@@ -174,7 +173,7 @@ export class MusicCheckerComponent implements OnInit {
         this.searchTime = Math.round(this.searchTime * 100) / 100;
         this.results.push(response);
         // this.search_query = '';
-        console.log(response);
+        console.log('searchById:', response);
         this.relatedVideos = response.relatedVideos;
 
         this.clicked = false;
@@ -278,16 +277,6 @@ export class MusicCheckerComponent implements OnInit {
   moveUp() {
     // send event to parent
     this.emitResults('input-clicked');
-  }
-
-  getLastChecked(n: number): void {
-    this.musicService.getLastChecked(n).subscribe((response: any) => {
-      console.log(response);
-      this.lastChecked = response;
-    });
-  }
-  safePipe(url: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
   checkVideo(title: string): void {
