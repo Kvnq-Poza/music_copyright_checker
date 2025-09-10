@@ -1,24 +1,45 @@
 <div class="carousel-container">
   <h2 class="carousel-title">Recently Added Music</h2>
-  
-  <div class="carousel-wrapper" *ngIf="!isLoading && carouselItems.length > 0" 
-       (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
-    <button class="carousel-btn prev" (click)="prevSlide()" aria-label="Previous">
+
+  <div
+    class="carousel-wrapper"
+    *ngIf="!isLoading && carouselItems.length > 0"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+  >
+    <button
+      class="carousel-btn prev"
+      (click)="prevSlide()"
+      aria-label="Previous"
+    >
       <mat-icon>chevron_left</mat-icon>
     </button>
-    
+
     <div class="carousel-content">
-      <div class="carousel-track" [style.transform]="'translateX(-' + (currentIndex * 100) + '%)'" [style.transition]="isTransitioning ? 'transform 0.5s ease-in-out' : 'none'">
-        <div 
-          *ngFor="let item of displayItems; let i = index" 
+      <div
+        class="carousel-track"
+        [style.transform]="'translateX(-' + currentIndex * 100 + '%)'"
+        [style.transition]="
+          isTransitioning ? 'transform 0.5s ease-in-out' : 'none'
+        "
+      >
+        <div
+          *ngFor="let item of displayItems; let i = index"
           class="carousel-slide"
-          (click)="openMusicModal(item)">
+          (click)="openMusicModal(item)"
+        >
           <div class="slide-content">
-            <img [src]="item.thumbnail" [alt]="item.title" class="slide-image">
+            <img
+              [src]="item.thumbnail"
+              [alt]="item.title"
+              class="slide-image"
+            />
             <div class="slide-overlay">
               <h3 class="slide-title">{{ item.title }}</h3>
               <div class="slide-tags">
-                <span *ngFor="let tag of item.tags?.slice(0, 2)" class="tag">{{ tag }}</span>
+                <span *ngFor="let tag of item.tags?.slice(0, 2)" class="tag">{{
+                  tag
+                }}</span>
               </div>
               <button class="play-btn">
                 <mat-icon>play_arrow</mat-icon>
@@ -28,26 +49,27 @@
         </div>
       </div>
     </div>
-    
+
     <button class="carousel-btn next" (click)="nextSlide()" aria-label="Next">
       <mat-icon>chevron_right</mat-icon>
     </button>
   </div>
-  
-  <div class="carousel-indicators" *ngIf="!isLoading && carouselItems.length > 0">
-    <button 
+
+  <div
+    class="carousel-indicators"
+    *ngIf="!isLoading && carouselItems.length > 0"
+  >
+    <button
       *ngFor="let item of carouselItems; let i = index"
       class="indicator"
-      [class.active]="i === (currentIndex - carouselItems.length) % carouselItems.length"
+      [class.active]="
+        i === (currentIndex - carouselItems.length) % carouselItems.length
+      "
       (click)="goToSlide(i)"
-      [attr.aria-label]="'Go to slide ' + (i + 1)">
-    </button>
+      [attr.aria-label]="'Go to slide ' + (i + 1)"
+    ></button>
   </div>
-  
-  <div *ngIf="isLoading" class="loading-state">
-    <p>Loading music...</p>
-  </div>
-  
+
   <div *ngIf="!isLoading && carouselItems.length === 0" class="empty-state">
     <p>No music available</p>
   </div>
