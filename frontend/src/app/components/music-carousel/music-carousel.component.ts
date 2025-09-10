@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MusicDialogComponent } from '../music-dialog/music-dialog.component';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CarouselService } from '../../services/carousel.service';
+import { Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-music-carousel',
@@ -21,18 +23,22 @@ export class MusicCarouselComponent implements OnInit, OnDestroy {
   constructor(
     private carouselService: CarouselService,
     private dialog: MatDialog,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit() {
-    this.carouselService.getCarouselItems().subscribe((items) => {
-      this.carouselItems = items;
-      this.setupInfiniteScroll();
-      this.isLoading = false;
-      if (items.length > 0) {
-        this.startAutoScroll();
-      }
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      this.carouselService.loadCarouselItems();
+      this.carouselService.getCarouselItems().subscribe((items) => {
+        this.carouselItems = items;
+        this.setupInfiniteScroll();
+        this.isLoading = false;
+        if (items.length > 0) {
+          this.startAutoScroll();
+        }
+      });
+    }
   }
 
   setupInfiniteScroll() {
