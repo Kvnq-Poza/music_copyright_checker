@@ -107,7 +107,7 @@ export class MusicCheckerComponent implements OnInit {
   }
 
   scrollToElement() {
-    console.log(this.targetElement);
+    // console.log(this.targetElement);
     this.targetElement.nativeElement.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
@@ -142,7 +142,7 @@ export class MusicCheckerComponent implements OnInit {
         this.searchTime = (Date.now() - searchTime) / 1000;
         this.searchTime = Math.round(this.searchTime * 100) / 100;
         // this.search_query = '';
-        console.log('searchByName:', response);
+        // console.log('searchByName:', response);
         this.clicked = false;
         return response;
       },
@@ -173,7 +173,7 @@ export class MusicCheckerComponent implements OnInit {
         this.searchTime = Math.round(this.searchTime * 100) / 100;
         this.results.push(response);
         // this.search_query = '';
-        console.log('searchById:', response);
+        // console.log('searchById:', response);
         this.relatedVideos = response.relatedVideos;
 
         this.clicked = false;
@@ -199,7 +199,7 @@ export class MusicCheckerComponent implements OnInit {
     this.results = [];
 
     this.clicked = true;
-    console.log(this.clicked);
+    // console.log(this.clicked);
 
     if (!this.search_query.trim() && !this.search_query.trim()) {
       this.clicked = false;
@@ -217,7 +217,7 @@ export class MusicCheckerComponent implements OnInit {
   likeVideo(videoId: string): void {
     this.musicService.likeVideo(videoId).subscribe((response: any) => {
       if (response.success) {
-        console.log(response);
+        // console.log(response);
         this.toastService.showToast('success', 'Video liked successfully');
       } else {
         this.toastService.showToast('error', 'Failed to like video');
@@ -230,7 +230,7 @@ export class MusicCheckerComponent implements OnInit {
       this.musicService.createMusic(result).subscribe(
         (response: any) => {
           // Success response handling
-          console.log('Music created successfully:', response);
+          // console.log('Music created successfully:', response);
           this.toastService.showToast('success', 'Music saved successfully');
         },
         (error: any) => {
@@ -239,7 +239,7 @@ export class MusicCheckerComponent implements OnInit {
             error.status === 400 &&
             error.error.message === 'Music already exists'
           ) {
-            console.log('Music already exists:', error.error.message);
+            // console.log('Music already exists:', error.error.message);
             this.toastService.showToast('error', 'Music already exists');
           } else {
             console.error('An error occurred while saving music:', error);
@@ -258,7 +258,7 @@ export class MusicCheckerComponent implements OnInit {
 
   playSong(url: string) {
     const embedUrl = this.getEmbedUrl(url);
-    console.log(embedUrl);
+    // console.log(embedUrl);
     const dialogRef = this.dialog.open(MusicDialogComponent, {
       data: { url: embedUrl },
       width: '50%',
@@ -266,7 +266,7 @@ export class MusicCheckerComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
+      // console.log('The dialog was closed');
     });
   }
 
@@ -281,7 +281,7 @@ export class MusicCheckerComponent implements OnInit {
 
   checkVideo(title: string): void {
     // this.router.navigate(['/'] , { queryParams: { title: title } });
-    console.log(title);
+    // console.log(title);
 
     this.search_query = title;
     this.results = [];
