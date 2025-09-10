@@ -1,144 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
 .faq-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 4rem 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
 }
 
 .faq-header {
-    text-align: center;
-    margin-bottom: 3rem;
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
 .faq-header h1 {
-    font-size: 2.5rem;
-    font-weight: 400;
-    color: #1e293b;
-    margin-bottom: 1rem;
-    color: #2c3e50;
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  color: #2c3e50;
 }
 
 .faq-header p {
-    font-size: 1.1rem;
-    color: black;
-    max-width: 600px;
-    margin: 0 auto;
+  font-size: 1.1rem;
+  color: black;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .faq-content {
-    margin: 2rem 0;
+  margin: 2rem 0;
 }
 
 .faq-item {
-    background: white;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e2e8f0;
-    overflow: hidden;
+  background: white;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
 }
 
 .faq-question {
-    padding: 1.5rem;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s ease;
+  padding: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
 }
 
 .faq-question:hover {
-    background-color: #f8fafc;
+  background-color: #f8fafc;
 }
 
 .faq-question h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: black;
-    margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: black;
+  margin: 0;
 }
 
 .toggle-icon {
-    font-size: 1.5rem;
-    color: black;
-    font-weight: 300;
-    transition: transform 0.3s ease;
+  font-size: 1.5rem;
+  color: black;
+  font-weight: 300;
+  transition: transform 0.3s ease;
 }
 
 .faq-question.active .toggle-icon {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .faq-answer {
-    padding: 0 1.5rem;
-    color: black;
-    line-height: 1.6;
+  padding: 0 1.5rem;
+  color: black;
+  line-height: 1.6;
 }
 
 .faq-answer p {
-    margin: 0;
-    padding-bottom: 1.5rem;
+  margin: 0;
+  padding-bottom: 1.5rem;
 }
 
 .faq-footer {
-    text-align: center;
-    margin-top: 4rem;
-    padding: 2rem;
-    background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
-    border-radius: 12px;
+  text-align: center;
+  margin-top: 4rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+  border-radius: 12px;
 }
 
 .faq-footer h2 {
-    font-size: 1.5rem;
-    color: black;
-    margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: black;
+  margin-bottom: 1rem;
 }
 
 .faq-footer p {
-    color: black;
-    margin-bottom: 1.5rem;
+  color: black;
+  margin-bottom: 1.5rem;
 }
 
 .contact-btn {
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: white;
-    border: none;
-    padding: 0.75rem 2rem;
-    border-radius: 9999px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 @media (max-width: 768px) {
-    .faq-container {
-        padding: 2rem 1rem;
-    }
+  .faq-container {
+    padding: 2rem 1rem;
+  }
 
-    .faq-header h1 {
-        font-size: 2rem;
-    }
+  .faq-header h1 {
+    font-size: 2rem;
+  }
 
-    .faq-question h3 {
-        font-size: 1rem;
-    }
+  .faq-question h3 {
+    font-size: 1rem;
+  }
 
-    .faq-answer {
-        font-size: 0.95rem;
-    }
+  .faq-answer {
+    font-size: 0.95rem;
+  }
 }
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 /* Global font styles */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Roboto', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto", sans-serif;
 }
 
-body, p, div, span {
+body,
+p,
+div,
+span {
   font-family: serif;
 }
