@@ -45,6 +45,7 @@ import { TestimonialsComponent } from './components/sub/testimonials/testimonial
 import { Features5Component } from './sub/features5/features5.component';
 import { StepGalleryComponent } from './sub/step-gallery/step-gallery.component';
 import { AudioDownloadComponent } from './components/audio-download/audio-download.component';
+import { StepDownloadComponent } from './sub/step-download/step-download.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { AudioDownloadComponent } from './components/audio-download/audio-downlo
     Features5Component,
     StepGalleryComponent,
     AudioDownloadComponent,
+    StepDownloadComponent,
   ],
   imports: [
     BrowserModule,
