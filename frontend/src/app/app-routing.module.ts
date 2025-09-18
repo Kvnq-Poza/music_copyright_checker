@@ -19,31 +19,35 @@ import { CopyrightPolicyComponent } from './components/legal/copyright-policy/co
 import { DmcaComponent } from './components/legal/dmca/dmca.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { AudioDownloadComponent } from './components/audio-download/audio-download.component';
+import { PageNotFound } from './page-not-found/page-not-found';
 
 const routes: Routes = [
-  {path: '', component: LandingPageComponent},
-  {path: 'home', component: MusicCheckerComponent},
-  {path: 'sign-up', component: SignupComponent},
-  {path: 'sign-in', component: SigninComponent},
-  {path: 'copyright-free-music', component: MusicGalleryComponent},
-  {path: 'no-copyright-music/:tag', component: MusicGalleryComponent},
-  {path: 'admin', component: AdminComponent},
-  {path: 'contact', component: ContactComponent},
-  {path: 'steps', component: StepsComponent},
-  {path: 'service', component: Features1Component},
-  {path: 'liked-music', component: HeroComponent},
-  {path: 'faq', component: FaqComponent},
-  {path: 'comparison', component: OtherTextComponent},
-  {path: 'terms', component: TermsConditionsComponent},
-  {path: 'privacy-policy', component: PrivacyPolicyComponent},
-  {path: 'copyright-policy', component: CopyrightPolicyComponent},
-  {path: 'dmca', component: DmcaComponent},
-  {path: 'about', component: AboutUsComponent},
-  {path: 'audio-download', component: AudioDownloadComponent},
+  { path: '', component: LandingPageComponent },
+  { path: 'home', component: MusicCheckerComponent },
+  { path: 'sign-up', component: SignupComponent },
+  { path: 'sign-in', component: SigninComponent },
+  { path: 'copyright-free-music', component: MusicGalleryComponent },
+  { path: 'no-copyright-music/:tag', component: MusicGalleryComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'steps', component: StepsComponent },
+  { path: 'service', component: Features1Component },
+  { path: 'liked-music', component: HeroComponent },
+  { path: 'faq', component: FaqComponent },
+  { path: 'comparison', component: OtherTextComponent },
+  { path: 'terms', component: TermsConditionsComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: 'copyright-policy', component: CopyrightPolicyComponent },
+  { path: 'dmca', component: DmcaComponent },
+  { path: 'about', component: AboutUsComponent },
+  { path: 'audio-download', component: AudioDownloadComponent },
+
+  // Wildcard route to catch invalid page
+  { path: '**', component: PageNotFound },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
