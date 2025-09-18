@@ -1230,11 +1230,6 @@ body {
   padding: 8px 0;
 }
 
-/* Optional: Add a subtle glow effect */
-.clickable-thumbnail:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(76, 175, 80, 0.3);
-}
-
 @media (max-width: 991px) {
   .thq-grid-4 {
     grid-template-columns: 1fr 1fr 1fr;
