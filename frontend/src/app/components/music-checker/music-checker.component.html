@@ -251,6 +251,15 @@
           <p class="site">
             Checked on the site: <a href="https://tubemusic.io">tubemusic.io</a>
           </p>
+          <div class="video-section">
+            <iframe
+              width="560"
+              height="315"
+              [src]="safePipe(result.url)"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
 
           <div class="feedback">
             <mat-card-actions>
@@ -306,4 +315,30 @@
   <button class="hero-action21 thq-button-outline thq-button-animated">
     <span class="thq-body-small">Last Checked</span>
   </button>
+  <div class="hero-content2">
+    <div
+      class="hero-row-container1 thq-animated-group-container-horizontal thq-mask-image-horizontal"
+    >
+      <div class="thq-animated-group-horizontal">
+        <img
+          *ngFor="let item of lastChecked"
+          [attr.src]="item.thumbnail"
+          [attr.alt]="item.title"
+          [attr.title]="item.title"
+          class="hero-placeholder-image10 thq-img-scale thq-img-ratio-1-1 clickable-thumbnail"
+          (click)="openLastCheckedModal(item)"
+        />
+      </div>
+    </div>
+    <div
+      class="hero-row-container2 thq-animated-group-container-horizontal thq-mask-image-horizontal"
+    >
+      <div class="thq-animated-group-horizontal-reverse">
+        <!-- Empty for now, but could be populated with additional items -->
+      </div>
+      <div class="thq-animated-group-horizontal-reverse">
+        <!-- Empty for now, but could be populated with additional items -->
+      </div>
+    </div>
+  </div>
 </div>

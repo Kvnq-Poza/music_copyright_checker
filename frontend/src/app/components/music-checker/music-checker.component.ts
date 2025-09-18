@@ -87,6 +87,7 @@ export class MusicCheckerComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAuth();
+    this.getLastChecked(8);
     // check request body if title is present
   }
 
@@ -262,7 +263,33 @@ export class MusicCheckerComponent implements OnInit {
     const dialogRef = this.dialog.open(MusicDialogComponent, {
       data: { url: embedUrl },
       width: '50%',
-      height: '85%',
+      height: '55%',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  // New method to open modal for last checked items
+  openLastCheckedModal(item: any): void {
+    // Create embed URL if the item has a URL
+    const embedUrl = item.url ? this.getEmbedUrl(item.url) : null;
+
+    const dialogRef = this.dialog.open(MusicDialogComponent, {
+      data: {
+        url: embedUrl,
+        title: item.title,
+        thumbnail: item.thumbnail,
+        tags: item.tags || [],
+        license: item.license || null,
+        // Add additional data that might be useful in the modal
+        description: item.description || null,
+        duration: item.duration || null,
+      },
+      width: '80%',
+      maxWidth: '800px',
+      height: '80%',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -271,12 +298,36 @@ export class MusicCheckerComponent implements OnInit {
   }
 
   private getEmbedUrl(url: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    // Handle different YouTube URL formats
+    let videoId = '';
+
+    if (url.includes('youtube.com/watch?v=')) {
+      videoId = url.split('v=')[1]?.split('&')[0];
+    } else if (url.includes('youtu.be/')) {
+      videoId = url.split('youtu.be/')[1]?.split('?')[0];
+    } else if (url.includes('youtube.com/embed/')) {
+      // Already an embed URL
+      return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    }
+
+    const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
   }
 
   moveUp() {
     // send event to parent
     this.emitResults('input-clicked');
+  }
+
+  getLastChecked(n: number): void {
+    this.musicService.getLastChecked(n).subscribe((response: any) => {
+      console.log(response);
+      this.lastChecked = response;
+    });
+  }
+
+  safePipe(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
   checkVideo(title: string): void {
