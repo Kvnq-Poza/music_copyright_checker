@@ -1,5 +1,8 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+} from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,7 +22,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AdminComponent } from './admin/admin.component';
 import { MusicGalleryComponent } from './components/music-gallery/music-gallery.component';
 import { MusicDialogComponent } from './components/music-dialog/music-dialog.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { ContactComponent } from './components/sub/contact/contact.component';
 import { NavbarComponent } from './components/sub/navbar/navbar.component';
@@ -42,7 +45,6 @@ import { TestimonialsComponent } from './components/sub/testimonials/testimonial
 import { Features5Component } from './sub/features5/features5.component';
 import { StepGalleryComponent } from './sub/step-gallery/step-gallery.component';
 import { AudioDownloadComponent } from './components/audio-download/audio-download.component';
-import { MusicCarouselComponent } from './components/music-carousel/music-carousel.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,6 @@ import { MusicCarouselComponent } from './components/music-carousel/music-carous
     Features5Component,
     StepGalleryComponent,
     AudioDownloadComponent,
-    MusicCarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -88,14 +89,14 @@ import { MusicCarouselComponent } from './components/music-carousel/music-carous
     MatButtonModule,
     MatCardModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [
     provideClientHydration(),
     provideHttpClient(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}
