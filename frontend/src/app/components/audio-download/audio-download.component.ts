@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AudioDownloadService } from '../../services/audio-download.service';
 import { ToastService } from '../../services/toast.service';
+import { ActivatedRoute } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 import { io, Socket } from 'socket.io-client';
 
 @Component({
@@ -23,10 +25,33 @@ export class AudioDownloadComponent implements OnInit, OnDestroy {
 
   constructor(
     private audioService: AudioDownloadService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private route: ActivatedRoute,
+    private titleService: Title,
+    private metaService: Meta
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.setMetaData();
+    this.route.queryParams.subscribe(params => {
+      if (params['url']) {
+        this.url = params['url'];
+        this.fetchVideoInfo();
+      }
+    });
+  }
+
+  setMetaData() {
+    this.titleService.setTitle('YouTube to MP3 Converter - Download Audio from YouTube Videos');
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'Convert YouTube videos to MP3 audio files. Fast, free, and easy to use. Extract high-quality audio from any YouTube video in seconds.'
+    });
+    this.metaService.updateTag({
+      name: 'keywords',
+      content: 'youtube to mp3, youtube audio download, convert youtube to audio, youtube mp3 converter, download youtube audio'
+    });
+  }
 
   async fetchVideoInfo() {
     if (!this.url.trim()) {
