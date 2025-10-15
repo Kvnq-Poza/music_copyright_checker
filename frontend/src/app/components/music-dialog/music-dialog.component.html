@@ -1,29 +1,126 @@
-<div class="modal-header">
-  <h1 mat-dialog-title class="dialog-title">{{ data.title || 'Now Playing' }}</h1>
-  <button mat-icon-button (click)="onClose()" class="close-btn">
-    <mat-icon>close</mat-icon>
-  </button>
-</div>
-
-<div mat-dialog-content class="dialog-content">
-  <div class="video-container">
-    <iframe 
-      [src]="data.url" 
-      class="dialog-iframe" 
-      frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen>
-    </iframe>
+<div class="dialog-container">
+  <div class="modal-header">
+    <h1 mat-dialog-title class="dialog-title">{{ data.title || 'Now Playing' }}</h1>
+    <button mat-icon-button (click)="onClose()" class="close-btn">
+      <mat-icon>close</mat-icon>
+    </button>
   </div>
-  
-  <div class="music-info" *ngIf="data.title || data.tags">
-    <h3 *ngIf="data.title" class="music-title">{{ data.title }}</h3>
-    <div class="tags-container" *ngIf="data.tags && data.tags.length > 0">
-      <span *ngFor="let tag of data.tags" class="tag">{{ tag }}</span>
+
+  <div mat-dialog-content class="dialog-content">
+    <div class="video-container">
+      <iframe 
+        [src]="data.url" 
+        class="dialog-iframe" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+    
+    <div class="music-details">
+      <div class="info-grid">
+        <div class="info-card" *ngIf="data.author">
+          <div class="info-icon">
+            <mat-icon>person</mat-icon>
+          </div>
+          <div class="info-content">
+            <span class="info-label">Artist</span>
+            <span class="info-value">{{ data.author }}</span>
+          </div>
+        </div>
+
+        <div class="info-card" *ngIf="data.channelName">
+          <div class="info-icon">
+            <mat-icon>tv</mat-icon>
+          </div>
+          <div class="info-content">
+            <span class="info-label">Channel</span>
+            <span class="info-value">{{ data.channelName }}</span>
+          </div>
+        </div>
+
+        <div class="info-card" *ngIf="data.duration">
+          <div class="info-icon">
+            <mat-icon>schedule</mat-icon>
+          </div>
+          <div class="info-content">
+            <span class="info-label">Duration</span>
+            <span class="info-value">{{ data.duration }}</span>
+          </div>
+        </div>
+
+        <div class="info-card" *ngIf="data.uploadDate">
+          <div class="info-icon">
+            <mat-icon>calendar_today</mat-icon>
+          </div>
+          <div class="info-content">
+            <span class="info-label">Upload Date</span>
+            <span class="info-value">{{ formatDate(data.uploadDate) }}</span>
+          </div>
+        </div>
+
+        <div class="info-card" *ngIf="data.views">
+          <div class="info-icon">
+            <mat-icon>visibility</mat-icon>
+          </div>
+          <div class="info-content">
+            <span class="info-label">Views</span>
+            <span class="info-value">{{ formatNumber(data.views) }}</span>
+          </div>
+        </div>
+
+        <div class="info-card" *ngIf="data.likes">
+          <div class="info-icon">
+            <mat-icon>thumb_up</mat-icon>
+          </div>
+          <div class="info-content">
+            <span class="info-label">Likes</span>
+            <span class="info-value">{{ formatNumber(data.likes) }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="genre-mood-section" *ngIf="data.genre || data.mood">
+        <div class="genre-card" *ngIf="data.genre">
+          <div class="card-header">
+            <mat-icon>music_note</mat-icon>
+            <span>Genre</span>
+          </div>
+          <div class="tags">
+            <span class="tag">{{ data.genre }}</span>
+            <span class="tag" *ngIf="data.subGenre1">{{ data.subGenre1 }}</span>
+            <span class="tag" *ngIf="data.subGenre2">{{ data.subGenre2 }}</span>
+          </div>
+        </div>
+
+        <div class="mood-card" *ngIf="data.mood">
+          <div class="card-header">
+            <mat-icon>sentiment_satisfied</mat-icon>
+            <span>Mood</span>
+          </div>
+          <div class="tags">
+            <span class="tag">{{ data.mood }}</span>
+            <span class="tag" *ngIf="data.subMood1">{{ data.subMood1 }}</span>
+            <span class="tag" *ngIf="data.subMood2">{{ data.subMood2 }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="description-card" *ngIf="data.description">
+        <div class="card-header">
+          <mat-icon>description</mat-icon>
+          <span>Description</span>
+        </div>
+        <p class="description-text">{{ data.description }}</p>
+      </div>
     </div>
   </div>
-</div>
 
-<div mat-dialog-actions class="dialog-footer">
-  <button mat-raised-button color="primary" (click)="onClose()">Close</button>
+  <div mat-dialog-actions class="dialog-footer">
+    <button mat-raised-button color="primary" (click)="downloadAudio()" *ngIf="data.videoId">
+      <mat-icon>download</mat-icon>
+      Download Audio
+    </button>
+    <button mat-raised-button (click)="onClose()">Close</button>
+  </div>
 </div>
