@@ -20,14 +20,23 @@ import { DmcaComponent } from './components/legal/dmca/dmca.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { AudioDownloadComponent } from './components/audio-download/audio-download.component';
 import { PageNotFound } from './page-not-found/page-not-found';
+import { MusicGalleryResolver } from './services/music-gallery.resolver';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'home', component: MusicCheckerComponent },
   { path: 'sign-up', component: SignupComponent },
   { path: 'sign-in', component: SigninComponent },
-  { path: 'copyright-free-music', component: MusicGalleryComponent },
-  { path: 'no-copyright-music/:tag', component: MusicGalleryComponent },
+  { 
+    path: 'copyright-free-music', 
+    component: MusicGalleryComponent,
+    resolve: { data: MusicGalleryResolver }
+  },
+  { 
+    path: 'no-copyright-music/:tag', 
+    component: MusicGalleryComponent,
+    resolve: { data: MusicGalleryResolver }
+  },
   { path: 'admin', component: AdminComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'steps', component: StepsComponent },
@@ -47,7 +56,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    initialNavigation: 'enabledBlocking',
+    scrollPositionRestoration: 'top'
+  })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
