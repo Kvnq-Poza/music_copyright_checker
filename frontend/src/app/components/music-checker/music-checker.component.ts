@@ -5,76 +5,49 @@ import {
   EventEmitter,
   Input,
   ViewChild,
+  ElementRef,
+  OnDestroy,
 } from '@angular/core';
-import { MusicCheckerService } from '../../services/music-checker.service';
-import { ToastService } from '../../services/toast.service';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { MusicDialogComponent } from '../music-dialog/music-dialog.component';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { SignupService } from '../../services/signup.service';
-import { MatCardActions } from '@angular/material/card';
-import { MatButton } from '@angular/material/button';
-import { MatCard } from '@angular/material/card';
-import { MatCardContent } from '@angular/material/card';
-import { MatCardHeader } from '@angular/material/card';
-import { MatCardTitle } from '@angular/material/card';
-import { MatCardSubtitle } from '@angular/material/card';
-import { MatCardImage } from '@angular/material/card';
-import { MatCardFooter } from '@angular/material/card';
-import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { ElementRef } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+
+import { MusicCheckerService } from '../../services/music-checker.service';
+import { ToastService } from '../../services/toast.service';
+import { SignupService } from '../../services/signup.service';
+import { MusicDialogComponent } from '../music-dialog/music-dialog.component';
 
 @Component({
   selector: 'app-music-checker',
   templateUrl: './music-checker.component.html',
-  styleUrl: './music-checker.component.css',
+  styleUrls: ['./music-checker.component.css'],
 })
-export class MusicCheckerComponent implements OnInit {
+export class MusicCheckerComponent implements OnInit, OnDestroy {
   @Output() resultsChange = new EventEmitter<any[]>();
   @ViewChild('targetElement') targetElement!: ElementRef;
 
-  @Input()
-  heading1: string = 'Check Your Music Rights Now!';
-  @Input()
-  content1: string =
+  @Input() heading1 = 'Check Your Music Rights Now!';
+  @Input() content1 =
     'Get instant copyright verification for hassle-free uploads. Try it now for free!';
-  @Input()
-  action1: string = 'Check';
+  @Input() action1 = 'Check';
 
-  // Add two different placeholder texts
-  private nameSearchPlaceholder = 'Enter Song Name (e.g., "Shape of You")';
-  private linkSearchPlaceholder =
-    'Enter YouTube Link (e.g., https://youtube.com/...)';
+  textinputPlaceholder = 'Enter YouTube Link (e.g., https://youtube.com/...)';
 
-  // Update the textinputPlaceholder property
-  textinputPlaceholder = this.nameSearchPlaceholder; // default value
-
-  // Modify searchType setter to update placeholder
-  @Input()
-  set searchType(value: string) {
-    this._searchType = value;
-    // Update placeholder based on search type
-    this.textinputPlaceholder =
-      value === 'name'
-        ? this.nameSearchPlaceholder
-        : this.linkSearchPlaceholder;
-  }
-  get searchType(): string {
-    return this._searchType;
-  }
-  private _searchType: string = 'name'; // default value
-
-  search_query: string = '';
+  search_query = '';
   results: any[] = [];
-  clicked: boolean = false;
-  isLogged: boolean = false;
-  checkButtonText: string = 'Check';
+  clicked = false;
+  isLogged = false;
+  checkButtonText = 'Check';
   lastChecked: any = [];
   relatedVideos: any[] = [];
   searchTime: number | null = null;
-  copied: boolean = false;
+  copied = false;
+  copyrightData: any = null;
+
+  private currentSearchSub: Subscription | null = null;
 
   constructor(
     private musicService: MusicCheckerService,
@@ -88,27 +61,36 @@ export class MusicCheckerComponent implements OnInit {
   ngOnInit(): void {
     this.isAuth();
     this.getLastChecked(8);
-    // check request body if title is present
   }
 
-  // Function to show the "Copied!" message
+  ngOnDestroy(): void {
+    // cleanup subscription if component destroyed
+    if (this.currentSearchSub) {
+      this.currentSearchSub.unsubscribe();
+      this.currentSearchSub = null;
+    }
+  }
+
   showCopiedMessage(): void {
-    // Copy a sample text (you can replace with dynamic text)
+    if (!this.results || !this.results.length) {
+      this.toastService.showToast('info', 'No result to copy');
+      return;
+    }
     navigator.clipboard
       .writeText(
         this.results[0].title + '\nChecked on the website: https://tubemusic.io'
       )
       .then(() => {
-        this.copied = true; // Show "Copied!" message
-
-        setTimeout(() => {
-          this.copied = false; // Hide the popup after 1 second
-        }, 1000);
+        this.copied = true;
+        setTimeout(() => (this.copied = false), 1000);
+      })
+      .catch(() => {
+        this.toastService.showToast('error', 'Failed to copy to clipboard');
       });
   }
 
-  scrollToElement() {
-    // console.log(this.targetElement);
+  scrollToElement(): void {
+    if (!this.targetElement) return;
     this.targetElement.nativeElement.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
@@ -117,108 +99,136 @@ export class MusicCheckerComponent implements OnInit {
 
   isAuth(): boolean {
     this.isLogged = this.userService.isAuth();
-    if (this.isLogged) {
-      return true;
-    }
-    return false;
+    return this.isLogged;
   }
 
-  searchByName(): void {
-    // IF SEARCH QUERY IS LINK THEN SEARCH BY ID
+  private isYouTubeUrl(q: string): boolean {
+    if (!q) return false;
+    return /(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)/i.test(
+      q
+    );
+  }
 
-    if (this.search_query.includes('youtube.com')) {
-      this.toastService.showToast('info', 'Using video link instead of name');
+  // Extracts a video id from well-known YouTube URL patterns.
+  private extractYouTubeId(url: string): string | null {
+    if (!url) return null;
+    // handle embed, watch?v=, youtu.be short urls
+    const regex =
+      /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/i;
+    const m = url.match(regex);
+    if (m && m[1]) return m[1];
+    // fallback: try to read v= param
+    try {
+      const paramsPart = url.split('?')[1] || '';
+      const params = new URLSearchParams(paramsPart);
+      const v = params.get('v');
+      if (v && v.length === 11) return v;
+    } catch (e) {
+      // ignore
+    }
+    return null;
+  }
 
-      this.searchById();
+  private makeEmbedUrlFromAny(urlOrIdOrUrlLike: string): SafeResourceUrl {
+    // if a full url, extract ID; if ID-like, use it as id
+    let videoId: string | null = null;
+    if (this.isYouTubeUrl(urlOrIdOrUrlLike)) {
+      videoId = this.extractYouTubeId(urlOrIdOrUrlLike);
+    } else if (/^[A-Za-z0-9_-]{11}$/.test(urlOrIdOrUrlLike)) {
+      videoId = urlOrIdOrUrlLike;
+    }
+    if (!videoId) {
+      // fallback: trust input as-is (sanitized)
+      return this.sanitizer.bypassSecurityTrustResourceUrl(urlOrIdOrUrlLike);
+    }
+    return this.sanitizer.bypassSecurityTrustResourceUrl(
+      `https://www.youtube.com/embed/${videoId}`
+    );
+  }
+
+  private startSearchTimer(): number {
+    return Date.now();
+  }
+
+  private finalizeSearch(start: number) {
+    const elapsed = (Date.now() - start) / 1000;
+    this.searchTime = Math.round(elapsed * 100) / 100;
+  }
+
+
+
+  searchByUrl(): void {
+    if (!this.search_query || !this.search_query.trim()) {
+      this.toastService.showToast('error', "Search query can't be empty");
       return;
     }
 
-    const searchTime = Date.now();
+    if (!this.isYouTubeUrl(this.search_query)) {
+      this.toastService.showToast('error', 'Please enter a valid YouTube URL');
+      return;
+    }
+
+    const start = this.startSearchTimer();
+    this.cancelOngoingSearch();
     this.clicked = true;
     this.checkButtonText = 'Checking...';
-    this.musicService.getVidsByName(this.search_query).subscribe(
-      (response: any) => {
-        this.results.push(response);
-        this.relatedVideos = response.relatedVideos;
-        this.searchTime = (Date.now() - searchTime) / 1000;
-        this.searchTime = Math.round(this.searchTime * 100) / 100;
-        // this.search_query = '';
-        // console.log('searchByName:', response);
-        this.clicked = false;
-        return response;
-      },
-      (error: any) => {
-        this.toastService.showToast(
-          'error',
-          'Failed to fetch video, please check the name'
-        );
-        this.clicked = false;
-      }
-    );
+
+    this.currentSearchSub = this.musicService
+      .checkCopyright(this.search_query.trim())
+      .pipe(
+        finalize(() => {
+          this.finalizeSearch(start);
+          this.clicked = false;
+          this.checkButtonText = 'Check';
+        })
+      )
+      .subscribe(
+        (response: any) => {
+          if (response?.success && response?.data) {
+            this.copyrightData = response.data;
+            this.results = [this.copyrightData];
+            this.emitResults('results');
+          } else {
+            this.toastService.showToast('error', 'Failed to check copyright');
+          }
+        },
+        (error: any) => {
+          this.toastService.showToast(
+            'error',
+            'Failed to check copyright, please try again'
+          );
+          console.error('searchByUrl error:', error);
+        }
+      );
   }
 
-  searchById(): void {
-    // if search query is not link search by name
-    if (!this.search_query.includes('youtube.com')) {
-      this.toastService.showToast('info', 'Using video name instead of link');
-      this.searchByName();
-      return;
+  private cancelOngoingSearch(): void {
+    if (this.currentSearchSub) {
+      this.currentSearchSub.unsubscribe();
+      this.currentSearchSub = null;
     }
-
-    const searchTime = Date.now();
-    this.checkButtonText = 'Checking...';
-    this.musicService.getVidsById(this.search_query).subscribe(
-      (response: any) => {
-        this.searchTime = (Date.now() - searchTime) / 1000;
-
-        this.searchTime = Math.round(this.searchTime * 100) / 100;
-        this.results.push(response);
-        // this.search_query = '';
-        // console.log('searchById:', response);
-        this.relatedVideos = response.relatedVideos;
-
-        this.clicked = false;
-        this.checkButtonText = 'Check';
-        this.emitResults('results');
-        return response;
-      },
-      (error: any) => {
-        this.toastService.showToast(
-          'error',
-          'Failed to fetch video, please check the link'
-        );
-        this.clicked = false;
-      }
-    );
   }
 
   emitResults(source: string): void {
+    // Emit the results array so parent components can react
     this.resultsChange.emit(this.results);
   }
 
   submitForm(form: NgForm): void {
     this.results = [];
+    this.copyrightData = null;
 
-    this.clicked = true;
-    // console.log(this.clicked);
-
-    if (!this.search_query.trim() && !this.search_query.trim()) {
-      this.clicked = false;
+    if (!this.search_query || !this.search_query.trim()) {
       this.toastService.showToast('error', "Search query can't be empty");
       return;
     }
 
-    if (this.searchType === 'name') {
-      this.searchByName();
-    } else {
-      this.searchById();
-    }
+    this.searchByUrl();
   }
 
   likeVideo(videoId: string): void {
     this.musicService.likeVideo(videoId).subscribe((response: any) => {
-      if (response.success) {
-        // console.log(response);
+      if (response?.success) {
         this.toastService.showToast('success', 'Video liked successfully');
       } else {
         this.toastService.showToast('error', 'Failed to like video');
@@ -226,64 +236,61 @@ export class MusicCheckerComponent implements OnInit {
     });
   }
 
-  saveMusic(result: any): void {
-    if (this.isLogged) {
-      this.musicService.createMusic(result).subscribe(
-        (response: any) => {
-          // Success response handling
-          // console.log('Music created successfully:', response);
-          this.toastService.showToast('success', 'Music saved successfully');
-        },
-        (error: any) => {
-          // Error response handling
-          if (
-            error.status === 400 &&
-            error.error.message === 'Music already exists'
-          ) {
-            // console.log('Music already exists:', error.error.message);
-            this.toastService.showToast('error', 'Music already exists');
-          } else {
-            console.error('An error occurred while saving music:', error);
-            this.toastService.showToast(
-              'error',
-              'An error occurred while saving music'
-            );
-          }
-        }
-      );
-    } else {
+  saveMusic(track: any): void {
+    if (!this.isLogged) {
       this.toastService.showToast('error', 'You need to login to save music');
       this.router.navigate(['/sign-in']);
+      return;
     }
+
+    const musicData = {
+      videoId: track.video_id,
+      title: track.name,
+      thumbnail: track.thumbnail,
+      url: `https://youtube.com/watch?v=${track.video_id}`,
+      tags: [track.genre, track.mood].filter(Boolean),
+    };
+
+    this.musicService.createMusic(musicData).subscribe(
+      (response: any) => {
+        this.toastService.showToast('success', 'Music saved successfully');
+      },
+      (error: any) => {
+        if (
+          error?.status === 400 &&
+          (error?.error?.message || '').toLowerCase().includes('already exists')
+        ) {
+          this.toastService.showToast('error', 'Music already exists');
+        } else {
+          console.error('An error occurred while saving music:', error);
+          this.toastService.showToast(
+            'error',
+            'An error occurred while saving music'
+          );
+        }
+      }
+    );
   }
 
   playSong(url: string) {
-    const embedUrl = this.getEmbedUrl(url);
-    // console.log(embedUrl);
-    const dialogRef = this.dialog.open(MusicDialogComponent, {
+    const embedUrl = this.makeEmbedUrlFromAny(url);
+    this.dialog.open(MusicDialogComponent, {
       data: { url: embedUrl },
       width: '50%',
       height: '55%',
     });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-    });
   }
 
-  // New method to open modal for last checked items
   openLastCheckedModal(item: any): void {
-    // Create embed URL if the item has a URL
-    const embedUrl = item.url ? this.getEmbedUrl(item.url) : null;
+    const embedUrl = item?.url ? this.makeEmbedUrlFromAny(item.url) : null;
 
-    const dialogRef = this.dialog.open(MusicDialogComponent, {
+    this.dialog.open(MusicDialogComponent, {
       data: {
         url: embedUrl,
         title: item.title,
         thumbnail: item.thumbnail,
         tags: item.tags || [],
         license: item.license || null,
-        // Add additional data that might be useful in the modal
         description: item.description || null,
         duration: item.duration || null,
       },
@@ -291,52 +298,34 @@ export class MusicCheckerComponent implements OnInit {
       maxWidth: '800px',
       height: '80%',
     });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      // console.log('The dialog was closed');
-    });
-  }
-
-  private getEmbedUrl(url: string): SafeResourceUrl {
-    // Handle different YouTube URL formats
-    let videoId = '';
-
-    if (url.includes('youtube.com/watch?v=')) {
-      videoId = url.split('v=')[1]?.split('&')[0];
-    } else if (url.includes('youtu.be/')) {
-      videoId = url.split('youtu.be/')[1]?.split('?')[0];
-    } else if (url.includes('youtube.com/embed/')) {
-      // Already an embed URL
-      return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-    }
-
-    const embedUrl = `https://www.youtube.com/embed/${videoId}`;
-    return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
-  }
-
-  moveUp() {
-    // send event to parent
-    this.emitResults('input-clicked');
   }
 
   getLastChecked(n: number): void {
-    this.musicService.getLastChecked(n).subscribe((response: any) => {
-      console.log(response);
-      this.lastChecked = response;
-    });
+    this.musicService
+      .getLastChecked(n)
+      .subscribe((response: any) => (this.lastChecked = response || []));
   }
 
   safePipe(url: string): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
-  checkVideo(title: string): void {
-    // this.router.navigate(['/'] , { queryParams: { title: title } });
-    // console.log(title);
+  navigateToDownload(videoId: string): void {
+    const url = `https://youtube.com/watch?v=${videoId}`;
+    this.router.navigate(['/audio-download'], { queryParams: { url } });
+  }
 
-    this.search_query = title;
-    this.results = [];
-    this.scrollToElement();
-    this.searchByName();
+  formatNumber(num: number): string {
+    if (!num) return '0';
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(1) + 'M';
+    } else if (num >= 1000) {
+      return (num / 1000).toFixed(1) + 'K';
+    }
+    return num.toString();
+  }
+
+  moveUp() {
+    this.emitResults('input-clicked');
   }
 }
