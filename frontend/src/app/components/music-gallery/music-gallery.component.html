@@ -1,70 +1,181 @@
 <div class="main-container">
-  <header class="header">
+  <section class="gallery-header">
     <h1 class="main-title">Copyright Free Music</h1>
-    <div class="tag-cloud">
-      <!-- Example tags, update or bind dynamically if required -->
-      <span
-        [class.selected]="selectedTag === null"
-        (click)="selectedTags(null)"
-        class="tag"
-        >All catagories</span
-      >
-      <span
-        *ngFor="let tag of tags"
-        [class.selected]="selectedTag === tag"
-        (click)="tagClicked(tag)"
-        (click)="selectedTags(tag)"
-        class="tag"
-        >{{ tag }}</span
-      >
-    </div>
-  </header>
 
-  <section class="music-section">
-    <h2 class="section-title">Listen Online</h2>
-    <p class="updates">Updates every week • Playlist of page</p>
-
-    <!-- Music Grid Container -->
-    <div class="music-grid">
-      <!-- Render music items dynamically based on pagination -->
-      <div
-        *ngFor="let item of getPaginatedItems()"
-        class="music-card"
-        (click)="playSong(item)"
-      >
-        <img [src]="item.thumbnail" [alt]="item.title" />
-        <p class="music-title">{{ item.title }}</p>
-      </div>
-    </div>
-
-    <!-- Pagination Controls -->
-    <div class="pagination">
-      <button
-        class="pagination-btn"
-        (click)="changePage('prev')"
-        [disabled]="currentPage === 1"
-      >
-        &#171;
+    <div class="search-section">
+      <input
+        type="text"
+        [(ngModel)]="query"
+        (keydown.enter)="onSearch()"
+        placeholder="Search for music..."
+        class="search-input"
+      />
+      <button (click)="onSearch()" class="search-btn">
+        <mat-icon>search</mat-icon>
       </button>
-      <div class="page-numbers">
-        <div
-          *ngFor="let page of [].constructor(totalPages); let i = index"
-          class="page-number"
-          [class.active]="i + 1 === currentPage"
-          (click)="setPage(i + 1)"
-        >
-          {{ i + 1 }}
+    </div>
+
+    <div class="controls-wrapper">
+      <div class="filter-section">
+        <div class="filter-toggle">
+          <button
+            [class.active]="filterType === 'genre'"
+            (click)="toggleFilterType()"
+            class="toggle-btn"
+          >
+            Genre
+          </button>
+          <button
+            [class.active]="filterType === 'mood'"
+            (click)="toggleFilterType()"
+            class="toggle-btn"
+          >
+            Mood
+          </button>
+        </div>
+
+        <div class="filter-tabs">
+          <button
+            [class.active]="
+              (filterType === 'genre' && !selectedGenre) ||
+              (filterType === 'mood' && !selectedMood)
+            "
+            (click)="selectFilter('')"
+            class="filter-tab"
+          >
+            All
+          </button>
+          <button
+            *ngFor="let item of filterType === 'genre' ? genres : moods"
+            [class.active]="
+              (filterType === 'genre' && selectedGenre === item) ||
+              (filterType === 'mood' && selectedMood === item)
+            "
+            (click)="selectFilter(item)"
+            class="filter-tab"
+          >
+            {{ item }}
+          </button>
         </div>
       </div>
-      <button
-        class="pagination-btn"
-        (click)="changePage('next')"
-        [disabled]="currentPage === totalPages"
-      >
-        &#187;
-      </button>
+
+      <div class="right-controls">
+        <div class="sort-section">
+          <label>Sort:</label>
+          <select
+            [(ngModel)]="sortBy"
+            (change)="onSortChange()"
+            class="sort-select"
+          >
+            <option *ngFor="let opt of sortOptions" [value]="opt.value">
+              {{ opt.label }}
+            </option>
+          </select>
+        </div>
+
+        <div class="channel-section">
+          <button class="channel-toggle" (click)="showChannels = !showChannels">
+            <mat-icon>filter_list</mat-icon>
+            Channels ({{ selectedChannels.length }})
+            <mat-icon>{{
+              showChannels ? "expand_less" : "expand_more"
+            }}</mat-icon>
+          </button>
+          <div class="channel-dropdown" *ngIf="showChannels">
+            <div class="channel-list">
+              <button
+                *ngFor="let channel of channels"
+                [class.selected]="selectedChannels.includes(channel.channel_id)"
+                (click)="toggleChannel(channel.channel_id)"
+                class="channel-item"
+              >
+                <mat-icon>{{
+                  selectedChannels.includes(channel.channel_id)
+                    ? "check_box"
+                    : "check_box_outline_blank"
+                }}</mat-icon>
+                {{ channel.channel_name }}
+              </button>
+            </div>
+            <button class="apply-btn" (click)="applyChannelFilter()">
+              Apply
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <app-step-gallery></app-step-gallery>
+  <section class="music-section">
+    <div *ngIf="loading" class="loading">
+      <div class="spinner"></div>
+      <p>Loading music...</p>
+    </div>
+
+    <div *ngIf="!loading && videos.length === 0" class="no-results">
+      <mat-icon>music_off</mat-icon>
+      <p>No videos found. Try adjusting your filters.</p>
+    </div>
+
+    <div *ngIf="!loading && videos.length > 0" class="music-grid">
+      <div
+        *ngFor="let video of videos"
+        class="music-card"
+        (click)="openVideoDialog(video)"
+      >
+        <div class="thumbnail-wrapper">
+          <img [src]="video.thumbnail" [alt]="video.name" />
+          <span class="duration">{{ video.duration }}</span>
+          <button
+            class="save-btn"
+            (click)="saveMusic(video, $event)"
+            title="Save"
+          >
+            <mat-icon>favorite_border</mat-icon>
+          </button>
+        </div>
+        <div class="video-info">
+          <p class="video-title">{{ video.name }}</p>
+          <p class="video-author">{{ video.author }}</p>
+          <div class="video-meta">
+            <span
+              ><mat-icon>visibility</mat-icon>
+              {{ formatNumber(video.views) }}</span
+            >
+            <span
+              ><mat-icon>thumb_up</mat-icon>
+              {{ formatNumber(video.likes) }}</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!loading && totalPages > 1" class="pagination">
+      <button
+        (click)="changePage(currentPage - 1)"
+        [disabled]="currentPage === 1"
+        class="page-btn"
+      >
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+
+      <button
+        *ngFor="let page of getPageNumbers()"
+        [class.active]="page === currentPage"
+        (click)="changePage(page)"
+        class="page-num"
+      >
+        {{ page }}
+      </button>
+
+      <button
+        (click)="changePage(currentPage + 1)"
+        [disabled]="currentPage === totalPages"
+        class="page-btn"
+      >
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </section>
 </div>
