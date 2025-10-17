@@ -1,63 +1,61 @@
-import MusicModel from "../models/music";
-import { Music } from "../models/music";
+import MusicModel, { Music } from "../models/music";
 
 export class MusicService {
   async getAllMusicsByUser(query: any, options: any): Promise<Music[]> {
-    // Prepare the filter object based on query parameters
-    const result = await MusicModel.find(query, null, options);
-    return result;
+    return await MusicModel.find(query, null, options).lean().exec();
   }
-  //  get all musics
+
   async getAllMusics(query: any, options: any): Promise<Music[]> {
-    const result = await MusicModel.find(query, null, options);
-    return result;
+    return await MusicModel.find(query, null, options).lean().exec();
   }
+
   async getMusicById(musicId: string): Promise<Music | null> {
     try {
-      let response = await MusicModel.findById(musicId);
-      // check the length of the response
-      if (response === null) {
-        return null;
-      }
-      return response;
+      const response = await MusicModel.findById(musicId).lean().exec();
+      return response || null;
     } catch (error: any) {
       console.error("Error fetching music by ID:", error.message);
       return null;
     }
   }
+
   async getMuiscByUserIdVidId(
     userId: string,
     videoId: string
   ): Promise<Music | null> {
-    return await MusicModel.findOne({ user_id: userId, video_id: videoId });
+    return await MusicModel.findOne({ user_id: userId, video_id: videoId })
+      .lean()
+      .exec();
   }
+
   async getMusicByVideoId(videoId: string): Promise<Music | null> {
-    return await MusicModel.findOne({ video_id: videoId });
+    return await MusicModel.findOne({ video_id: videoId }).lean().exec();
   }
-  async createMusic(musicData: Music): Promise<Music | null> {
-    return await MusicModel.create(musicData);
+
+  async createMusic(musicData: Music): Promise<Music> {
+    const created = await MusicModel.create(musicData);
+    return created.toObject();
   }
+
   async updateMusic(
     musicId: string,
     updatedMusicData: Partial<Music>
   ): Promise<Music | null> {
     return await MusicModel.findByIdAndUpdate(musicId, updatedMusicData, {
       new: true,
-    });
+    })
+      .lean()
+      .exec();
   }
+
   async deleteMusic(musicId: string): Promise<Music | null> {
-    return await MusicModel.findById(musicId);
+    return await MusicModel.findByIdAndDelete(musicId).lean().exec();
   }
-  // delete all without thumbnail
+
   async deleteAll(): Promise<string> {
-    // await MusicModel.deleteMany({ thumbnail: { $exists: false } });
-    // delete all musics with empty thumbnail, title and tags
+    const musics = await MusicModel.find({}).lean().exec();
 
-    // find all musics
-    const musics = await MusicModel.find({});
-
-    for (let i = 0; i < musics.length; i++) {
-      const music = musics[i];
+    for (const music of musics) {
       if (!music.thumbnail || !music.title || !music.tags) {
         console.log("Deleting music:", music);
         await MusicModel.deleteOne({ _id: music._id });
@@ -69,16 +67,14 @@ export class MusicService {
       title: { $exists: false },
       tags: { $exists: false },
     });
-    console.log("Deleted musics:", response.deletedCount);
 
+    console.log("Deleted musics:", response.deletedCount);
     return "All musics without thumbnail deleted";
   }
 
-  // n last checked musics
   async getLastCheckedMusics(n: number): Promise<Music[]> {
     try {
-      // return await MusicModel.find({}).sort({ created_at: -1 }).limit(n);
-      return await MusicModel.find({}).sort({ _id: -1 }).limit(n);
+      return await MusicModel.find({}).sort({ _id: -1 }).limit(n).lean().exec();
     } catch (error: any) {
       console.error("Error fetching last checked musics:", error.message);
       return [];

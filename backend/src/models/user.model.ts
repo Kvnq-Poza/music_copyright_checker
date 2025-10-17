@@ -1,7 +1,8 @@
-import { Schema, Document, model } from "mongoose";
+import { Schema, model, Document, HydratedDocument } from "mongoose";
 
-// Interface for a user
-export interface User extends Document {
+// Define the plain User type (no Mongoose fields)
+export interface User {
+  _id?: string;
   username: string;
   email: string;
   password: string;
@@ -10,37 +11,20 @@ export interface User extends Document {
   updated_at: Date;
 }
 
-const UserSchema = new Schema<User>({
-    username: {
-        type: String,
-        required: true,
-        unique: true,
-    },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  is_email_verified: {
-    type: Boolean,
-    default: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
+// Define the Mongoose-hydrated type
+export type UserDocument = HydratedDocument<User>;
 
-  created_at: {
-    type: Date,
-    default: Date.now,
+const UserSchema = new Schema<User>(
+  {
+    username: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true },
+    is_email_verified: { type: Boolean, default: true },
+    password: { type: String, required: true },
+    created_at: { type: Date, default: Date.now },
+    updated_at: { type: Date, default: Date.now },
   },
-  updated_at: {
-    type: Date,
-    default: Date.now,
-  },
-  
-});
+  { versionKey: false }
+);
 
 const UserModel = model<User>("User", UserSchema);
-
 export default UserModel;
