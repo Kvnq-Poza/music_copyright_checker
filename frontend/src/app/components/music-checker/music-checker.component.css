@@ -170,6 +170,11 @@
   .hero-content2 {
     width: 100%;
   }
+
+  .hero-content2 .thq-animated-group-horizontal img {
+    width: 200px;
+    height: 200px;
+  }
 }
 @media (max-width: 479px) {
   .hero-actions {
@@ -1263,7 +1268,11 @@
 }
 
 .download-btn {
-  background: linear-gradient(135deg, var(--dl-color-theme-primary1) 0%, #0d5f6e 100%);
+  background: linear-gradient(
+    135deg,
+    var(--dl-color-theme-primary1) 0%,
+    #0d5f6e 100%
+  );
   color: white;
 }
 
