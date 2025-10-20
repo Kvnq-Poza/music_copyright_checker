@@ -1,6 +1,4 @@
 export const environment = {
-    production: true,
-    apiUrl: 'https://music-licence-checker.onrender.com', 
-
-  };
-  
+  production: false,
+  apiUrl: 'https://youtubedownloadapi.com/tubemusic',
+};
